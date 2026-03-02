@@ -123,23 +123,30 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
             text-shadow: 0 0 40px var(--accent-gold-glow); letter-spacing: -1px;
         }
-        .hero h2 { font-size: 1.5rem; color: var(--text-muted); font-weight: 300; margin-bottom: 30px; }
+        
+        /* Nouvelle description de présentation */
+        .hero-description {
+            font-size: 1.15rem; color: var(--text-muted); font-weight: 300;
+            margin: 0 auto 30px; max-width: 750px; line-height: 1.8; text-align: center;
+        }
 
         .hero-avatar {
             width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 30px;
             background: var(--glass-bg); border: 2px solid var(--accent-gold);
             box-shadow: 0 0 30px var(--accent-gold-glow); display: flex; align-items: center;
-            justify-content: center; font-size: 4rem; position: relative; overflow: hidden;
+            justify-content: center; position: relative; overflow: hidden;
         }
+        
         .hero-avatar::before {
             content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
             background: conic-gradient(transparent, var(--accent-gold), transparent 30%);
             animation: rotate 4s linear infinite; z-index: 1;
         }
-        .hero-avatar::after {
-            content: 'خ'; position: absolute; inset: 4px; background: #0a0a0a;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center;
-            z-index: 2; color: var(--accent-gold);
+        
+        /* Ajustement pour la nouvelle photo */
+        .hero-avatar img {
+            width: calc(100% - 8px); height: calc(100% - 8px); object-fit: cover;
+            border-radius: 50%; position: relative; z-index: 2; background: var(--bg-color);
         }
 
         /* Réseaux Sociaux */
@@ -216,7 +223,7 @@
         .blog-item {
             background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 15px;
             overflow: hidden; transition: var(--transition-smooth); display: flex; flex-direction: column;
-            cursor: pointer; /* Indique que l'article est cliquable */
+            cursor: pointer;
         }
         .blog-item:hover { border-color: var(--accent-neon); box-shadow: 0 0 20px rgba(0, 240, 255, 0.2); transform: translateY(-5px); }
 
@@ -261,9 +268,17 @@
         <!-- SECTION 1 : ACCUEIL -->
         <section id="home" class="active">
             <div class="hero">
-                <div class="hero-avatar"></div>
+                <!-- La nouvelle image de profil -->
+                <div class="hero-avatar">
+                    <img src="WhatsApp Image 2026-03-02 at 21.09.53.jpg" alt="خسرو">
+                </div>
+                
                 <h1>خسرو</h1> <!-- Khesraw -->
-                <h2>علاقه‌مند به تکنولوژی، هوش مصنوعی و تجارت الکترونیک</h2> <!-- Tech, AI & E-commerce Enthusiast -->
+                
+                <!-- La nouvelle phrase de présentation -->
+                <p class="hero-description">
+                    من خسرو هستم. اگر به دنیای تجارت الکترونیک، هوش مصنوعی و هر آنچه که به کسب‌وکار و اینترنت مربوط می‌شود علاقه‌مند هستید، دقیقاً در جای درستی قرار دارید. من در اینجا بهترین توضیحات و آموزش‌ها را در زمینه تجارت و هوش مصنوعی با شما به اشتراک می‌گذارم. پس از این صفحه لذت ببرید و استفاده کنید!
+                </p>
                 
                 <!-- Icônes Réseaux Sociaux -->
                 <div class="social-links">
