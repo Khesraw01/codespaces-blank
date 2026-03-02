@@ -10,15 +10,15 @@
     <title>خسرو | Khesraw - Full-Stack, AI & E-commerce (Dropshipping)</title>
     
     <!-- Description principale pour les résultats de recherche Google -->
-    <meta name="description" content="پورتفولیو خسرو، متخصص توسعه وب (Full-Stack)، علاقه‌مند به هوش مصنوعی (AI)، تجارت الکترونیک (E-commerce) و دراپ‌شیپینگ (Dropshipping).">
+    <meta name="description" content="پورتفولیو خسرو، متخصص توسعه وب (Full-Stack)، علاقه‌مند به هوش مصنوعی (AI)، تجارت الکترونیک (E-commerce) و دراپ‌شیپینگ (Dropshipping). مقالات و آموزش دیجیتال مارکتینگ.">
     
     <!-- Mots-clés stratégiques -->
-    <meta name="keywords" content="خسرو, توسعه وب, فول استک, هوش مصنوعی, تجارت الکترونیک, دراپ‌شیپینگ, Khesraw, Full-Stack, E-commerce, Dropshipping, AI, SEO, Netlify, Web Development">
+    <meta name="keywords" content="خسرو, توسعه وب, فول استک, هوش مصنوعی, تجارت الکترونیک, دراپ‌شیپینگ, دیجیتال مارکتینگ, Khesraw, Full-Stack, E-commerce, Dropshipping, AI, SEO, Netlify, Web Development, Digital Marketing">
     
     <meta name="author" content="Khesraw">
-    <meta name="robots" content="index, follow"> <!-- Dit à Google d'indexer la page -->
+    <meta name="robots" content="index, follow">
 
-    <!-- Open Graph (Pour les partages sur Facebook, LinkedIn, WhatsApp) -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website">
     <meta property="og:title" content="خسرو | Khesraw - Full-Stack & E-commerce">
     <meta property="og:description" content="توسعه‌دهنده وب، علاقه‌مند به هوش مصنوعی و تجارت الکترونیک (دراپ‌شیپینگ).">
@@ -26,13 +26,13 @@
     <meta property="og:site_name" content="Khesraw Portfolio">
     <meta property="og:image" content="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&q=80&w=1200">
 
-    <!-- Twitter Cards (Pour les partages sur X/Twitter) -->
+    <!-- Twitter Cards -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="خسرو | Khesraw - Tech & E-commerce">
     <meta name="twitter:description" content="توسعه‌دهنده وب، علاقه‌مند به هوش مصنوعی و تجارت الکترونیک (دراپ‌شیپینگ).">
     <meta name="twitter:image" content="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&q=80&w=1200">
 
-    <!-- Google Fonts: Vazirmatn pour une excellente lisibilité en Dari/Persan -->
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
@@ -143,16 +143,12 @@
         }
 
         /* Réseaux Sociaux */
-        .social-links {
-            display: flex; gap: 20px; justify-content: center; margin-bottom: 40px;
-        }
+        .social-links { display: flex; gap: 20px; justify-content: center; margin-bottom: 40px; }
         .social-links a {
             color: var(--text-muted); width: 35px; height: 35px; display: inline-flex;
             align-items: center; justify-content: center; transition: var(--transition-smooth);
         }
-        .social-links a:hover {
-            color: var(--accent-gold); transform: translateY(-5px); filter: drop-shadow(0 0 10px var(--accent-gold-glow));
-        }
+        .social-links a:hover { color: var(--accent-gold); transform: translateY(-5px); filter: drop-shadow(0 0 10px var(--accent-gold-glow)); }
         .social-links svg { width: 100%; height: 100%; }
 
         .cta-btn {
@@ -185,24 +181,31 @@
         .skill-item:hover { background: var(--accent-gold); color: #000; border-color: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold-glow); transform: scale(1.05); }
 
         /* ==========================================================================
-           6.5 SECTION : DÉTAIL DES COMPÉTENCES
+           6.5 SECTION : DÉTAIL DES COMPÉTENCES & DETAILS DU BLOG
            ========================================================================== */
         .detail-card {
             background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border);
-            border-radius: 20px; padding: 50px; max-width: 800px; width: 100%; text-align: right; margin-top: 50px;
+            border-radius: 20px; padding: 50px; max-width: 900px; width: 100%; text-align: right; margin-top: 20px;
         }
-        .detail-title { color: var(--accent-neon); font-size: 2.5rem; margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; }
-        .detail-description { color: var(--text-main); font-size: 1.2rem; line-height: 2; margin-bottom: 30px; text-align: justify; }
+        .detail-title { color: var(--accent-neon); font-size: 2.5rem; margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; line-height: 1.4; }
+        .detail-description { color: var(--text-main); font-size: 1.15rem; line-height: 2; margin-bottom: 30px; text-align: justify; }
+        .detail-description strong { color: var(--accent-gold); }
+        .detail-description h4 { color: #fff; font-size: 1.4rem; margin-top: 25px; margin-bottom: 10px; border-right: 3px solid var(--accent-gold); padding-right: 10px;}
+
+        .blog-detail-image {
+            width: 100%; height: 400px; object-fit: cover; border-radius: 15px; margin-bottom: 30px;
+            border: 1px solid var(--glass-border); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
         
         .back-btn {
             background: transparent; color: var(--accent-gold); border: 1px solid var(--accent-gold);
             padding: 10px 25px; font-size: 1rem; font-family: inherit; border-radius: 30px;
-            cursor: pointer; transition: var(--transition-smooth); display: inline-flex; align-items: center; gap: 10px;
+            cursor: pointer; transition: var(--transition-smooth); display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px;
         }
         .back-btn:hover { background: var(--accent-gold); color: #000; box-shadow: 0 0 15px var(--accent-gold-glow); }
 
         /* ==========================================================================
-           7. SECTION : BLOG (E-COMMERCE & TECH)
+           7. SECTION : BLOG (LISTE DES ARTICLES)
            ========================================================================== */
         .blog-header { text-align: center; margin-bottom: 40px; width: 100%; }
         .blog-header h2 { font-size: 2.5rem; color: var(--accent-gold); }
@@ -213,13 +216,15 @@
         .blog-item {
             background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 15px;
             overflow: hidden; transition: var(--transition-smooth); display: flex; flex-direction: column;
+            cursor: pointer; /* Indique que l'article est cliquable */
         }
         .blog-item:hover { border-color: var(--accent-neon); box-shadow: 0 0 20px rgba(0, 240, 255, 0.2); transform: translateY(-5px); }
 
         .blog-image { width: 100%; height: 220px; object-fit: cover; border-bottom: 1px solid var(--glass-border); }
         .blog-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
         .blog-category { font-size: 0.8rem; color: #000; background: var(--accent-gold); padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 10px; align-self: flex-start; font-weight: bold; }
-        .blog-title { font-size: 1.4rem; margin-bottom: 15px; color: var(--text-main); line-height: 1.4; }
+        .blog-title { font-size: 1.4rem; margin-bottom: 15px; color: var(--text-main); line-height: 1.4; transition: var(--transition-smooth); }
+        .blog-item:hover .blog-title { color: var(--accent-gold); }
         .blog-excerpt { color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
 
         /* ==========================================================================
@@ -234,7 +239,8 @@
             .hero h1 { font-size: 2.8rem; }
             nav { width: 95%; justify-content: space-around; padding: 10px 10px; gap: 10px;}
             .nav-btn { font-size: 0.9rem; padding: 6px 10px; }
-            .detail-card { padding: 30px; margin-top: 30px; }
+            .detail-card { padding: 30px; margin-top: 10px; }
+            .blog-detail-image { height: 250px; }
         }
     </style>
 </head>
@@ -248,7 +254,7 @@
     <nav>
         <button class="nav-btn active" data-target="home">خانه</button> <!-- Accueil -->
         <button class="nav-btn" data-target="about">درباره من</button> <!-- À propos -->
-        <button class="nav-btn" data-target="blog">وبلاگ</button> <!-- Blog (remplace News) -->
+        <button class="nav-btn" data-target="blog">بلاگ</button> <!-- Blog (Modifié) -->
     </nav>
 
     <main>
@@ -259,21 +265,17 @@
                 <h1>خسرو</h1> <!-- Khesraw -->
                 <h2>علاقه‌مند به تکنولوژی، هوش مصنوعی و تجارت الکترونیک</h2> <!-- Tech, AI & E-commerce Enthusiast -->
                 
-                <!-- Icônes Réseaux Sociaux -->
+                <!-- Icônes Réseaux Sociaux (Les liens seront ajoutés plus tard) -->
                 <div class="social-links">
-                    <!-- Facebook -->
                     <a href="#" target="_blank" aria-label="Facebook">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
                     </a>
-                    <!-- Instagram -->
                     <a href="#" target="_blank" aria-label="Instagram">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
                     </a>
-                    <!-- TikTok -->
                     <a href="#" target="_blank" aria-label="TikTok">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
                     </a>
-                    <!-- YouTube -->
                     <a href="#" target="_blank" aria-label="YouTube">
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                     </a>
@@ -286,16 +288,13 @@
         <!-- SECTION 2 : À PROPOS -->
         <section id="about">
             <div class="about-grid">
-                <!-- Présentation Personnelle -->
                 <div class="glass-card">
-                    <h3>درباره من</h3> <!-- À propos de moi -->
+                    <h3>درباره من</h3>
                     <p>من <strong>خسرو</strong> هستم. اصالتاً اهل افغانستان می‌باشم و به اروپا مهاجرت کرده‌ام.</p>
                     <p>من شیفته‌ی هر چیزی هستم که به تکنولوژی مربوط می‌شود، به‌ویژه <strong>هوش مصنوعی (AI)</strong>. همچنین یک علاقه‌مند و تازه‌کار پرانگیزه در دنیای <strong>تجارت الکترونیک (E-commerce) و دراپ‌شیپینگ (Dropshipping)</strong> هستم و دائماً در حال یادگیری در این زمینه‌ها می‌باشم.</p>
                 </div>
-                
-                <!-- Compétences et Intérêts -->
                 <div class="glass-card">
-                    <h3>تخصص‌ها و مهارت‌ها (برای جزئیات کلیک کنید)</h3> <!-- Cliquez pour les détails approfondis -->
+                    <h3>تخصص‌ها و مهارت‌ها (برای جزئیات کلیک کنید)</h3>
                     <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 5px;">تخصص‌های من در زمینه تکنولوژی، مارکتینگ و فروش آنلاین:</p>
                     <ul class="skills-list">
                         <li class="skill-item" data-skill="web">HTML5 / CSS3 / JavaScript</li>
@@ -310,27 +309,38 @@
             </div>
         </section>
 
-        <!-- SECTION 2.5 : DÉTAILS DES COMPÉTENCES (Textes ultra-professionnels) -->
+        <!-- SECTION 2.5 : DÉTAILS DES COMPÉTENCES (Skills) -->
         <section id="skill-details">
+            <button class="back-btn" onclick="goToSection('about')" style="align-self: flex-start; margin-right: 20px;">
+                &rarr; بازگشت به درباره من
+            </button>
             <div class="detail-card">
                 <h2 id="detail-title" class="detail-title">عنوان</h2>
                 <div id="detail-desc" class="detail-description">توضیحات در اینجا قرار می‌گیرد...</div>
-                <button class="back-btn" onclick="goToSection('about')">
-                    &rarr; بازگشت به صفحه قبل 
-                </button>
             </div>
         </section>
 
-        <!-- SECTION 3 : BLOG (E-commerce, Tech, AI) -->
+        <!-- SECTION 3 : BLOG (LISTE DES ARTICLES) -->
         <section id="blog">
             <div class="blog-header">
-                <h2>وبلاگ آموزشی و مقالات</h2> <!-- Blog et Articles -->
+                <h2>وبلاگ آموزشی و مقالات</h2>
                 <p>دانش و تجربیات من در زمینه تجارت الکترونیک، هوش مصنوعی و دیجیتال مارکتینگ.</p>
             </div>
-            
-            <!-- Conteneur pour le Blog statique -->
             <div id="blog-container" class="blog-grid">
-                <!-- Les articles seront injectés ici par JavaScript -->
+                <!-- Les cartes du blog seront injectées ici par JavaScript -->
+            </div>
+        </section>
+
+        <!-- SECTION 3.5 : PAGE COMPLÈTE D'UN ARTICLE DE BLOG -->
+        <section id="blog-post-details">
+            <button class="back-btn" onclick="goToSection('blog')" style="align-self: flex-start; margin-right: 20px;">
+                &rarr; بازگشت به لیست مقالات 
+            </button>
+            <div class="detail-card" style="max-width: 1000px;">
+                <img id="post-image" class="blog-detail-image" src="" alt="Cover">
+                <span id="post-category" class="blog-category" style="margin-bottom: 15px;">دسته‌بندی</span>
+                <h2 id="post-title" class="detail-title" style="font-size: 2.2rem; border-bottom: none; padding-bottom: 0;">عنوان مقاله</h2>
+                <div id="post-content" class="detail-description" style="margin-top: 20px;">محتوای مقاله در اینجا قرار می‌گیرد...</div>
             </div>
         </section>
     </main>
@@ -347,14 +357,19 @@
             sections.forEach(s => s.classList.remove('active'));
             document.getElementById(targetId).classList.add('active');
 
+            // Gestion de l'état actif des boutons du menu
             navButtons.forEach(b => {
                 b.classList.remove('active');
                 if(b.getAttribute('data-target') === targetId) {
                     b.classList.add('active');
                 } else if (targetId === 'skill-details' && b.getAttribute('data-target') === 'about') {
                     b.classList.add('active');
+                } else if (targetId === 'blog-post-details' && b.getAttribute('data-target') === 'blog') {
+                    // Garder le bouton "Blog" actif quand on lit un article
+                    b.classList.add('active');
                 }
             });
+            window.scrollTo(0, 0); // Remonter en haut de page lors d'un clic
         }
 
         document.addEventListener('DOMContentLoaded', () => {
@@ -367,35 +382,35 @@
                 });
             });
 
-            /* --- 2. GESTION DES SOUS-PAGES DE COMPÉTENCES (Textes ultra-pro) --- */
+            /* --- 2. GESTION DES SOUS-PAGES DE COMPÉTENCES --- */
             const skillsData = {
                 web: {
                     title: "توسعه وب: HTML5 / CSS3 / JavaScript",
-                    desc: "این سه زبان برنامه‌نویسی، هسته اصلی توسعه وب مدرن را تشکیل می‌دهند. <strong>HTML</strong> ساختار معنایی صفحات را بنا می‌کند، <strong>CSS</strong> با طراحی واکنش‌گرا (Responsive Design) و انیمیشن‌های روان، تجربه کاربری (UX) بی‌نظیری خلق می‌کند و <strong>JavaScript</strong> با مدیریت رویدادها و ارتباط با سرور، وب‌سایت‌های پویا و تعاملی می‌سازد. تسلط بر این ترکیب، به من اجازه می‌دهد تا پلتفرم‌های پیچیده، سریع و بهینه‌سازی شده برای موتورهای جستجو توسعه دهم."
+                    desc: "این سه زبان برنامه‌نویسی، هسته اصلی توسعه وب مدرن را تشکیل می‌دهند. <strong>HTML</strong> ساختار معنایی صفحات را بنا می‌کند، <strong>CSS</strong> با طراحی واکنش‌گرا (Responsive Design) و انیمیشن‌های روان، تجربه کاربری (UX) بی‌نظیری خلق می‌کند و <strong>JavaScript</strong> با مدیریت رویدادها و ارتباط با سرور، وب‌سایت‌های پویا و تعاملی می‌سازد."
                 },
                 ai: {
                     title: "هوش مصنوعی (AI) در کسب‌وکار",
-                    desc: "هوش مصنوعی در حال بازنویسی قوانین دنیای دیجیتال است. من در زمینه پیاده‌سازی راهکارهای مبتنی بر هوش مصنوعی بسیار فعال هستم؛ از جمله استفاده از یادگیری ماشین (Machine Learning) برای تحلیل رفتار مشتریان در فروشگاه‌های آنلاین، ادغام چت‌بات‌های هوشمند برای پشتیبانی ۲۴ ساعته، و تولید محتوای خودکار و هدفمند. ترکیب AI با تجارت الکترونیک، بهره‌وری را به شدت افزایش داده و هزینه‌های عملیاتی را کاهش می‌دهد."
+                    desc: "هوش مصنوعی در حال بازنویسی قوانین دنیای دیجیتال است. من در زمینه پیاده‌سازی راهکارهای مبتنی بر هوش مصنوعی بسیار فعال هستم؛ از جمله استفاده از یادگیری ماشین (Machine Learning) برای تحلیل رفتار مشتریان در فروشگاه‌های آنلاین، ادغام چت‌بات‌های هوشمند برای پشتیبانی ۲۴ ساعته، و تولید محتوای خودکار و هدفمند."
                 },
                 shopify: {
                     title: "Shopify و سیستم Dropshipping",
-                    desc: "<strong>شاپایفای (Shopify)</strong> به عنوان برترین پلتفرم تجارت الکترونیک در جهان، امکان ساخت فروشگاه‌های آنلاین مقیاس‌پذیر و امن را فراهم می‌کند. تخصص من در این حوزه شامل راه‌اندازی صفر تا صد فروشگاه، بهینه‌سازی نرخ تبدیل (CRO)، و یکپارچه‌سازی سیستم‌های <strong>دراپ‌شیپینگ (Dropshipping)</strong> است. این مدل کسب‌وکار نوین به ما اجازه می‌دهد بدون درگیری با انبارداری و ارسال کالا، مستقیماً محصولات را از تامین‌کننده به مشتری نهایی برسانیم و تمرکز خود را کاملاً روی بازاریابی و فروش بگذاریم."
+                    desc: "<strong>شاپایفای (Shopify)</strong> به عنوان برترین پلتفرم تجارت الکترونیک در جهان، امکان ساخت فروشگاه‌های آنلاین مقیاس‌پذیر و امن را فراهم می‌کند. تخصص من در این حوزه شامل راه‌اندازی صفر تا صد فروشگاه، بهینه‌سازی نرخ تبدیل (CRO)، و یکپارچه‌سازی سیستم‌های <strong>دراپ‌شیپینگ (Dropshipping)</strong> است."
                 },
                 fb: {
                     title: "تبلیغات هدفمند: Facebook Ads",
-                    desc: "پلتفرم تبلیغاتی شرکت متا (فیس‌بوک و اینستاگرام) یکی از قدرتمندترین ابزارهای تارگتینگ در جهان مارکتینگ است. من در طراحی کمپین‌های تبلیغاتی با بازدهی بالا (High ROI) مهارت دارم. این شامل استفاده از <strong>Meta Pixel</strong> برای ردیابی دقیق رفتار کاربران، اجرای کمپین‌های ریتارگتینگ (Retargeting) برای بازگرداندن مشتریان رهاکننده سبد خرید، و ساخت مخاطبان مشابه (Lookalike Audiences) جهت مقیاس‌پذیری (Scaling) فروش در تجارت الکترونیک است."
+                    desc: "پلتفرم تبلیغاتی شرکت متا (فیس‌بوک و اینستاگرام) یکی از قدرتمندترین ابزارهای تارگتینگ در جهان مارکتینگ است. من در طراحی کمپین‌های تبلیغاتی با بازدهی بالا (High ROI) مهارت دارم. این شامل استفاده از <strong>Meta Pixel</strong> برای ردیابی دقیق رفتار کاربران است."
                 },
                 google: {
                     title: "Google Ads: جذب مشتریان آماده به خرید",
-                    desc: "برخلاف شبکه‌های اجتماعی که بر اساس علایق هدف‌گذاری می‌کنند، گوگل ادز بر اساس <strong>نیاز لحظه‌ای کاربر (Search Intent)</strong> عمل می‌کند. تخصص من در این حوزه شامل تحقیق عمیق کلمات کلیدی، بهینه‌سازی استراتژی‌های قیمت‌گذاری (Bidding Strategies) جهت کاهش هزینه هر کلیک (CPC)، و نوشتن متن‌های تبلیغاتی جذاب است. این سیستم ترافیک بسیار هدفمند و کاربرانی که آماده خرید هستند را مستقیماً به سمت فروشگاه هدایت می‌کند."
+                    desc: "برخلاف شبکه‌های اجتماعی که بر اساس علایق هدف‌گذاری می‌کنند، گوگل ادز بر اساس <strong>نیاز لحظه‌ای کاربر (Search Intent)</strong> عمل می‌کند. تخصص من شامل تحقیق عمیق کلمات کلیدی و بهینه‌سازی هزینه هر کلیک (CPC) است."
                 },
                 seo: {
                     title: "سئو (SEO): تسخیر رتبه‌های برتر گوگل",
-                    desc: "سئو (بهینه‌سازی برای موتورهای جستجو) هنر و علم قرار گرفتن در رتبه‌های برتر گوگل به صورت کاملاً ارگانیک و بدون پرداخت هزینه کلیکی است. استراتژی من بر سه ستون اصلی استوار است: <strong>سئوی تکنیکال</strong> (افزایش سرعت سایت و بهینه‌سازی کدهای HTML ساختاریافته)، <strong>سئوی داخلی یا On-Page</strong> (تولید محتوای ارزشمند و سئو شده)، و <strong>سئوی خارجی یا Off-Page</strong> (ساخت بک‌لینک‌های معتبر). این رویکرد، رشد پایدار و طولانی‌مدتی را برای هر کسب‌وکاری رقم می‌زند."
+                    desc: "سئو (بهینه‌سازی برای موتورهای جستجو) هنر و علم قرار گرفتن در رتبه‌های برتر گوگل به صورت کاملاً ارگانیک است. استراتژی من بر سه ستون اصلی استوار است: <strong>سئوی تکنیکال</strong>، <strong>سئوی داخلی یا On-Page</strong>، و <strong>سئوی خارجی یا Off-Page</strong>."
                 },
                 sea: {
                     title: "SEA: تبلیغات کلیکی در موتورهای جستجو",
-                    desc: "تبلیغات در موتورهای جستجو (مانند Google Ads و Bing Ads) روشی سریع و تهاجمی برای تسخیر صفحه اول نتایج است. تخصص اصلی من در ترکیب استراتژی‌های SEA با SEO است؛ به این معنا که در کوتاه‌مدت با اجرای کمپین‌های پرداخت به ازای کلیک (PPC) جریان درآمدی و فروش ایجاد می‌کنم و در بلندمدت با تقویت سئو، هزینه‌های بازاریابی را به حداقل می‌رسانم."
+                    desc: "تبلیغات در موتورهای جستجو (مانند Google Ads) روشی سریع برای تسخیر صفحه اول نتایج است. تخصص اصلی من در ترکیب استراتژی‌های SEA با SEO است برای ایجاد فروش در کوتاه‌مدت و کاهش هزینه‌ها در بلندمدت."
                 }
             };
 
@@ -407,7 +422,6 @@
                 item.addEventListener('click', () => {
                     const skillKey = item.getAttribute('data-skill');
                     const data = skillsData[skillKey];
-
                     if (data) {
                         detailTitle.innerHTML = data.title;
                         detailDesc.innerHTML = data.desc;
@@ -416,44 +430,101 @@
                 });
             });
 
-            /* --- 3. GENERATION DU BLOG STATIQUE --- */
+            /* --- 3. GESTION DU BLOG ET PAGES D'ARTICLES --- */
             const blogContainer = document.getElementById('blog-container');
 
-            // Liste de vos articles de blog (faciles à modifier plus tard)
+            // Données des articles de blog avec contenu complet SEO-Optimisé
             const blogPosts = [
                 {
-                    category: "تجارت الکترونیک", // E-commerce
-                    title: "آشنایی با شاپایفای: پادشاه پلتفرم‌های فروشگاهی",
-                    excerpt: "چرا Shopify بهترین انتخاب برای شروع کسب‌وکار آنلاین و دراپ‌شیپینگ است؟ بررسی امکانات، امنیت و افزونه‌های کاربردی.",
-                    imageUrl: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=600"
+                    id: "e-commerce",
+                    category: "تجارت الکترونیک", 
+                    title: "تجارت الکترونیک چیست و چگونه کار می‌کند؟",
+                    excerpt: "بررسی جامع اصول فروش آنلاین، انتخاب پلتفرم‌های مناسب مانند Shopify و مزایای راه‌اندازی فروشگاه اینترنتی در دنیای دیجیتال امروز.",
+                    imageUrl: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1200",
+                    content: `
+                        <p><strong>تجارت الکترونیک (E-commerce)</strong> به زبان ساده یعنی خرید و فروش کالا یا خدمات از طریق اینترنت. این مدل کسب‌وکار به دلیل حذف محدودیت‌های جغرافیایی و زمانی، به یکی از پردرآمدترین صنایع جهان تبدیل شده است.</p>
+                        
+                        <h4>چگونه کار می‌کند؟</h4>
+                        <p>برای شروع تجارت الکترونیک، شما به یک پلتفرم یا فروشگاه ساز نیاز دارید. <strong>Shopify (شاپایفای)</strong> یکی از بهترین انتخاب‌ها برای این کار است. این پلتفرم به شما اجازه می‌دهد تا بدون نیاز به کدنویسی، یک ویترین دیجیتال بسازید، محصولات خود را با عکس و توضیحات کامل قرار دهید و با اتصال به درگاه‌های پرداخت، مستقیماً از مشتری پول دریافت کنید.</p>
+                        
+                        <h4>مزایای اصلی تجارت الکترونیک:</h4>
+                        <ul>
+                            <li><strong>دسترسی جهانی:</strong> مشتریان شما فقط محدود به محله یا شهر شما نیستند، بلکه کل کشور (یا حتی جهان) می‌توانند از شما خرید کنند.</li>
+                            <li><strong>فروش ۲۴ ساعته:</strong> برخلاف فروشگاه‌های فیزیکی، وب‌سایت شما هرگز تعطیل نمی‌شود و حتی در زمان خواب شما نیز در حال تولید درآمد است.</li>
+                            <li><strong>هزینه راه‌اندازی پایین:</strong> نیازی به اجاره مغازه، دکوراسیون گران‌قیمت یا استخدام کارمندان متعدد ندارید.</li>
+                        </ul>
+                        <p>برای موفقیت در تجارت الکترونیک، داشتن یک وب‌سایت بهینه‌سازی شده (SEO) و یک استراتژی قدرتمند در دیجیتال مارکتینگ الزامی است تا بتوانید ترافیک باکیفیت را به سمت فروشگاه خود هدایت کنید.</p>
+                    `
                 },
                 {
-                    category: "هوش مصنوعی", // Intelligence Artificielle
-                    title: "چگونه هوش مصنوعی فروش آنلاین را متحول می‌کند؟",
-                    excerpt: "از پیش‌بینی رفتار مشتری تا تولید خودکار توضیحات محصول. نگاهی به کاربرد ابزارهای هوش مصنوعی در افزایش درآمد فروشگاه‌ها.",
-                    imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600"
+                    id: "ai",
+                    category: "هوش مصنوعی", 
+                    title: "هوش مصنوعی (AI) چگونه کسب‌وکارها را متحول می‌کند؟",
+                    excerpt: "از پیش‌بینی رفتار مشتریان تا اتوماسیون وظایف تکراری. راهنمای کاربردی استفاده از AI برای افزایش درآمد و کاهش هزینه‌های عملیاتی.",
+                    imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200",
+                    content: `
+                        <p><strong>هوش مصنوعی (Artificial Intelligence)</strong> دیگر یک مفهوم علمی‌تخیلی نیست، بلکه قلب تپنده تکنولوژی و تجارت مدرن است. هوش مصنوعی به ماشین‌ها و سیستم‌های کامپیوتری این قابلیت را می‌دهد که مانند انسان یاد بگیرند، تحلیل کنند و تصمیم بگیرند.</p>
+
+                        <h4>کاربرد هوش مصنوعی در کسب‌وکار و فروش:</h4>
+                        <p>یکی از بزرگترین تاثیرات AI در دنیای امروز، <strong>شخصی‌سازی (Personalization)</strong> است. الگوریتم‌های هوش مصنوعی رفتار کاربران را در وب‌سایت شما تحلیل می‌کنند و دقیقاً محصولاتی را به آن‌ها پیشنهاد می‌دهند که بیشترین احتمال خرید را دارند (مثل سیستم پیشنهادگر آمازون یا نتفلیکس).</p>
+
+                        <h4>چرا استفاده از AI ضروری است؟</h4>
+                        <ul>
+                            <li><strong>اتوماسیون بازاریابی:</strong> ابزارهای AI می‌توانند ایمیل‌های تبلیغاتی هوشمند بفرستند، محتوای متنی و تصویری سئو شده تولید کنند (مانند ChatGPT) و کمپین‌های تبلیغاتی را مدیریت کنند.</li>
+                            <li><strong>پشتیبانی ۲۴ ساعته:</strong> چت‌بات‌های هوشمند (Chatbots) می‌توانند در هر ساعت از شبانه‌روز به سوالات مشتریان پاسخ دهند، مشکلات آن‌ها را حل کنند و حتی فرآیند فروش را تکمیل نمایند.</li>
+                        </ul>
+                        <p>استفاده از هوش مصنوعی باعث می‌شود تا سرعت پردازش داده‌ها هزاران بار سریع‌تر شود، خطای انسانی به صفر برسد و در نهایت، حاشیه سود کسب‌وکار (ROI) به طرز چشمگیری افزایش یابد.</p>
+                    `
                 },
                 {
-                    category: "دیجیتال مارکتینگ", // Digital Marketing
-                    title: "تفاوت SEO و Google Ads: کدام را انتخاب کنیم؟",
-                    excerpt: "بررسی جامع مزایا و معایب سئو در مقابل تبلیغات کلیکی گوگل و استراتژی ترکیب این دو برای تسخیر بازار.",
-                    imageUrl: "https://images.unsplash.com/photo-1432888117426-146608595cb1?auto=format&fit=crop&q=80&w=600"
+                    id: "digital-marketing",
+                    category: "دیجیتال مارکتینگ", 
+                    title: "مبانی دیجیتال مارکتینگ: از استراتژی تا فروش",
+                    excerpt: "آشنایی با ابزارهای قدرتمند دیجیتال مارکتینگ مانند سئو (SEO)، گوگل ادز و فیس‌بوک ادز برای جذب مشتریان هدفمند در فضای آنلاین.",
+                    imageUrl: "https://images.unsplash.com/photo-1432888117426-146608595cb1?auto=format&fit=crop&q=80&w=1200",
+                    content: `
+                        <p><strong>دیجیتال مارکتینگ (بازاریابی دیجیتال)</strong> به هرگونه فعالیت بازاریابی گفته می‌شود که از طریق دستگاه‌های الکترونیکی و اینترنت انجام می‌گیرد. در دنیایی که همه آنلاین هستند، اگر کسب‌وکار شما در اینترنت دیده نشود، عملاً وجود ندارد.</p>
+
+                        <h4>ستون‌های اصلی دیجیتال مارکتینگ:</h4>
+                        
+                        <h4>۱. سئو (SEO - بهینه‌سازی موتورهای جستجو)</h4>
+                        <p>سئو فرآیند بهبود کیفیت و ساختار وب‌سایت است تا گوگل آن را به عنوان بهترین پاسخ برای جستجوی کاربران بشناسد. با سئو قدرتمند، زمانی که شخصی به دنبال محصولات یا خدمات شما می‌گردد، سایت شما در رتبه اول نتایج گوگل قرار می‌گیرد. این یعنی جذب مشتریان کاملاً ارگانیک و رایگان.</p>
+
+                        <h4>۲. تبلیغات کلیکی (PPC - Google Ads & Facebook Ads)</h4>
+                        <p>در حالی که سئو به زمان نیاز دارد، <strong>گوگل ادز</strong> و <strong>فیس‌بوک ادز</strong> نتایج فوری به همراه دارند. با استفاده از پلتفرم متا (فیس‌بوک و اینستاگرام)، شما می‌توانید مشتریان را بر اساس سن، علایق و رفتارشان هدف‌گذاری کنید (Targeting). و با گوگل ادز، دقیقاً زمانی که کاربر قصد خرید دارد و کلمه‌ای را جستجو می‌کند، آگهی خود را به او نمایش می‌دهید.</p>
+                        
+                        <p>یک استراتژی موفق در دیجیتال مارکتینگ همیشه ترکیبی از سئو (برای برندسازی بلندمدت) و تبلیغات هدفمند (برای فروش سریع) است.</p>
+                    `
                 },
                 {
-                    category: "دراپ‌شیپینگ", // Dropshipping
-                    title: "مبانی دراپ‌شیپینگ: شروع کسب‌وکار بدون سرمایه کلان",
-                    excerpt: "دراپ‌شیپینگ چیست و چگونه می‌توانیم محصولات پرفروش (Winning Products) را پیدا کرده و با Facebook Ads بازاریابی کنیم.",
-                    imageUrl: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=600"
+                    id: "dropshipping",
+                    category: "دراپ‌شیپینگ", 
+                    title: "دراپ‌شیپینگ (Dropshipping): کسب‌وکار بدون نیاز به انبار",
+                    excerpt: "صفر تا صد مدل کسب‌وکار دراپ‌شیپینگ، نحوه پیدا کردن محصولات پرفروش (Winning Products) و اتصال مستقیم تامین‌کننده به مشتری.",
+                    imageUrl: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=1200",
+                    content: `
+                        <p><strong>دراپ‌شیپینگ (Dropshipping)</strong> یکی از جذاب‌ترین و کم‌ریسک‌ترین روش‌های ورود به دنیای تجارت الکترونیک است. در این مدل فروش خرد، شما نیازی به خرید عمده محصولات، داشتن انبار، یا بسته‌بندی و ارسال کالا ندارید.</p>
+
+                        <h4>سیستم دراپ‌شیپینگ چگونه کار می‌کند؟</h4>
+                        <ol>
+                            <li><strong>ساخت فروشگاه:</strong> شما یک فروشگاه آنلاین (مثلاً با Shopify) می‌سازید و تصاویر محصولاتی را که تامین‌کنندگانی در چین، اروپا یا آمریکا دارند، در سایت خود قرار می‌دهید.</li>
+                            <li><strong>فروش و بازاریابی:</strong> با استفاده از دیجیتال مارکتینگ (مانند Facebook Ads یا TikTok Ads)، مشتری را به سایت خود می‌آورید. مشتری محصول را به قیمت خرده‌فروشی (مثلاً ۵۰ دلار) از شما می‌خرد.</li>
+                            <li><strong>انتقال سفارش:</strong> شما سفارش را دریافت کرده و همان محصول را به قیمت عمده (مثلاً ۱۵ دلار) از تامین‌کننده اصلی خریداری می‌کنید و آدرس مشتری را به او می‌دهید.</li>
+                            <li><strong>ارسال و سود:</strong> تامین‌کننده محصول را مستقیماً برای مشتری ارسال می‌کند. سود شما در اینجا ۳۵ دلار خواهد بود بدون اینکه حتی محصول را لمس کرده باشید!</li>
+                        </ol>
+
+                        <h4>کلیدهای موفقیت در دراپ‌شیپینگ:</h4>
+                        <p>موفقیت در این کار به پیدا کردن <strong>محصولات برنده (Winning Products)</strong> بستگی دارد؛ محصولاتی که مشکل خاصی را حل می‌کنند یا اثر "واو" (Wow Factor) دارند. همچنین، مهارت بالا در تولید ویدیوهای تبلیغاتی خلاقانه و تسلط بر الگوریتم‌های شبکه‌های اجتماعی برای هدایت ترافیک، رمز اصلی پیروزی در دراپ‌شیپینگ است.</p>
+                    `
                 }
             ];
 
-            // Fonction pour afficher les articles
-            function renderBlog() {
+            // Fonction pour générer les cartes de la liste des articles
+            function renderBlogList() {
                 blogContainer.innerHTML = ''; 
-                
                 blogPosts.forEach(post => {
                     const articleHTML = `
-                        <article class="blog-item">
+                        <article class="blog-item" onclick="openBlogPost('${post.id}')">
                             <img src="${post.imageUrl}" class="blog-image" alt="${post.title}">
                             <div class="blog-content">
                                 <span class="blog-category">${post.category}</span>
@@ -466,8 +537,25 @@
                 });
             }
 
-            // Appeler la fonction au chargement
-            renderBlog();
+            // Initialiser la liste au chargement
+            renderBlogList();
+
+            // Rendre la fonction accessible globalement pour le `onclick`
+            window.openBlogPost = function(postId) {
+                // Trouver l'article correspondant dans le tableau
+                const post = blogPosts.find(p => p.id === postId);
+                
+                if (post) {
+                    // Injecter les données dans la vue détaillée
+                    document.getElementById('post-image').src = post.imageUrl;
+                    document.getElementById('post-category').innerText = post.category;
+                    document.getElementById('post-title').innerText = post.title;
+                    document.getElementById('post-content').innerHTML = post.content;
+                    
+                    // Afficher la page détaillée
+                    goToSection('blog-post-details');
+                }
+            };
         });
     </script>
 </body>
