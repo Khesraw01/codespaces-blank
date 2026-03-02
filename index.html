@@ -24,7 +24,6 @@
     <meta property="og:description" content="توسعه‌دهنده وب، علاقه‌مند به هوش مصنوعی و تجارت الکترونیک (دراپ‌شیپینگ).">
     <meta property="og:url" content="https://storied-stardust-a5c278.netlify.app/">
     <meta property="og:site_name" content="Khesraw Portfolio">
-    <!-- Remplacez le lien ci-dessous par l'URL d'une vraie image de vous ou de votre logo pour les réseaux sociaux -->
     <meta property="og:image" content="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&q=80&w=1200">
 
     <!-- Twitter Cards (Pour les partages sur X/Twitter) -->
@@ -40,40 +39,27 @@
 
     <style>
         /* ==========================================================================
-           1. VARIABLES CSS (CLEAN CODE & CUSTOMISATION FACILE)
+           1. VARIABLES CSS
            ========================================================================== */
         :root {
-            /* Palette sombre (Dark Mode) */
             --bg-color: #050507;
             --bg-gradient: radial-gradient(circle at top right, #1a1a2e 0%, #050507 50%, #0a0a0a 100%);
-            
-            /* Accents Dorés & Néon */
             --accent-gold: #FFD700;
             --accent-gold-glow: rgba(255, 215, 0, 0.4);
             --accent-neon: #00F0FF;
-            
-            /* Glassmorphism */
             --glass-bg: rgba(255, 255, 255, 0.03);
             --glass-border: rgba(255, 255, 255, 0.08);
             --glass-blur: blur(16px);
-            
-            /* Typographie */
             --text-main: #FFFFFF;
             --text-muted: #A0A0B0;
             --font-primary: 'Vazirmatn', sans-serif;
-            
-            /* Transitions */
             --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
 
         /* ==========================================================================
            2. RESET & BASE
            ========================================================================== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--font-primary);
@@ -85,418 +71,168 @@
             line-height: 1.6;
         }
 
-        /* Effet de lumière de fond (Aura) */
         .ambient-light {
-            position: fixed;
-            top: -20%;
-            left: -10%;
-            width: 50vw;
-            height: 50vw;
+            position: fixed; top: -20%; left: -10%; width: 50vw; height: 50vw;
             background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.5;
-            animation: pulse 10s infinite alternate;
+            filter: blur(80px); z-index: -1; opacity: 0.5; animation: pulse 10s infinite alternate;
         }
 
         .ambient-light-2 {
-            position: fixed;
-            bottom: -20%;
-            right: -10%;
-            width: 40vw;
-            height: 40vw;
+            position: fixed; bottom: -20%; right: -10%; width: 40vw; height: 40vw;
             background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.4;
-            animation: pulse 8s infinite alternate-reverse;
+            filter: blur(80px); z-index: -1; opacity: 0.4; animation: pulse 8s infinite alternate-reverse;
         }
 
         /* ==========================================================================
-           3. NAVIGATION (GLASSMORPHISM)
+           3. NAVIGATION
            ========================================================================== */
         nav {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            padding: 10px 30px;
-            display: flex;
-            gap: 30px;
-            z-index: 1000;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            background: var(--glass-bg); backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border);
+            border-radius: 50px; padding: 10px 30px; display: flex; gap: 30px;
+            z-index: 1000; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
 
         .nav-btn {
-            background: none;
-            border: none;
-            color: var(--text-muted);
-            font-family: var(--font-primary);
-            font-size: 1.1rem;
-            font-weight: 400;
-            cursor: pointer;
-            padding: 8px 16px;
-            border-radius: 30px;
-            transition: var(--transition-smooth);
-            position: relative;
+            background: none; border: none; color: var(--text-muted); font-family: var(--font-primary);
+            font-size: 1.1rem; font-weight: 400; cursor: pointer; padding: 8px 16px;
+            border-radius: 30px; transition: var(--transition-smooth);
         }
 
-        .nav-btn:hover {
-            color: var(--text-main);
-        }
-
+        .nav-btn:hover { color: var(--text-main); }
         .nav-btn.active {
-            color: var(--accent-gold);
-            font-weight: 700;
-            background: rgba(255, 215, 0, 0.1);
+            color: var(--accent-gold); font-weight: 700; background: rgba(255, 215, 0, 0.1);
             box-shadow: inset 0 0 10px var(--accent-gold-glow);
         }
 
         /* ==========================================================================
-           4. SECTIONS & LAYOUT SPA
+           4. SECTIONS & LAYOUT
            ========================================================================== */
-        main {
-            padding-top: 100px;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        section {
-            display: none; /* Masqué par défaut */
-            width: 100%;
-            max-width: 1200px;
-            padding: 40px 20px;
-            animation: fadeIn 0.8s ease-out forwards;
-        }
-
-        section.active {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        main { padding-top: 100px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
+        section { display: none; width: 100%; max-width: 1200px; padding: 40px 20px; animation: fadeIn 0.8s ease-out forwards; }
+        section.active { display: flex; flex-direction: column; align-items: center; }
 
         /* ==========================================================================
-           5. SECTION : ACCUEIL (HERO HEADER)
+           5. SECTION : ACCUEIL
            ========================================================================== */
-        .hero {
-            text-align: center;
-            margin-top: 10vh;
-        }
-
+        .hero { text-align: center; margin-top: 8vh; }
         .hero h1 {
-            font-size: 4rem;
-            font-weight: 900;
-            margin-bottom: 10px;
+            font-size: 4rem; font-weight: 900; margin-bottom: 10px;
             background: linear-gradient(45deg, var(--text-main), var(--accent-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 40px var(--accent-gold-glow);
-            letter-spacing: -1px;
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 40px var(--accent-gold-glow); letter-spacing: -1px;
         }
-
-        .hero h2 {
-            font-size: 1.5rem;
-            color: var(--text-muted);
-            font-weight: 300;
-            margin-bottom: 40px;
-        }
+        .hero h2 { font-size: 1.5rem; color: var(--text-muted); font-weight: 300; margin-bottom: 30px; }
 
         .hero-avatar {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            margin: 0 auto 30px;
-            background: var(--glass-bg);
-            border: 2px solid var(--accent-gold);
-            box-shadow: 0 0 30px var(--accent-gold-glow);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            position: relative;
-            overflow: hidden;
+            width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 30px;
+            background: var(--glass-bg); border: 2px solid var(--accent-gold);
+            box-shadow: 0 0 30px var(--accent-gold-glow); display: flex; align-items: center;
+            justify-content: center; font-size: 4rem; position: relative; overflow: hidden;
+        }
+        .hero-avatar::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(transparent, var(--accent-gold), transparent 30%);
+            animation: rotate 4s linear infinite; z-index: 1;
+        }
+        .hero-avatar::after {
+            content: 'خ'; position: absolute; inset: 4px; background: #0a0a0a;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            z-index: 2; color: var(--accent-gold);
         }
 
-        .hero-avatar::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(transparent, var(--accent-gold), transparent 30%);
-            animation: rotate 4s linear infinite;
-            z-index: 1;
+        /* Réseaux Sociaux */
+        .social-links {
+            display: flex; gap: 20px; justify-content: center; margin-bottom: 40px;
         }
-        
-        .hero-avatar::after {
-            content: 'خ'; /* Initiale de Khesraw en Dari */
-            position: absolute;
-            inset: 4px;
-            background: #0a0a0a;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2;
-            color: var(--accent-gold);
+        .social-links a {
+            color: var(--text-muted); width: 35px; height: 35px; display: inline-flex;
+            align-items: center; justify-content: center; transition: var(--transition-smooth);
         }
+        .social-links a:hover {
+            color: var(--accent-gold); transform: translateY(-5px); filter: drop-shadow(0 0 10px var(--accent-gold-glow));
+        }
+        .social-links svg { width: 100%; height: 100%; }
 
         .cta-btn {
-            background: transparent;
-            color: var(--accent-gold);
-            border: 1px solid var(--accent-gold);
-            padding: 15px 40px;
-            font-size: 1.2rem;
-            font-family: inherit;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: relative;
-            overflow: hidden;
+            background: transparent; color: var(--accent-gold); border: 1px solid var(--accent-gold);
+            padding: 15px 40px; font-size: 1.2rem; font-family: inherit; border-radius: 30px;
+            cursor: pointer; transition: var(--transition-smooth); text-transform: uppercase; letter-spacing: 1px;
         }
-
-        .cta-btn:hover {
-            background: var(--accent-gold);
-            color: #000;
-            box-shadow: 0 0 20px var(--accent-gold-glow);
-        }
+        .cta-btn:hover { background: var(--accent-gold); color: #000; box-shadow: 0 0 20px var(--accent-gold-glow); }
 
         /* ==========================================================================
-           6. SECTION : À PROPOS (ABOUT)
+           6. SECTION : À PROPOS
            ========================================================================== */
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            width: 100%;
-            margin-top: 50px;
-        }
-
+        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; margin-top: 50px; }
+        
         .glass-card {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 40px;
-            transition: var(--transition-smooth);
+            background: var(--glass-bg); backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border);
+            border-radius: 20px; padding: 40px; transition: var(--transition-smooth);
         }
+        .glass-card:hover { transform: translateY(-5px); border-color: rgba(255, 215, 0, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
+        .glass-card h3 { color: var(--accent-gold); font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; }
+        .glass-card p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 15px; text-align: justify; }
 
-        .glass-card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(255, 215, 0, 0.3);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-
-        .glass-card h3 {
-            color: var(--accent-gold);
-            font-size: 1.8rem;
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--glass-border);
-            padding-bottom: 10px;
-        }
-
-        .glass-card p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        .skills-list {
-            list-style: none;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
-        }
-
+        .skills-list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
         .skill-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            border: 1px solid var(--glass-border);
-            color: var(--accent-neon);
-            cursor: pointer;
-            transition: var(--transition-smooth);
+            background: rgba(255, 255, 255, 0.05); padding: 8px 15px; border-radius: 20px;
+            font-size: 0.9rem; border: 1px solid var(--glass-border); color: var(--accent-neon);
+            cursor: pointer; transition: var(--transition-smooth);
         }
-
-        .skill-item:hover {
-            background: var(--accent-gold);
-            color: #000;
-            border-color: var(--accent-gold);
-            box-shadow: 0 0 15px var(--accent-gold-glow);
-            transform: scale(1.05);
-        }
+        .skill-item:hover { background: var(--accent-gold); color: #000; border-color: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold-glow); transform: scale(1.05); }
 
         /* ==========================================================================
-           6.5 SECTION : DÉTAIL DES COMPÉTENCES (SOUS-PAGE)
+           6.5 SECTION : DÉTAIL DES COMPÉTENCES
            ========================================================================== */
         .detail-card {
-            background: var(--glass-bg);
-            backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur);
-            border: 1px solid var(--glass-border);
-            border-radius: 20px;
-            padding: 50px;
-            max-width: 800px;
-            width: 100%;
-            text-align: right;
-            margin-top: 50px;
+            background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border);
+            border-radius: 20px; padding: 50px; max-width: 800px; width: 100%; text-align: right; margin-top: 50px;
         }
-
-        .detail-title {
-            color: var(--accent-neon);
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--glass-border);
-            padding-bottom: 15px;
-        }
-
-        .detail-description {
-            color: var(--text-main);
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
-            text-align: justify;
-        }
-
+        .detail-title { color: var(--accent-neon); font-size: 2.5rem; margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; }
+        .detail-description { color: var(--text-main); font-size: 1.2rem; line-height: 2; margin-bottom: 30px; text-align: justify; }
+        
         .back-btn {
-            background: transparent;
-            color: var(--accent-gold);
-            border: 1px solid var(--accent-gold);
-            padding: 10px 25px;
-            font-size: 1rem;
-            font-family: inherit;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            background: transparent; color: var(--accent-gold); border: 1px solid var(--accent-gold);
+            padding: 10px 25px; font-size: 1rem; font-family: inherit; border-radius: 30px;
+            cursor: pointer; transition: var(--transition-smooth); display: inline-flex; align-items: center; gap: 10px;
         }
-
-        .back-btn:hover {
-            background: var(--accent-gold);
-            color: #000;
-            box-shadow: 0 0 15px var(--accent-gold-glow);
-        }
+        .back-btn:hover { background: var(--accent-gold); color: #000; box-shadow: 0 0 15px var(--accent-gold-glow); }
 
         /* ==========================================================================
-           7. SECTION : ACTUALITÉS (NEWS & n8n)
+           7. SECTION : BLOG (E-COMMERCE & TECH)
            ========================================================================== */
-        .news-header {
-            text-align: center;
-            margin-bottom: 40px;
-            width: 100%;
-        }
+        .blog-header { text-align: center; margin-bottom: 40px; width: 100%; }
+        .blog-header h2 { font-size: 2.5rem; color: var(--accent-gold); }
+        .blog-header p { color: var(--text-muted); font-size: 1.1rem; margin-top: 10px; }
 
-        .news-header h2 {
-            font-size: 2.5rem;
-            color: var(--accent-gold);
-        }
-
-        .news-header p {
-            color: var(--text-muted);
-            font-size: 1.1rem;
-            margin-top: 10px;
-        }
-
-        .news-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 30px;
-            width: 100%;
-        }
-
-        .news-item {
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: var(--transition-smooth);
-            position: relative;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .news-item:hover {
-            border-color: var(--accent-neon);
-            box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
-            transform: scale(1.02);
-        }
-
-        /* Support pour les images générées par l'IA */
-        .news-image {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-bottom: 1px solid var(--glass-border);
-        }
-
-        .news-item-content {
-            padding: 20px;
-            flex-grow: 1;
-        }
-
-        .news-date {
-            font-size: 0.8rem;
-            color: var(--accent-gold);
-            margin-bottom: 10px;
-            display: block;
-        }
-
-        .news-title {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: var(--text-main);
-        }
-
-        .news-excerpt {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
+        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; width: 100%; }
         
-        /* Loader pour l'API n8n */
-        .loader {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            height: 100px;
-            color: var(--accent-neon);
-            font-size: 1.2rem;
+        .blog-item {
+            background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 15px;
+            overflow: hidden; transition: var(--transition-smooth); display: flex; flex-direction: column;
         }
+        .blog-item:hover { border-color: var(--accent-neon); box-shadow: 0 0 20px rgba(0, 240, 255, 0.2); transform: translateY(-5px); }
+
+        .blog-image { width: 100%; height: 220px; object-fit: cover; border-bottom: 1px solid var(--glass-border); }
+        .blog-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
+        .blog-category { font-size: 0.8rem; color: #000; background: var(--accent-gold); padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 10px; align-self: flex-start; font-weight: bold; }
+        .blog-title { font-size: 1.4rem; margin-bottom: 15px; color: var(--text-main); line-height: 1.4; }
+        .blog-excerpt { color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
 
         /* ==========================================================================
            8. ANIMATIONS & MEDIA QUERIES
            ========================================================================== */
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes pulse {
-            from { transform: scale(1); opacity: 0.3; }
-            to { transform: scale(1.2); opacity: 0.6; }
-        }
-
-        @keyframes rotate {
-            100% { transform: rotate(360deg); }
-        }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes pulse { from { transform: scale(1); opacity: 0.3; } to { transform: scale(1.2); opacity: 0.6; } }
+        @keyframes rotate { 100% { transform: rotate(360deg); } }
 
         @media (max-width: 768px) {
             .about-grid { grid-template-columns: 1fr; }
             .hero h1 { font-size: 2.8rem; }
-            nav { width: 90%; justify-content: space-around; padding: 10px 15px; }
+            nav { width: 95%; justify-content: space-around; padding: 10px 10px; gap: 10px;}
             .nav-btn { font-size: 0.9rem; padding: 6px 10px; }
             .detail-card { padding: 30px; margin-top: 30px; }
         }
@@ -512,7 +248,7 @@
     <nav>
         <button class="nav-btn active" data-target="home">خانه</button> <!-- Accueil -->
         <button class="nav-btn" data-target="about">درباره من</button> <!-- À propos -->
-        <button class="nav-btn" data-target="news">اخبار</button> <!-- Actualités -->
+        <button class="nav-btn" data-target="blog">وبلاگ</button> <!-- Blog (remplace News) -->
     </nav>
 
     <main>
@@ -522,7 +258,28 @@
                 <div class="hero-avatar"></div>
                 <h1>خسرو</h1> <!-- Khesraw -->
                 <h2>علاقه‌مند به تکنولوژی، هوش مصنوعی و تجارت الکترونیک</h2> <!-- Tech, AI & E-commerce Enthusiast -->
-                <button class="cta-btn" onclick="document.querySelector('[data-target=\'about\']').click()">بیشتر بدانید</button> <!-- En savoir plus -->
+                
+                <!-- Icônes Réseaux Sociaux -->
+                <div class="social-links">
+                    <!-- Facebook -->
+                    <a href="#" target="_blank" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                    </a>
+                    <!-- Instagram -->
+                    <a href="#" target="_blank" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <!-- TikTok -->
+                    <a href="#" target="_blank" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="#" target="_blank" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+
+                <button class="cta-btn" onclick="document.querySelector('[data-target=\'about\']').click()">بیشتر بدانید</button>
             </div>
         </section>
 
@@ -538,12 +295,12 @@
                 
                 <!-- Compétences et Intérêts -->
                 <div class="glass-card">
-                    <h3>مهارت‌ها و علاقه‌مندی‌ها (برای جزئیات کلیک کنید)</h3> <!-- Cliquez pour les détails -->
-                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 5px;">آشنا با تکنولوژی‌های وب و علاقه‌مند به حوزه‌های دیجیتال مارکتینگ:</p>
+                    <h3>تخصص‌ها و مهارت‌ها (برای جزئیات کلیک کنید)</h3> <!-- Cliquez pour les détails approfondis -->
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 5px;">تخصص‌های من در زمینه تکنولوژی، مارکتینگ و فروش آنلاین:</p>
                     <ul class="skills-list">
                         <li class="skill-item" data-skill="web">HTML5 / CSS3 / JavaScript</li>
                         <li class="skill-item" data-skill="ai">هوش مصنوعی (AI)</li>
-                        <li class="skill-item" data-skill="shopify">Shopify (شاپایفای)</li>
+                        <li class="skill-item" data-skill="shopify">Shopify (شاپایفای) & Dropshipping</li>
                         <li class="skill-item" data-skill="fb">Facebook Ads</li>
                         <li class="skill-item" data-skill="google">Google Ads</li>
                         <li class="skill-item" data-skill="seo">SEO (سئو)</li>
@@ -553,33 +310,33 @@
             </div>
         </section>
 
-        <!-- SECTION 2.5 : DÉTAILS DE LA COMPÉTENCE (Nouvelle Sous-page Dynamique) -->
+        <!-- SECTION 2.5 : DÉTAILS DES COMPÉTENCES (Textes ultra-professionnels) -->
         <section id="skill-details">
             <div class="detail-card">
                 <h2 id="detail-title" class="detail-title">عنوان</h2>
-                <p id="detail-desc" class="detail-description">توضیحات در اینجا قرار می‌گیرد...</p>
+                <div id="detail-desc" class="detail-description">توضیحات در اینجا قرار می‌گیرد...</div>
                 <button class="back-btn" onclick="goToSection('about')">
                     &rarr; بازگشت به صفحه قبل 
                 </button>
             </div>
         </section>
 
-        <!-- SECTION 3 : ACTUALITÉS (Prêt pour n8n) -->
-        <section id="news">
-            <div class="news-header">
-                <h2>اخبار و رویدادهای گوناگون</h2> <!-- Actualités diverses -->
-                <p>پوشش اخبار روز در زمینه‌های سیاست، تکنولوژی، اقتصاد، تجارت الکترونیک و موارد دیگر.</p> <!-- Politique, tech, économie, e-commerce... -->
+        <!-- SECTION 3 : BLOG (E-commerce, Tech, AI) -->
+        <section id="blog">
+            <div class="blog-header">
+                <h2>وبلاگ آموزشی و مقالات</h2> <!-- Blog et Articles -->
+                <p>دانش و تجربیات من در زمینه تجارت الکترونیک، هوش مصنوعی و دیجیتال مارکتینگ.</p>
             </div>
             
-            <!-- Conteneur cible pour l'injection n8n -->
-            <div id="news-container" class="news-grid">
-                <div class="loader" id="news-loader">در حال بارگذاری اخبار...</div> <!-- Chargement... -->
+            <!-- Conteneur pour le Blog statique -->
+            <div id="blog-container" class="blog-grid">
+                <!-- Les articles seront injectés ici par JavaScript -->
             </div>
         </section>
     </main>
 
     <!-- ==========================================================================
-         JAVASCRIPT VANILLA (Logique SPA & Intégration n8n)
+         JAVASCRIPT VANILLA 
          ========================================================================== -->
     <script>
         // Fonction globale pour changer de section
@@ -590,13 +347,11 @@
             sections.forEach(s => s.classList.remove('active'));
             document.getElementById(targetId).classList.add('active');
 
-            // Mise à jour de la navigation principale
             navButtons.forEach(b => {
                 b.classList.remove('active');
                 if(b.getAttribute('data-target') === targetId) {
                     b.classList.add('active');
                 } else if (targetId === 'skill-details' && b.getAttribute('data-target') === 'about') {
-                    // Garder "À propos" actif si on est sur la sous-page des détails
                     b.classList.add('active');
                 }
             });
@@ -612,35 +367,35 @@
                 });
             });
 
-            /* --- 2. GESTION DES SOUS-PAGES DE COMPÉTENCES --- */
+            /* --- 2. GESTION DES SOUS-PAGES DE COMPÉTENCES (Textes ultra-pro) --- */
             const skillsData = {
                 web: {
-                    title: "HTML5 / CSS3 / JavaScript",
-                    desc: "این سه زبان، پایه‌های اصلی طراحی و توسعه صفحات وب هستند. <strong>HTML</strong> برای ایجاد ساختار و محتوای سایت استفاده می‌شود. <strong>CSS</strong> به وب‌سایت رنگ، استایل و زیبایی می‌بخشد و آن را برای موبایل بهینه‌سازی می‌کند. در نهایت، <strong>JavaScript</strong> به صفحات وب جان می‌دهد و امکان تعامل کاربر، انیمیشن‌ها و عملکردهای پیچیده را فراهم می‌سازد."
+                    title: "توسعه وب: HTML5 / CSS3 / JavaScript",
+                    desc: "این سه زبان برنامه‌نویسی، هسته اصلی توسعه وب مدرن را تشکیل می‌دهند. <strong>HTML</strong> ساختار معنایی صفحات را بنا می‌کند، <strong>CSS</strong> با طراحی واکنش‌گرا (Responsive Design) و انیمیشن‌های روان، تجربه کاربری (UX) بی‌نظیری خلق می‌کند و <strong>JavaScript</strong> با مدیریت رویدادها و ارتباط با سرور، وب‌سایت‌های پویا و تعاملی می‌سازد. تسلط بر این ترکیب، به من اجازه می‌دهد تا پلتفرم‌های پیچیده، سریع و بهینه‌سازی شده برای موتورهای جستجو توسعه دهم."
                 },
                 ai: {
-                    title: "هوش مصنوعی (AI)",
-                    desc: "هوش مصنوعی شبیه‌سازی هوش انسانی در ماشین‌ها و کامپیوترهاست. من به شدت پیگیر پیشرفت‌های این حوزه هستم؛ از یادگیری ماشین (Machine Learning) تا تولید متن و تصویر. هوش مصنوعی در حال تغییر دادن نحوه زندگی ما، اتوماسیون کارها و خلق آینده‌ای کاملاً جدید در دنیای تکنولوژی است."
+                    title: "هوش مصنوعی (AI) در کسب‌وکار",
+                    desc: "هوش مصنوعی در حال بازنویسی قوانین دنیای دیجیتال است. من در زمینه پیاده‌سازی راهکارهای مبتنی بر هوش مصنوعی بسیار فعال هستم؛ از جمله استفاده از یادگیری ماشین (Machine Learning) برای تحلیل رفتار مشتریان در فروشگاه‌های آنلاین، ادغام چت‌بات‌های هوشمند برای پشتیبانی ۲۴ ساعته، و تولید محتوای خودکار و هدفمند. ترکیب AI با تجارت الکترونیک، بهره‌وری را به شدت افزایش داده و هزینه‌های عملیاتی را کاهش می‌دهد."
                 },
                 shopify: {
-                    title: "Shopify و Dropshipping",
-                    desc: "شاپایفای یکی از قدرتمندترین پلتفرم‌های تجارت الکترونیک در جهان است. من علاقه‌مند به مدل کسب‌وکار <strong>دراپ‌شیپینگ (Dropshipping)</strong> هستم که در آن بدون نیاز به داشتن انبار، محصولات را مستقیماً از تامین‌کننده به مشتری نهایی ارسال می‌کنیم."
+                    title: "Shopify و سیستم Dropshipping",
+                    desc: "<strong>شاپایفای (Shopify)</strong> به عنوان برترین پلتفرم تجارت الکترونیک در جهان، امکان ساخت فروشگاه‌های آنلاین مقیاس‌پذیر و امن را فراهم می‌کند. تخصص من در این حوزه شامل راه‌اندازی صفر تا صد فروشگاه، بهینه‌سازی نرخ تبدیل (CRO)، و یکپارچه‌سازی سیستم‌های <strong>دراپ‌شیپینگ (Dropshipping)</strong> است. این مدل کسب‌وکار نوین به ما اجازه می‌دهد بدون درگیری با انبارداری و ارسال کالا، مستقیماً محصولات را از تامین‌کننده به مشتری نهایی برسانیم و تمرکز خود را کاملاً روی بازاریابی و فروش بگذاریم."
                 },
                 fb: {
-                    title: "Facebook Ads",
-                    desc: "سیستم تبلیغاتی پیشرفته شرکت متا (فیس‌بوک و اینستاگرام). این ابزار به ما اجازه می‌دهد تبلیغات خود را دقیقاً به مخاطبان هدف نشان دهیم. با استفاده از داده‌های کاربران، می‌توانیم بر اساس سن، علایق، رفتارها و موقعیت مکانی، کمپین‌های تبلیغاتی بسیار موثری برای فروش محصولات طراحی کنیم."
+                    title: "تبلیغات هدفمند: Facebook Ads",
+                    desc: "پلتفرم تبلیغاتی شرکت متا (فیس‌بوک و اینستاگرام) یکی از قدرتمندترین ابزارهای تارگتینگ در جهان مارکتینگ است. من در طراحی کمپین‌های تبلیغاتی با بازدهی بالا (High ROI) مهارت دارم. این شامل استفاده از <strong>Meta Pixel</strong> برای ردیابی دقیق رفتار کاربران، اجرای کمپین‌های ریتارگتینگ (Retargeting) برای بازگرداندن مشتریان رهاکننده سبد خرید، و ساخت مخاطبان مشابه (Lookalike Audiences) جهت مقیاس‌پذیری (Scaling) فروش در تجارت الکترونیک است."
                 },
                 google: {
-                    title: "Google Ads",
-                    desc: "پلتفرم تبلیغاتی گوگل که یکی از مهم‌ترین ابزارها در دیجیتال مارکتینگ است. با گوگل ادز، می‌توانید وب‌سایت یا فروشگاه خود را دقیقاً زمانی که کاربران در حال جستجوی کلمات کلیدی مرتبط با کسب‌وکار شما هستند، در صفحه اول نتایج جستجو به آن‌ها نشان دهید."
+                    title: "Google Ads: جذب مشتریان آماده به خرید",
+                    desc: "برخلاف شبکه‌های اجتماعی که بر اساس علایق هدف‌گذاری می‌کنند، گوگل ادز بر اساس <strong>نیاز لحظه‌ای کاربر (Search Intent)</strong> عمل می‌کند. تخصص من در این حوزه شامل تحقیق عمیق کلمات کلیدی، بهینه‌سازی استراتژی‌های قیمت‌گذاری (Bidding Strategies) جهت کاهش هزینه هر کلیک (CPC)، و نوشتن متن‌های تبلیغاتی جذاب است. این سیستم ترافیک بسیار هدفمند و کاربرانی که آماده خرید هستند را مستقیماً به سمت فروشگاه هدایت می‌کند."
                 },
                 seo: {
-                    title: "SEO (سئو - بهینه‌سازی موتور جستجو)",
-                    desc: "سئو مجموعه‌ای از تکنیک‌ها و استراتژی‌هاست که کمک می‌کند وب‌سایت شما به صورت طبیعی (ارگانیک) و بدون پرداخت هزینه تبلیغات، در نتایج بالای گوگل قرار بگیرد. این کار شامل تولید محتوای باکیفیت، بهینه‌سازی کدهای سایت و ساخت بک‌لینک است."
+                    title: "سئو (SEO): تسخیر رتبه‌های برتر گوگل",
+                    desc: "سئو (بهینه‌سازی برای موتورهای جستجو) هنر و علم قرار گرفتن در رتبه‌های برتر گوگل به صورت کاملاً ارگانیک و بدون پرداخت هزینه کلیکی است. استراتژی من بر سه ستون اصلی استوار است: <strong>سئوی تکنیکال</strong> (افزایش سرعت سایت و بهینه‌سازی کدهای HTML ساختاریافته)، <strong>سئوی داخلی یا On-Page</strong> (تولید محتوای ارزشمند و سئو شده)، و <strong>سئوی خارجی یا Off-Page</strong> (ساخت بک‌لینک‌های معتبر). این رویکرد، رشد پایدار و طولانی‌مدتی را برای هر کسب‌وکاری رقم می‌زند."
                 },
                 sea: {
-                    title: "SEA (تبلیغات در موتورهای جستجو)",
-                    desc: "برخلاف سئو که روی نتایج طبیعی تمرکز دارد، SEA به معنای پرداخت هزینه برای قرار گرفتن در صدر نتایج جستجو است (مانند Google Ads). در این روش، شما بابت هر کلیک کاربر روی تبلیغ شما (PPC - Pay Per Click) هزینه پرداخت می‌کنید تا به سرعت مشتری جذب کنید."
+                    title: "SEA: تبلیغات کلیکی در موتورهای جستجو",
+                    desc: "تبلیغات در موتورهای جستجو (مانند Google Ads و Bing Ads) روشی سریع و تهاجمی برای تسخیر صفحه اول نتایج است. تخصص اصلی من در ترکیب استراتژی‌های SEA با SEO است؛ به این معنا که در کوتاه‌مدت با اجرای کمپین‌های پرداخت به ازای کلیک (PPC) جریان درآمدی و فروش ایجاد می‌کنم و در بلندمدت با تقویت سئو، هزینه‌های بازاریابی را به حداقل می‌رسانم."
                 }
             };
 
@@ -661,72 +416,58 @@
                 });
             });
 
-            /* --- 3. AUTOMATISATION N8N (Avec support d'images générées par IA) --- */
-            const n8nWebhookURL = 'https://VOTRE_INSTANCE_N8N.com/webhook/news-feed'; 
-            const newsContainer = document.getElementById('news-container');
-            const loader = document.getElementById('news-loader');
+            /* --- 3. GENERATION DU BLOG STATIQUE --- */
+            const blogContainer = document.getElementById('blog-container');
 
-            async function fetchNewsFromN8n() {
-                try {
-                    // POUR LA DÉMO : J'ai ajouté des images simulées comme si elles venaient de Midjourney ou DALL-E
-                    const mockDataFromN8n = [
-                        {
-                            title: "توافق جدید اقتصادی بین اروپا و آسیا",
-                            date: "۱۲ اسفند ۱۴۰۴",
-                            excerpt: "خبرگزاری BBC: بررسی تاثیرات توافق‌نامه‌های تجاری جدید بر روی بازارهای بین‌المللی و صادرات.",
-                            imageUrl: "https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&q=80&w=600"
-                        },
-                        {
-                            title: "رونمایی از نسل جدید هوش مصنوعی GPT-5",
-                            date: "۵ اسفند ۱۴۰۴",
-                            excerpt: "OpenAI از مدل جدید زبانی خود پرده برداشت که قابلیت‌های فوق‌العاده‌ای در برنامه‌نویسی و ترجمه همزمان دارد.",
-                            imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600"
-                        },
-                        {
-                            title: "تغییرات بزرگ در الگوریتم سئو گوگل",
-                            date: "۲۸ بهمن ۱۴۰۴",
-                            excerpt: "گوگل اعلام کرد که وب‌سایت‌های دارای محتوای تولید شده با هوش مصنوعی را با قوانین جدیدی بررسی خواهد کرد.",
-                            imageUrl: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=600"
-                        }
-                    ];
-
-                    setTimeout(() => {
-                        renderNews(mockDataFromN8n);
-                    }, 1500);
-
-                } catch (error) {
-                    console.error("Erreur:", error);
-                    loader.innerHTML = "خطا در بارگذاری اطلاعات."; 
+            // Liste de vos articles de blog (faciles à modifier plus tard)
+            const blogPosts = [
+                {
+                    category: "تجارت الکترونیک", // E-commerce
+                    title: "آشنایی با شاپایفای: پادشاه پلتفرم‌های فروشگاهی",
+                    excerpt: "چرا Shopify بهترین انتخاب برای شروع کسب‌وکار آنلاین و دراپ‌شیپینگ است؟ بررسی امکانات، امنیت و افزونه‌های کاربردی.",
+                    imageUrl: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=600"
+                },
+                {
+                    category: "هوش مصنوعی", // Intelligence Artificielle
+                    title: "چگونه هوش مصنوعی فروش آنلاین را متحول می‌کند؟",
+                    excerpt: "از پیش‌بینی رفتار مشتری تا تولید خودکار توضیحات محصول. نگاهی به کاربرد ابزارهای هوش مصنوعی در افزایش درآمد فروشگاه‌ها.",
+                    imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=600"
+                },
+                {
+                    category: "دیجیتال مارکتینگ", // Digital Marketing
+                    title: "تفاوت SEO و Google Ads: کدام را انتخاب کنیم؟",
+                    excerpt: "بررسی جامع مزایا و معایب سئو در مقابل تبلیغات کلیکی گوگل و استراتژی ترکیب این دو برای تسخیر بازار.",
+                    imageUrl: "https://images.unsplash.com/photo-1432888117426-146608595cb1?auto=format&fit=crop&q=80&w=600"
+                },
+                {
+                    category: "دراپ‌شیپینگ", // Dropshipping
+                    title: "مبانی دراپ‌شیپینگ: شروع کسب‌وکار بدون سرمایه کلان",
+                    excerpt: "دراپ‌شیپینگ چیست و چگونه می‌توانیم محصولات پرفروش (Winning Products) را پیدا کرده و با Facebook Ads بازاریابی کنیم.",
+                    imageUrl: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=600"
                 }
-            }
+            ];
 
-            function renderNews(newsArray) {
-                newsContainer.innerHTML = ''; 
-                if(newsArray.length === 0) {
-                    newsContainer.innerHTML = '<p style="text-align:center; color: var(--text-muted); grid-column: 1/-1;">هیچ خبری یافت نشد.</p>';
-                    return;
-                }
-                newsArray.forEach(item => {
-                    // Vérifier si une image existe dans les données envoyées par n8n
-                    const imageElement = item.imageUrl 
-                        ? `<img src="${item.imageUrl}" class="news-image" alt="تصویر خبر">` 
-                        : '';
-
+            // Fonction pour afficher les articles
+            function renderBlog() {
+                blogContainer.innerHTML = ''; 
+                
+                blogPosts.forEach(post => {
                     const articleHTML = `
-                        <article class="news-item">
-                            ${imageElement}
-                            <div class="news-item-content">
-                                <span class="news-date">${item.date}</span>
-                                <h3 class="news-title">${item.title}</h3>
-                                <p class="news-excerpt">${item.excerpt}</p>
+                        <article class="blog-item">
+                            <img src="${post.imageUrl}" class="blog-image" alt="${post.title}">
+                            <div class="blog-content">
+                                <span class="blog-category">${post.category}</span>
+                                <h3 class="blog-title">${post.title}</h3>
+                                <p class="blog-excerpt">${post.excerpt}</p>
                             </div>
                         </article>
                     `;
-                    newsContainer.insertAdjacentHTML('beforeend', articleHTML);
+                    blogContainer.insertAdjacentHTML('beforeend', articleHTML);
                 });
             }
 
-            fetchNewsFromN8n();
+            // Appeler la fonction au chargement
+            renderBlog();
         });
     </script>
 </body>
