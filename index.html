@@ -290,13 +290,76 @@
             margin-top: 15px;
         }
 
-        .skills-list li {
+        .skill-item {
             background: rgba(255, 255, 255, 0.05);
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 0.9rem;
             border: 1px solid var(--glass-border);
             color: var(--accent-neon);
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .skill-item:hover {
+            background: var(--accent-gold);
+            color: #000;
+            border-color: var(--accent-gold);
+            box-shadow: 0 0 15px var(--accent-gold-glow);
+            transform: scale(1.05);
+        }
+
+        /* ==========================================================================
+           6.5 SECTION : DÉTAIL DES COMPÉTENCES (SOUS-PAGE)
+           ========================================================================== */
+        .detail-card {
+            background: var(--glass-bg);
+            backdrop-filter: var(--glass-blur);
+            -webkit-backdrop-filter: var(--glass-blur);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 50px;
+            max-width: 800px;
+            width: 100%;
+            text-align: right;
+            margin-top: 50px;
+        }
+
+        .detail-title {
+            color: var(--accent-neon);
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 15px;
+        }
+
+        .detail-description {
+            color: var(--text-main);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+            text-align: justify;
+        }
+
+        .back-btn {
+            background: transparent;
+            color: var(--accent-gold);
+            border: 1px solid var(--accent-gold);
+            padding: 10px 25px;
+            font-size: 1rem;
+            font-family: inherit;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .back-btn:hover {
+            background: var(--accent-gold);
+            color: #000;
+            box-shadow: 0 0 15px var(--accent-gold-glow);
         }
 
         /* ==========================================================================
@@ -396,6 +459,7 @@
             .hero h1 { font-size: 2.8rem; }
             nav { width: 90%; justify-content: space-around; padding: 10px 15px; }
             .nav-btn { font-size: 0.9rem; padding: 6px 10px; }
+            .detail-card { padding: 30px; margin-top: 30px; }
         }
     </style>
 </head>
@@ -435,18 +499,29 @@
                 
                 <!-- Compétences et Intérêts -->
                 <div class="glass-card">
-                    <h3>مهارت‌ها و علاقه‌مندی‌ها</h3> <!-- Compétences et intérêts -->
+                    <h3>مهارت‌ها و علاقه‌مندی‌ها (برای جزئیات کلیک کنید)</h3> <!-- Cliquez pour les détails -->
                     <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 5px;">آشنا با تکنولوژی‌های وب و علاقه‌مند به حوزه‌های دیجیتال مارکتینگ:</p>
                     <ul class="skills-list">
-                        <li>HTML5 / CSS3 / JavaScript</li>
-                        <li>هوش مصنوعی (AI)</li>
-                        <li>Shopify (شاپایفای)</li>
-                        <li>Facebook Ads</li>
-                        <li>Google Ads</li>
-                        <li>SEO (سئو)</li>
-                        <li>SEA (تبلیغات جستجو)</li>
+                        <li class="skill-item" data-skill="web">HTML5 / CSS3 / JavaScript</li>
+                        <li class="skill-item" data-skill="ai">هوش مصنوعی (AI)</li>
+                        <li class="skill-item" data-skill="shopify">Shopify (شاپایفای)</li>
+                        <li class="skill-item" data-skill="fb">Facebook Ads</li>
+                        <li class="skill-item" data-skill="google">Google Ads</li>
+                        <li class="skill-item" data-skill="seo">SEO (سئو)</li>
+                        <li class="skill-item" data-skill="sea">SEA (تبلیغات جستجو)</li>
                     </ul>
                 </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2.5 : DÉTAILS DE LA COMPÉTENCE (Nouvelle Sous-page Dynamique) -->
+        <section id="skill-details">
+            <div class="detail-card">
+                <h2 id="detail-title" class="detail-title">عنوان</h2>
+                <p id="detail-desc" class="detail-description">توضیحات در اینجا قرار می‌گیرد...</p>
+                <button class="back-btn" onclick="goToSection('about')">
+                    &rarr; بازگشت به صفحه قبل 
+                </button>
             </div>
         </section>
 
@@ -468,43 +543,94 @@
          JAVASCRIPT VANILLA (Logique SPA & Intégration n8n)
          ========================================================================== -->
     <script>
+        // Fonction globale pour changer de section
+        function goToSection(targetId) {
+            const sections = document.querySelectorAll('section');
+            const navButtons = document.querySelectorAll('.nav-btn');
+
+            sections.forEach(s => s.classList.remove('active'));
+            document.getElementById(targetId).classList.add('active');
+
+            // Mise à jour de la navigation principale
+            navButtons.forEach(b => {
+                b.classList.remove('active');
+                if(b.getAttribute('data-target') === targetId) {
+                    b.classList.add('active');
+                } else if (targetId === 'skill-details' && b.getAttribute('data-target') === 'about') {
+                    // Garder "À propos" actif si on est sur la sous-page des détails
+                    b.classList.add('active');
+                }
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
             
-            /* --- 1. GESTION DE LA NAVIGATION (Single Page Application) --- */
+            /* --- 1. GESTION DE LA NAVIGATION PRINCIPALE --- */
             const navButtons = document.querySelectorAll('.nav-btn');
-            const sections = document.querySelectorAll('section');
-
             navButtons.forEach(btn => {
                 btn.addEventListener('click', () => {
-                    // Retirer l'état actif de tous les boutons et sections
-                    navButtons.forEach(b => b.classList.remove('active'));
-                    sections.forEach(s => s.classList.remove('active'));
-
-                    // Ajouter l'état actif au bouton cliqué et à la section correspondante
-                    btn.classList.add('active');
-                    const targetId = btn.getAttribute('data-target');
-                    document.getElementById(targetId).classList.add('active');
+                    goToSection(btn.getAttribute('data-target'));
                 });
             });
 
-            /* --- 2. AUTOMATISATION N8N (Fetch API Webhook) --- */
-            // Remplacez cette URL par l'URL de votre Webhook n8n en production.
-            // Le flux n8n doit retourner un tableau d'objets JSON avec : { title, date, excerpt }
-            const n8nWebhookURL = 'https://VOTRE_INSTANCE_N8N.com/webhook/news-feed'; 
+            /* --- 2. GESTION DES SOUS-PAGES DE COMPÉTENCES --- */
+            // Dictionnaire contenant les explications en Dari pour chaque technologie
+            const skillsData = {
+                web: {
+                    title: "HTML5 / CSS3 / JavaScript",
+                    desc: "این سه زبان، پایه‌های اصلی طراحی و توسعه صفحات وب هستند. <strong>HTML</strong> برای ایجاد ساختار و محتوای سایت استفاده می‌شود. <strong>CSS</strong> به وب‌سایت رنگ، استایل و زیبایی می‌بخشد و آن را برای موبایل بهینه‌سازی می‌کند. در نهایت، <strong>JavaScript</strong> به صفحات وب جان می‌دهد و امکان تعامل کاربر، انیمیشن‌ها و عملکردهای پیچیده را فراهم می‌سازد."
+                },
+                ai: {
+                    title: "هوش مصنوعی (AI)",
+                    desc: "هوش مصنوعی شبیه‌سازی هوش انسانی در ماشین‌ها و کامپیوترهاست. من به شدت پیگیر پیشرفت‌های این حوزه هستم؛ از یادگیری ماشین (Machine Learning) تا تولید متن و تصویر. هوش مصنوعی در حال تغییر دادن نحوه زندگی ما، اتوماسیون کارها و خلق آینده‌ای کاملاً جدید در دنیای تکنولوژی است."
+                },
+                shopify: {
+                    title: "Shopify (شاپایفای)",
+                    desc: "شاپایفای یکی از قدرتمندترین و محبوب‌ترین پلتفرم‌های تجارت الکترونیک (E-commerce) در جهان است. این سیستم به افراد اجازه می‌دهد بدون نیاز به دانش پیچیده‌ی برنامه‌نویسی، یک فروشگاه آنلاین حرفه‌ای راه‌اندازی کنند، محصولات خود را مدیریت کرده و پرداخت‌های امن دریافت نمایند."
+                },
+                fb: {
+                    title: "Facebook Ads",
+                    desc: "سیستم تبلیغاتی پیشرفته شرکت متا (فیس‌بوک و اینستاگرام). این ابزار به ما اجازه می‌دهد تبلیغات خود را دقیقاً به مخاطبان هدف نشان دهیم. با استفاده از داده‌های کاربران، می‌توانیم بر اساس سن، علایق، رفتارها و موقعیت مکانی، کمپین‌های تبلیغاتی بسیار موثری برای فروش محصولات طراحی کنیم."
+                },
+                google: {
+                    title: "Google Ads",
+                    desc: "پلتفرم تبلیغاتی گوگل که یکی از مهم‌ترین ابزارها در دیجیتال مارکتینگ است. با گوگل ادز، می‌توانید وب‌سایت یا فروشگاه خود را دقیقاً زمانی که کاربران در حال جستجوی کلمات کلیدی مرتبط با کسب‌وکار شما هستند، در صفحه اول نتایج جستجو به آن‌ها نشان دهید."
+                },
+                seo: {
+                    title: "SEO (سئو - بهینه‌سازی موتور جستجو)",
+                    desc: "سئو مجموعه‌ای از تکنیک‌ها و استراتژی‌هاست که کمک می‌کند وب‌سایت شما به صورت طبیعی (ارگانیک) و بدون پرداخت هزینه تبلیغات، در نتایج بالای گوگل قرار بگیرد. این کار شامل تولید محتوای باکیفیت، بهینه‌سازی کدهای سایت و ساخت بک‌لینک است."
+                },
+                sea: {
+                    title: "SEA (تبلیغات در موتورهای جستجو)",
+                    desc: "برخلاف سئو که روی نتایج طبیعی تمرکز دارد، SEA به معنای پرداخت هزینه برای قرار گرفتن در صدر نتایج جستجو است (مانند Google Ads). در این روش، شما بابت هر کلیک کاربر روی تبلیغ شما (PPC - Pay Per Click) هزینه پرداخت می‌کنید تا به سرعت مشتری جذب کنید."
+                }
+            };
 
+            const skillItems = document.querySelectorAll('.skill-item');
+            const detailTitle = document.getElementById('detail-title');
+            const detailDesc = document.getElementById('detail-desc');
+
+            skillItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const skillKey = item.getAttribute('data-skill');
+                    const data = skillsData[skillKey];
+
+                    if (data) {
+                        detailTitle.innerHTML = data.title;
+                        detailDesc.innerHTML = data.desc;
+                        goToSection('skill-details');
+                    }
+                });
+            });
+
+            /* --- 3. AUTOMATISATION N8N (Fetch API Webhook) --- */
+            const n8nWebhookURL = 'https://VOTRE_INSTANCE_N8N.com/webhook/news-feed'; 
             const newsContainer = document.getElementById('news-container');
             const loader = document.getElementById('news-loader');
 
             async function fetchNewsFromN8n() {
                 try {
-                    // En production, décommentez les lignes ci-dessous pour utiliser la vraie API n8n :
-                    /*
-                    const response = await fetch(n8nWebhookURL);
-                    if (!response.ok) throw new Error('Erreur réseau');
-                    const newsData = await response.json();
-                    */
-
-                    // POUR LA DÉMO : Données mockées simulant des thèmes variés (Politique, E-commerce, Tech, etc.)
+                    // POUR LA DÉMO : Données mockées simulant des thèmes variés
                     const mockDataFromN8n = [
                         {
                             title: "تحولات جدید در اقتصاد جهانی و سیاست",
@@ -523,26 +649,22 @@
                         }
                     ];
 
-                    // Simulation d'un délai réseau pour montrer l'animation fluide
                     setTimeout(() => {
                         renderNews(mockDataFromN8n);
                     }, 1500);
 
                 } catch (error) {
-                    console.error("Erreur lors de la récupération des données n8n:", error);
-                    loader.innerHTML = "خطا در بارگذاری اطلاعات."; // Erreur de chargement
+                    console.error("Erreur:", error);
+                    loader.innerHTML = "خطا در بارگذاری اطلاعات."; 
                 }
             }
 
-            // Fonction pour injecter le HTML dynamiquement
             function renderNews(newsArray) {
-                newsContainer.innerHTML = ''; // Vider le loader
-
+                newsContainer.innerHTML = ''; 
                 if(newsArray.length === 0) {
                     newsContainer.innerHTML = '<p style="text-align:center; color: var(--text-muted); grid-column: 1/-1;">هیچ خبری یافت نشد.</p>';
                     return;
                 }
-
                 newsArray.forEach(item => {
                     const articleHTML = `
                         <article class="news-item">
@@ -557,7 +679,6 @@
                 });
             }
 
-            // Charger les actualités au démarrage
             fetchNewsFromN8n();
         });
     </script>
