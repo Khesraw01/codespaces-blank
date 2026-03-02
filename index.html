@@ -9,12 +9,8 @@
          ========================================================================== -->
     <title>خسرو | Khesraw - Full-Stack, AI & E-commerce (Dropshipping)</title>
     
-    <!-- Description principale pour les résultats de recherche Google -->
     <meta name="description" content="پورتفولیو خسرو، متخصص توسعه وب (Full-Stack)، علاقه‌مند به هوش مصنوعی (AI)، تجارت الکترونیک (E-commerce) و دراپ‌شیپینگ (Dropshipping). مقالات و آموزش دیجیتال مارکتینگ.">
-    
-    <!-- Mots-clés stratégiques -->
     <meta name="keywords" content="خسرو, توسعه وب, فول استک, هوش مصنوعی, تجارت الکترونیک, دراپ‌شیپینگ, دیجیتال مارکتینگ, Khesraw, Full-Stack, E-commerce, Dropshipping, AI, SEO, Netlify, Web Development, Digital Marketing">
-    
     <meta name="author" content="Khesraw">
     <meta name="robots" content="index, follow">
 
@@ -122,56 +118,157 @@
         section.active { display: flex; flex-direction: column; align-items: center; }
 
         /* ==========================================================================
-           5. SECTION : ACCUEIL
+           5. SECTION : ACCUEIL (NOUVEAU DESIGN OPTIMISÉ)
            ========================================================================== */
-        .hero { text-align: center; margin-top: 8vh; }
-        .hero h1 {
-            font-size: 4rem; font-weight: 900; margin-bottom: 10px;
+        .hero-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            width: 100%;
+            margin-top: 5vh;
+        }
+
+        .hero-content {
+            flex: 1;
+            text-align: right;
+        }
+
+        .hero-content h1 {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 5px;
             background: linear-gradient(45deg, var(--text-main), var(--accent-gold));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 40px var(--accent-gold-glow); letter-spacing: -1px;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 30px var(--accent-gold-glow);
+            letter-spacing: -1px;
         }
-        
-        /* Nouvelle description de présentation */
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: var(--accent-neon);
+            font-weight: 400;
+            margin-bottom: 25px;
+        }
+
         .hero-description {
-            font-size: 1.15rem; color: var(--text-muted); font-weight: 300;
-            margin: 0 auto 30px; max-width: 750px; line-height: 1.8; text-align: center;
+            font-size: 1.15rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            max-width: 600px;
         }
 
-        .hero-avatar {
-            width: 180px; height: 180px; border-radius: 50%; margin: 0 auto 30px;
-            background: var(--glass-bg); border: 2px solid var(--accent-gold);
-            box-shadow: 0 0 30px var(--accent-gold-glow); display: flex; align-items: center;
-            justify-content: center; position: relative; overflow: hidden;
-        }
-        
-        .hero-avatar::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(transparent, var(--accent-gold), transparent 30%);
-            animation: rotate 4s linear infinite; z-index: 1;
-        }
-        
-        /* Ajustement pour la nouvelle photo */
-        .hero-avatar img {
-            width: calc(100% - 8px); height: calc(100% - 8px); object-fit: cover;
-            border-radius: 50%; position: relative; z-index: 2; background: var(--bg-color);
+        /* Boutons d'action */
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 40px;
         }
 
-        /* Réseaux Sociaux */
-        .social-links { display: flex; gap: 20px; justify-content: center; margin-bottom: 40px; }
+        .cta-btn {
+            background: var(--accent-gold);
+            color: #000;
+            border: 1px solid var(--accent-gold);
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-family: inherit;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px var(--accent-gold-glow);
+        }
+
+        .cta-btn-outline {
+            background: transparent;
+            color: var(--text-main);
+            border: 1px solid var(--glass-border);
+            padding: 15px 35px;
+            font-size: 1.1rem;
+            font-family: inherit;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .cta-btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--text-main);
+            transform: translateY(-3px);
+        }
+
+        /* Réseaux Sociaux alignés à droite */
+        .social-links { 
+            display: flex; 
+            gap: 20px; 
+            justify-content: flex-start; 
+        }
+        
         .social-links a {
             color: var(--text-muted); width: 35px; height: 35px; display: inline-flex;
             align-items: center; justify-content: center; transition: var(--transition-smooth);
         }
-        .social-links a:hover { color: var(--accent-gold); transform: translateY(-5px); filter: drop-shadow(0 0 10px var(--accent-gold-glow)); }
+        
+        .social-links a:hover { 
+            color: var(--accent-gold); transform: translateY(-5px); filter: drop-shadow(0 0 10px var(--accent-gold-glow)); 
+        }
+        
         .social-links svg { width: 100%; height: 100%; }
 
-        .cta-btn {
-            background: transparent; color: var(--accent-gold); border: 1px solid var(--accent-gold);
-            padding: 15px 40px; font-size: 1.2rem; font-family: inherit; border-radius: 30px;
-            cursor: pointer; transition: var(--transition-smooth); text-transform: uppercase; letter-spacing: 1px;
+        /* Conteneur de la nouvelle image */
+        .hero-image-wrapper {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
         }
-        .cta-btn:hover { background: var(--accent-gold); color: #000; box-shadow: 0 0 20px var(--accent-gold-glow); }
+
+        .hero-image-inner {
+            width: 100%;
+            max-width: 420px;
+            aspect-ratio: 3/4; /* Format portrait élégant */
+            border-radius: 30px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            padding: 15px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            position: relative;
+        }
+
+        /* Effet de bordure lumineuse autour de l'image */
+        .hero-image-inner::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: linear-gradient(45deg, var(--accent-gold), var(--accent-neon), transparent, transparent);
+            border-radius: 32px;
+            z-index: -1;
+            opacity: 0.6;
+            background-size: 200% 200%;
+            animation: gradientBorder 5s ease infinite alternate;
+        }
+
+        .hero-image-inner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            background-color: var(--bg-color); /* Fond si l'image est transparente */
+        }
+
+        @keyframes gradientBorder {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
 
         /* ==========================================================================
            6. SECTION : À PROPOS
@@ -247,11 +344,18 @@
            ========================================================================== */
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes pulse { from { transform: scale(1); opacity: 0.3; } to { transform: scale(1.2); opacity: 0.6; } }
-        @keyframes rotate { 100% { transform: rotate(360deg); } }
-
-        @media (max-width: 768px) {
+        
+        @media (max-width: 900px) {
+            .hero-container { flex-direction: column-reverse; text-align: center; gap: 40px; }
+            .hero-content { text-align: center; display: flex; flex-direction: column; align-items: center; }
+            .hero-content h1 { font-size: 3.5rem; }
+            .hero-subtitle { font-size: 1.2rem; }
+            .social-links { justify-content: center; }
+            .hero-buttons { justify-content: center; flex-wrap: wrap; }
+            .hero-image-inner { max-width: 300px; aspect-ratio: 1/1; border-radius: 50%; }
+            .hero-image-inner::before { border-radius: 50%; }
+            .hero-image-inner img { border-radius: 50%; }
             .about-grid { grid-template-columns: 1fr; }
-            .hero h1 { font-size: 2.8rem; }
             nav { width: 95%; justify-content: space-around; padding: 10px 10px; gap: 10px;}
             .nav-btn { font-size: 0.9rem; padding: 6px 10px; }
             .detail-card { padding: 30px; margin-top: 10px; }
@@ -274,42 +378,51 @@
     <nav>
         <button class="nav-btn active" data-target="home">خانه</button> <!-- Accueil -->
         <button class="nav-btn" data-target="about">درباره من</button> <!-- À propos -->
-        <button class="nav-btn" data-target="blog">بلاگ</button> <!-- Blog (Modifié) -->
+        <button class="nav-btn" data-target="blog">بلاگ</button> <!-- Blog -->
     </nav>
 
     <main>
-        <!-- SECTION 1 : ACCUEIL -->
+        <!-- SECTION 1 : ACCUEIL (NOUVEAU DESIGN) -->
         <section id="home" class="active">
-            <div class="hero">
-                <!-- La nouvelle image de profil -->
-                <div class="hero-avatar">
-                    <img src="WhatsApp Image 2026-03-02 at 21.09.53.jpg" alt="خسرو">
-                </div>
-                
-                <h1>خسرو</h1> <!-- Khesraw -->
-                
-                <!-- La nouvelle phrase de présentation -->
-                <p class="hero-description">
-                    من خسرو هستم. اگر به دنیای تجارت الکترونیک، هوش مصنوعی و هر آنچه که به کسب‌وکار و اینترنت مربوط می‌شود علاقه‌مند هستید، دقیقاً در جای درستی قرار دارید. من در اینجا بهترین توضیحات و آموزش‌ها را در زمینه تجارت و هوش مصنوعی با شما به اشتراک می‌گذارم. پس از این صفحه لذت ببرید و استفاده کنید!
-                </p>
-                
-                <!-- Icônes Réseaux Sociaux -->
-                <div class="social-links">
-                    <a href="https://www.facebook.com/share/1CLpAcsVVd/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
-                    </a>
-                    <a href="#" target="_blank" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                    </a>
-                    <a href="#" target="_blank" aria-label="TikTok">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                    </a>
-                    <a href="#" target="_blank" aria-label="YouTube">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
-                    </a>
+            <div class="hero-container">
+                <!-- Colonne de texte -->
+                <div class="hero-content">
+                    <h1>خسرو</h1> <!-- Khesraw -->
+                    <h2 class="hero-subtitle">متخصص توسعه وب، هوش مصنوعی و تجارت الکترونیک</h2> <!-- Subtitle -->
+                    
+                    <p class="hero-description">
+                        من خسرو هستم. اگر به دنیای تجارت الکترونیک، هوش مصنوعی و هر آنچه که به کسب‌وکار و اینترنت مربوط می‌شود علاقه‌مند هستید، دقیقاً در جای درستی قرار دارید. من در اینجا بهترین توضیحات و آموزش‌ها را در زمینه تجارت و هوش مصنوعی با شما به اشتراک می‌گذارم. پس از این صفحه لذت ببرید و استفاده کنید!
+                    </p>
+                    
+                    <div class="hero-buttons">
+                        <button class="cta-btn" onclick="goToSection('about')">بیشتر بدانید</button>
+                        <button class="cta-btn-outline" onclick="goToSection('blog')">خواندن مقالات</button>
+                    </div>
+
+                    <!-- Icônes Réseaux Sociaux -->
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/share/1CLpAcsVVd/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
+                        </a>
+                        <a href="#" target="_blank" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                        </a>
+                        <a href="#" target="_blank" aria-label="TikTok">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                        </a>
+                        <a href="#" target="_blank" aria-label="YouTube">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                        </a>
+                    </div>
                 </div>
 
-                <button class="cta-btn" onclick="document.querySelector('[data-target=\'about\']').click()">بیشتر بدانید</button>
+                <!-- Colonne de l'Image -->
+                <div class="hero-image-wrapper">
+                    <div class="hero-image-inner">
+                        <!-- J'ai ajouté une image de secours (onerror) au cas où l'image locale ne charge pas -->
+                        <img src="WhatsApp Image 2026-03-02 at 21.09.53.jpg" alt="خسرو" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800'">
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -393,13 +506,12 @@
                 } else if (targetId === 'skill-details' && b.getAttribute('data-target') === 'about') {
                     b.classList.add('active');
                 } else if (targetId === 'blog-post-details' && b.getAttribute('data-target') === 'blog') {
-                    // Garder le bouton "Blog" actif quand on lit un article
                     b.classList.add('active');
                 }
             });
             window.scrollTo(0, 0); // Remonter en haut de page lors d'un clic
 
-            // Google Tag Manager : Suivi des pages virtuelles (Single Page Application)
+            // Google Tag Manager : Suivi des pages virtuelles
             window.dataLayer = window.dataLayer || [];
             window.dataLayer.push({
                 'event': 'VirtualPageview',
@@ -469,7 +581,6 @@
             /* --- 3. GESTION DU BLOG ET PAGES D'ARTICLES --- */
             const blogContainer = document.getElementById('blog-container');
 
-            // Données des articles de blog avec contenu complet SEO-Optimisé
             const blogPosts = [
                 {
                     id: "e-commerce",
@@ -479,10 +590,8 @@
                     imageUrl: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1200",
                     content: `
                         <p><strong>تجارت الکترونیک (E-commerce)</strong> به زبان ساده یعنی خرید و فروش کالا یا خدمات از طریق اینترنت. این مدل کسب‌وکار به دلیل حذف محدودیت‌های جغرافیایی و زمانی، به یکی از پردرآمدترین صنایع جهان تبدیل شده است.</p>
-                        
                         <h4>چگونه کار می‌کند؟</h4>
                         <p>برای شروع تجارت الکترونیک، شما به یک پلتفرم یا فروشگاه ساز نیاز دارید. <strong>Shopify (شاپایفای)</strong> یکی از بهترین انتخاب‌ها برای این کار است. این پلتفرم به شما اجازه می‌دهد تا بدون نیاز به کدنویسی، یک ویترین دیجیتال بسازید، محصولات خود را با عکس و توضیحات کامل قرار دهید و با اتصال به درگاه‌های پرداخت، مستقیماً از مشتری پول دریافت کنید.</p>
-                        
                         <h4>مزایای اصلی تجارت الکترونیک:</h4>
                         <ul>
                             <li><strong>دسترسی جهانی:</strong> مشتریان شما فقط محدود به محله یا شهر شما نیستند، بلکه کل کشور (یا حتی جهان) می‌توانند از شما خرید کنند.</li>
@@ -500,10 +609,8 @@
                     imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200",
                     content: `
                         <p><strong>هوش مصنوعی (Artificial Intelligence)</strong> دیگر یک مفهوم علمی‌تخیلی نیست، بلکه قلب تپنده تکنولوژی و تجارت مدرن است. هوش مصنوعی به ماشین‌ها و سیستم‌های کامپیوتری این قابلیت را می‌دهد که مانند انسان یاد بگیرند، تحلیل کنند و تصمیم بگیرند.</p>
-
                         <h4>کاربرد هوش مصنوعی در کسب‌وکار و فروش:</h4>
                         <p>یکی از بزرگترین تاثیرات AI در دنیای امروز، <strong>شخصی‌سازی (Personalization)</strong> است. الگوریتم‌های هوش مصنوعی رفتار کاربران را در وب‌سایت شما تحلیل می‌کنند و دقیقاً محصولاتی را به آن‌ها پیشنهاد می‌دهند که بیشترین احتمال خرید را دارند (مثل سیستم پیشنهادگر آمازون یا نتفلیکس).</p>
-
                         <h4>چرا استفاده از AI ضروری است؟</h4>
                         <ul>
                             <li><strong>اتوماسیون بازاریابی:</strong> ابزارهای AI می‌توانند ایمیل‌های تبلیغاتی هوشمند بفرستند، محتوای متنی و تصویری سئو شده تولید کنند (مانند ChatGPT) و کمپین‌های تبلیغاتی را مدیریت کنند.</li>
@@ -520,15 +627,11 @@
                     imageUrl: "https://images.unsplash.com/photo-1432888117426-146608595cb1?auto=format&fit=crop&q=80&w=1200",
                     content: `
                         <p><strong>دیجیتال مارکتینگ (بازاریابی دیجیتال)</strong> به هرگونه فعالیت بازاریابی گفته می‌شود که از طریق دستگاه‌های الکترونیکی و اینترنت انجام می‌گیرد. در دنیایی که همه آنلاین هستند، اگر کسب‌وکار شما در اینترنت دیده نشود، عملاً وجود ندارد.</p>
-
                         <h4>ستون‌های اصلی دیجیتال مارکتینگ:</h4>
-                        
                         <h4>۱. سئو (SEO - بهینه‌سازی موتورهای جستجو)</h4>
                         <p>سئو فرآیند بهبود کیفیت و ساختار وب‌سایت است تا گوگل آن را به عنوان بهترین پاسخ برای جستجوی کاربران بشناسد. با سئو قدرتمند، زمانی که شخصی به دنبال محصولات یا خدمات شما می‌گردد، سایت شما در رتبه اول نتایج گوگل قرار می‌گیرد. این یعنی جذب مشتریان کاملاً ارگانیک و رایگان.</p>
-
                         <h4>۲. تبلیغات کلیکی (PPC - Google Ads & Facebook Ads)</h4>
                         <p>در حالی که سئو به زمان نیاز دارد، <strong>گوگل ادز</strong> و <strong>فیس‌بوک ادز</strong> نتایج فوری به همراه دارند. با استفاده از پلتفرم متا (فیس‌بوک و اینستاگرام)، شما می‌توانید مشتریان را بر اساس سن، علایق و رفتارشان هدف‌گذاری کنید (Targeting). و با گوگل ادز، دقیقاً زمانی که کاربر قصد خرید دارد و کلمه‌ای را جستجو می‌کند، آگهی خود را به او نمایش می‌دهید.</p>
-                        
                         <p>یک استراتژی موفق در دیجیتال مارکتینگ همیشه ترکیبی از سئو (برای برندسازی بلندمدت) و تبلیغات هدفمند (برای فروش سریع) است.</p>
                     `
                 },
@@ -540,7 +643,6 @@
                     imageUrl: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=1200",
                     content: `
                         <p><strong>دراپ‌شیپینگ (Dropshipping)</strong> یکی از جذاب‌ترین و کم‌ریسک‌ترین روش‌های ورود به دنیای تجارت الکترونیک است. در این مدل فروش خرد، شما نیازی به خرید عمده محصولات، داشتن انبار، یا بسته‌بندی و ارسال کالا ندارید.</p>
-
                         <h4>سیستم دراپ‌شیپینگ چگونه کار می‌کند؟</h4>
                         <ol>
                             <li><strong>ساخت فروشگاه:</strong> شما یک فروشگاه آنلاین (مثلاً با Shopify) می‌سازید و تصاویر محصولاتی را که تامین‌کنندگانی در چین، اروپا یا آمریکا دارند، در سایت خود قرار می‌دهید.</li>
@@ -548,14 +650,12 @@
                             <li><strong>انتقال سفارش:</strong> شما سفارش را دریافت کرده و همان محصول را به قیمت عمده (مثلاً ۱۵ دلار) از تامین‌کننده اصلی خریداری می‌کنید و آدرس مشتری را به او می‌دهید.</li>
                             <li><strong>ارسال و سود:</strong> تامین‌کننده محصول را مستقیماً برای مشتری ارسال می‌کند. سود شما در اینجا ۳۵ دلار خواهد بود بدون اینکه حتی محصول را لمس کرده باشید!</li>
                         </ol>
-
                         <h4>کلیدهای موفقیت در دراپ‌شیپینگ:</h4>
                         <p>موفقیت در این کار به پیدا کردن <strong>محصولات برنده (Winning Products)</strong> بستگی دارد؛ محصولاتی که مشکل خاصی را حل می‌کنند یا اثر "واو" (Wow Factor) دارند. همچنین، مهارت بالا در تولید ویدیوهای تبلیغاتی خلاقانه و تسلط بر الگوریتم‌های شبکه‌های اجتماعی برای هدایت ترافیک، رمز اصلی پیروزی در دراپ‌شیپینگ است.</p>
                     `
                 }
             ];
 
-            // Fonction pour générer les cartes de la liste des articles
             function renderBlogList() {
                 blogContainer.innerHTML = ''; 
                 blogPosts.forEach(post => {
@@ -573,22 +673,15 @@
                 });
             }
 
-            // Initialiser la liste au chargement
             renderBlogList();
 
-            // Rendre la fonction accessible globalement pour le `onclick`
             window.openBlogPost = function(postId) {
-                // Trouver l'article correspondant dans le tableau
                 const post = blogPosts.find(p => p.id === postId);
-                
                 if (post) {
-                    // Injecter les données dans la vue détaillée
                     document.getElementById('post-image').src = post.imageUrl;
                     document.getElementById('post-category').innerText = post.category;
                     document.getElementById('post-title').innerText = post.title;
                     document.getElementById('post-content').innerHTML = post.content;
-                    
-                    // Afficher la page détaillée
                     goToSection('blog-post-details');
                 }
             };
