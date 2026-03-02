@@ -1,0 +1,501 @@
+import React, { useState, useEffect, useRef } from 'react';
+import { 
+  Menu, X, TrendingUp, Globe, Users, Star, 
+  ArrowLeft, CheckCircle2, Mail, MapPin, 
+  Instagram, Twitter, Linkedin, ChevronLeft, GraduationCap
+} from 'lucide-react';
+
+// --- UTILITAIRES D'ANIMATION (Performants) ---
+const useIntersectionObserver = (options = { threshold: 0.1 }) => {
+  const [isVisible, setIsVisible] = useState(false);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setIsVisible(true);
+        observer.unobserve(entry.target);
+      }
+    }, options);
+
+    const currentRef = ref.current;
+    if (currentRef) observer.observe(currentRef);
+    return () => {
+      if (currentRef) observer.unobserve(currentRef);
+    };
+  }, [options]);
+
+  return [ref, isVisible];
+};
+
+const Reveal = ({ children, delay = 0, direction = 'up' }) => {
+  const [ref, isVisible] = useIntersectionObserver();
+  
+  const baseClasses = "transition-all duration-1000 ease-out";
+  const hiddenClasses = {
+    up: "opacity-0 translate-y-12",
+    down: "opacity-0 -translate-y-12",
+    left: "opacity-0 -translate-x-12", // Inversé pour le mode RTL (Dari)
+    right: "opacity-0 translate-x-12", // Inversé pour le mode RTL (Dari)
+    scale: "opacity-0 scale-95"
+  };
+
+  return (
+    <div 
+      ref={ref} 
+      className={`${baseClasses} ${isVisible ? "opacity-100 translate-y-0 translate-x-0 scale-100" : hiddenClasses[direction]}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {children}
+    </div>
+  );
+};
+
+// --- COMPOSANTS DE SECTION ---
+
+const Navbar = () => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinks = [
+    { name: 'خانه', href: '#accueil' }, // Accueil
+    { name: 'درباره ما', href: '#apropos' }, // À propos
+    { name: 'اخبار', href: '#actualites' }, // Actualités
+  ];
+
+  return (
+    <nav className={`fixed w-full z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-[#050A08]/90 backdrop-blur-md border-b border-white/5 py-4' : 'bg-transparent py-6'
+    }`}>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
+        <a href="#accueil" className="flex flex-col">
+          <span className="text-2xl font-bold tracking-tighter text-white font-sans">
+            Khesraw <span className="text-emerald-500">Academy</span>
+          </span>
+          <span className="text-[10px] uppercase tracking-widest text-amber-500/90 font-medium mt-1">
+            آکادمی خسرو سروری
+          </span>
+        </a>
+
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <a key={link.name} href={link.href} className="text-sm font-medium text-zinc-300 hover:text-white transition-colors">
+              {link.name}
+            </a>
+          ))}
+          <a href="#communaute" className="bg-emerald-600 hover:bg-emerald-500 text-white px-6 py-2.5 rounded-full text-sm font-medium transition-all hover:shadow-[0_0_20px_rgba(16,185,129,0.3)] hover:-translate-y-0.5">
+            پیوستن به ما
+          </a>
+        </div>
+
+        {/* Mobile Toggle */}
+        <button className="md:hidden text-white" onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="absolute top-full left-0 w-full bg-[#0a120e] border-b border-white/5 py-4 px-6 flex flex-col gap-4 md:hidden">
+          {navLinks.map((link) => (
+            <a 
+              key={link.name} 
+              href={link.href} 
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="text-lg font-medium text-zinc-300 hover:text-white"
+            >
+              {link.name}
+            </a>
+          ))}
+          <a href="#communaute" onClick={() => setIsMobileMenuOpen(false)} className="bg-emerald-600 text-white px-6 py-3 rounded-xl text-center font-medium mt-4">
+            پیوستن به ما
+          </a>
+        </div>
+      )}
+    </nav>
+  );
+};
+
+const Hero = () => {
+  return (
+    <section id="accueil" className="relative min-h-screen flex items-center pt-20 overflow-hidden">
+      <div className="absolute inset-0 bg-[#050A08] z-0"></div>
+      <div className="absolute top-1/4 -right-64 w-96 h-96 bg-emerald-600/20 rounded-full blur-[120px] z-0"></div>
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-amber-500/10 rounded-full blur-[150px] z-0"></div>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full">
+        <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="space-y-8">
+            <Reveal>
+              <div className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 mb-2">
+                <span className="flex h-2 w-2 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span className="text-xs font-medium text-zinc-300 uppercase tracking-wider">عالی‌ترین سطح برای دیاسپورای افغان</span>
+              </div>
+            </Reveal>
+            
+            <Reveal delay={100}>
+              <h1 className="text-5xl md:text-7xl font-bold tracking-tight text-white leading-[1.2]">
+                امپراتوری <span className="text-transparent bg-clip-text bg-gradient-to-l from-emerald-400 to-emerald-600">تجارت الکترونیک</span> خود را بسازید.
+              </h1>
+            </Reveal>
+
+            <Reveal delay={200}>
+              <p className="text-lg md:text-xl text-zinc-400 leading-relaxed max-w-lg">
+                اولین آکادمی برتر طراحی شده توسط خسرو سروری برای راهنمایی جامعه افغان در ونکوور و سراسر جهان به سوی استقلال مالی.
+              </p>
+            </Reveal>
+
+            <Reveal delay={300}>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <a href="#apropos" className="flex items-center justify-center gap-2 bg-white text-[#050A08] px-8 py-4 rounded-full font-bold hover:bg-zinc-200 transition-all hover:scale-105">
+                  <span>بیشتر بدانید</span>
+                  <ArrowLeft size={18} />
+                </a>
+              </div>
+            </Reveal>
+            
+            <Reveal delay={400}>
+               <div className="flex items-center gap-4 pt-8 border-t border-white/10 mt-8">
+                 <div className="flex flex-row-reverse justify-end">
+                   {[1,2,3,4].map((i, index) => (
+                     <div key={i} className={`w-10 h-10 rounded-full border-2 border-[#050A08] bg-zinc-800 flex items-center justify-center overflow-hidden ${index !== 0 ? '-mr-3' : ''}`}>
+                       <img src={`https://api.dicebear.com/7.x/avataaars/svg?seed=${i+10}&backgroundColor=10b981`} alt="Member" className="w-full h-full object-cover" />
+                     </div>
+                   ))}
+                 </div>
+                 <div className="text-sm">
+                   <div className="flex text-amber-500 mb-1">
+                     {[1,2,3,4,5].map(i => <Star key={i} size={14} fill="currentColor" />)}
+                   </div>
+                   <span className="text-zinc-400 font-medium">جامعه‌ای در حال رشد</span>
+                 </div>
+               </div>
+            </Reveal>
+          </div>
+
+          <Reveal delay={300} direction="right">
+            <div className="relative h-[600px] rounded-2xl overflow-hidden border border-white/10 group hidden md:block">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#050A08] via-transparent to-transparent z-10"></div>
+              <img 
+                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1632&q=80" 
+                alt="Workspace e-commerce" 
+                className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-1000"
+              />
+              <div className="absolute bottom-8 right-8 left-8 z-20 bg-white/10 backdrop-blur-md border border-white/20 p-6 rounded-xl">
+                <div className="flex items-center gap-3 mb-3">
+                  <TrendingUp className="text-emerald-400" size={24} />
+                  <h3 className="text-white font-bold text-lg">نتایج اثبات شده</h3>
+                </div>
+                <p className="text-zinc-300 text-sm leading-relaxed">ما استراتژی‌هایی را آموزش می‌دهیم که واقعاً در دنیای تجارت امروز کار می‌کنند.</p>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const About = () => {
+  return (
+    <section id="apropos" className="py-24 bg-[#080D0B] relative border-t border-white/5">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid md:grid-cols-2 gap-16 items-center">
+          <Reveal direction="left">
+            <div className="relative">
+              <div className="aspect-[4/5] rounded-2xl overflow-hidden border border-white/10 relative z-10">
+                <div className="absolute inset-0 bg-zinc-800 flex items-center justify-center">
+                   <span className="text-zinc-500 font-medium flex flex-col items-center">
+                     <GraduationCap size={48} className="mb-4 text-emerald-500/50" />
+                     [تصویر پرتره خسرو سروری]
+                   </span>
+                </div>
+              </div>
+              <div className="absolute -bottom-6 -left-6 w-48 h-48 bg-emerald-600 rounded-2xl -z-0 opacity-20 blur-2xl"></div>
+              <div className="absolute top-8 -left-8 bg-zinc-900 border border-white/10 p-4 rounded-xl shadow-2xl z-20 flex items-center gap-4 hidden md:flex">
+                <div className="w-12 h-12 bg-amber-500/20 rounded-full flex items-center justify-center">
+                  <Globe className="text-amber-500" size={24} />
+                </div>
+                <div>
+                  <div className="text-2xl font-bold text-white tracking-widest pl-2">۱۰۰٪</div>
+                  <div className="text-xs text-zinc-400 uppercase">اختصاص یافته به دیاسپورا</div>
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          <div className="space-y-6">
+            <Reveal>
+              <h2 className="text-emerald-500 font-bold tracking-wider uppercase text-sm">درباره بنیان‌گذار</h2>
+            </Reveal>
+            <Reveal delay={100}>
+              <h3 className="text-3xl md:text-5xl font-bold text-white tracking-tight">
+                خسرو سروری
+              </h3>
+            </Reveal>
+            <Reveal delay={200}>
+              <p className="text-zinc-400 text-lg leading-relaxed">
+                متخصص تجارت دیجیتال و کارآفرین پرشور، خسرو <strong>آکادمی خسرو</strong> را با یک ماموریت روشن تأسیس کرد: 
+                <strong className="text-white font-medium"> دموکراتیک کردن دسترسی به موفقیت مالی برای دیاسپورای افغان.</strong>
+              </p>
+            </Reveal>
+            <Reveal delay={300}>
+              <p className="text-zinc-400 leading-relaxed">
+                او که در ونکوور مستقر است، پتانسیل کشف‌نشده عظیمی را در جامعه مشاهده می‌کند. با تکیه بر سال‌ها تجربه در ایجاد نتایج استثنایی در آمازون، شاپ‌فای و دراپ‌شیپینگ، او روش‌های اثبات‌شده‌ای را از صفر تا صد، تدوین کرده است.
+              </p>
+            </Reveal>
+            <Reveal delay={400}>
+              <ul className="space-y-4 mt-8">
+                {[
+                  "استراتژی‌های تجارت الکترونیک متناسب با بازار آمریکای شمالی و اروپا.",
+                  "مشاوره شخصی و راهنمایی گام به گام.",
+                  "یک جامعه حمایتی قوی و دلسوز."
+                ].map((item, idx) => (
+                  <li key={idx} className="flex items-start gap-3">
+                    <CheckCircle2 className="text-emerald-500 shrink-0 mt-0.5" size={20} />
+                    <span className="text-zinc-300">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const News = () => {
+  const newsItems = [
+    {
+      type: "اقتصاد و حمایت‌ها",
+      title: "یارانه‌ها در ونکوور: چگونه دیاسپورا می‌تواند در سال ۲۰۲۶ از آن‌ها بهره‌مند شود",
+      date: "۲ مارس ۲۰۲۶",
+      desc: "بررسی دقیق برنامه‌های جدید حمایتی دولت کانادا برای کارآفرینان جدید و نحوه ثبت درخواست."
+    },
+    {
+      type: "تکنولوژی و کسب‌وکار",
+      title: "هوش مصنوعی در حال تغییر منبع‌یابی در پلتفرم‌های جهانی است",
+      date: "۲۸ فوریه ۲۰۲۶",
+      desc: "چگونه ابزارهای جدید مبتنی بر AI به شما کمک می‌کنند تا محصولات برنده را سریع‌تر و ارزان‌تر پیدا کنید."
+    },
+    {
+      type: "رویدادهای جامعه",
+      title: "گردهمایی کارآفرینان افغان در قلب ونکوور",
+      date: "۱۵ فوریه ۲۰۲۶",
+      desc: "گزارشی از آخرین رویداد شبکه‌سازی ما که ده‌ها کارآفرین موفق افغان در آن تجربیات خود را به اشتراک گذاشتند."
+    }
+  ];
+
+  return (
+    <section id="actualites" className="py-24 bg-[#050A08] relative">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="text-center mb-16">
+          <Reveal>
+            <h2 className="text-emerald-500 font-bold tracking-wider uppercase text-sm mb-2">اطلاعات و بینش‌ها</h2>
+            <h3 className="text-4xl md:text-5xl font-bold text-white tracking-tight mb-6">آخرین اخبار</h3>
+            <p className="text-zinc-400 max-w-2xl mx-auto text-lg leading-relaxed">
+              جدیدترین اخبار اقتصادی، فرصت‌های تجاری و رویدادهای مربوط به جامعه دیاسپورای افغان.
+            </p>
+          </Reveal>
+        </div>
+
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {newsItems.map((item, index) => (
+            <Reveal key={index} delay={100 + index * 100}>
+              <div className="bg-zinc-900/50 border border-white/5 rounded-2xl p-8 hover:bg-zinc-800/50 hover:border-emerald-500/30 transition-all duration-300 group flex flex-col h-full cursor-pointer">
+                <div className="flex justify-between items-center mb-4 border-b border-white/5 pb-4">
+                  <span className="text-xs font-bold text-amber-500 bg-amber-500/10 px-3 py-1 rounded-full">{item.type}</span>
+                  <span className="text-xs text-zinc-500">{item.date}</span>
+                </div>
+                <h4 className="text-xl font-bold text-white mb-4 group-hover:text-emerald-400 transition-colors leading-relaxed">
+                  {item.title}
+                </h4>
+                <p className="text-zinc-400 text-sm leading-relaxed mb-6 flex-grow">
+                  {item.desc}
+                </p>
+                <div className="mt-auto pt-4">
+                  <button className="flex items-center gap-2 text-sm font-bold text-emerald-400 hover:text-emerald-300 transition-colors">
+                    بیشتر بخوانید <ChevronLeft size={16} />
+                  </button>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const CommunityAndNewsletter = () => {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('idle');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+      setStatus('error');
+      return;
+    }
+    setStatus('loading');
+    setTimeout(() => {
+      setStatus('success');
+      setEmail('');
+    }, 1500);
+  };
+
+  return (
+    <section id="communaute" className="py-24 bg-[#080D0B] relative overflow-hidden border-t border-white/5">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-600/10 rounded-full blur-[120px] pointer-events-none"></div>
+
+      <div className="max-w-4xl mx-auto px-6 relative z-10 text-center">
+        <Reveal>
+          <div className="w-16 h-16 bg-zinc-900 border border-white/10 rounded-2xl flex items-center justify-center mx-auto mb-8 shadow-xl">
+            <Users className="text-amber-500" size={32} />
+          </div>
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6 tracking-tight">به جامعه ما بپیوندید.</h2>
+          <p className="text-zinc-400 text-lg mb-10 max-w-2xl mx-auto leading-relaxed">
+            برای دریافت بینش‌های تجاری انحصاری و اخبار جامعه افغان، در خبرنامه ما عضو شوید.
+          </p>
+        </Reveal>
+
+        <Reveal delay={200}>
+          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto mb-12">
+            <div className="relative flex-grow">
+              <Mail className="absolute right-4 top-1/2 -translate-y-1/2 text-zinc-500" size={20} />
+              <input 
+                type="email" 
+                value={email}
+                onChange={(e) => { setEmail(e.target.value); setStatus('idle'); }}
+                placeholder="آدرس ایمیل کاری شما"
+                dir="rtl"
+                className={`w-full bg-zinc-900/80 border ${status === 'error' ? 'border-red-500' : 'border-white/10'} rounded-xl py-4 pr-12 pl-4 text-white focus:outline-none focus:border-emerald-500 transition-colors`}
+              />
+            </div>
+            <button 
+              type="submit" 
+              disabled={status === 'loading' || status === 'success'}
+              className="bg-emerald-600 hover:bg-emerald-500 disabled:bg-emerald-800 text-white px-8 py-4 rounded-xl font-bold transition-all whitespace-nowrap min-w-[140px]"
+            >
+              {status === 'loading' ? 'در حال ارسال...' : status === 'success' ? 'ثبت نام شد!' : 'پیوستن'}
+            </button>
+          </form>
+          {status === 'error' && <p className="text-red-400 text-sm mt-2">لطفاً یک آدرس ایمیل معتبر وارد کنید.</p>}
+          {status === 'success' && <p className="text-emerald-400 text-sm mt-2">به جمع ما خوش آمدید. ایمیل خود را بررسی کنید.</p>}
+        </Reveal>
+
+        <Reveal delay={300}>
+          <div className="pt-8 border-t border-white/5 flex flex-col items-center">
+            <p className="text-zinc-500 text-sm mb-4">یا در شبکه‌های اجتماعی با ما در ارتباط باشید</p>
+            <div className="flex gap-4">
+              <button className="flex items-center gap-2 bg-[#25D366]/10 text-[#25D366] hover:bg-[#25D366]/20 border border-[#25D366]/20 px-6 py-2.5 rounded-full text-sm font-bold transition-colors">
+                جامعه واتس‌اپ
+              </button>
+              <button className="flex items-center gap-2 bg-[#0088cc]/10 text-[#0088cc] hover:bg-[#0088cc]/20 border border-[#0088cc]/20 px-6 py-2.5 rounded-full text-sm font-bold transition-colors">
+                کانال تلگرام
+              </button>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+};
+
+const Footer = () => {
+  return (
+    <footer className="bg-[#030605] border-t border-white/5 pt-20 pb-10">
+      <div className="max-w-7xl mx-auto px-6 md:px-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+          <div className="md:col-span-1">
+            <span className="text-2xl font-bold tracking-tighter text-white block mb-2 font-sans">
+              Khesraw <span className="text-emerald-500">Academy</span>
+            </span>
+            <span className="text-xs uppercase tracking-widest text-amber-500/90 font-medium block mb-6">
+              آکادمی خسرو سروری
+            </span>
+            <p className="text-zinc-500 text-sm leading-relaxed mb-6">
+              تعالی آموزشی برای دیاسپورای افغان. بیایید با هم آینده‌ای درخشان‌تر بسازیم.
+            </p>
+            <div className="flex gap-4">
+              <a href="#" className="text-zinc-500 hover:text-emerald-500 transition-colors"><Instagram size={20} /></a>
+              <a href="#" className="text-zinc-500 hover:text-emerald-500 transition-colors"><Twitter size={20} /></a>
+              <a href="#" className="text-zinc-500 hover:text-emerald-500 transition-colors"><Linkedin size={20} /></a>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold mb-6">ناوبری</h4>
+            <ul className="space-y-3">
+              <li><a href="#accueil" className="text-sm text-zinc-500 hover:text-emerald-400 transition-colors">خانه</a></li>
+              <li><a href="#apropos" className="text-sm text-zinc-500 hover:text-emerald-400 transition-colors">درباره ما</a></li>
+              <li><a href="#actualites" className="text-sm text-zinc-500 hover:text-emerald-400 transition-colors">اخبار</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold mb-6">حقوقی</h4>
+            <ul className="space-y-3">
+              <li><a href="#" className="text-sm text-zinc-500 hover:text-emerald-400 transition-colors">شرایط عمومی</a></li>
+              <li><a href="#" className="text-sm text-zinc-500 hover:text-emerald-400 transition-colors">سیاست حفظ حریم خصوصی</a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-white font-bold mb-6">تماس</h4>
+            <ul className="space-y-4">
+              <li className="flex items-start gap-3">
+                <MapPin className="text-emerald-500 shrink-0 mt-1" size={18} />
+                <span className="text-sm text-zinc-500 leading-relaxed">ونکوور، بریتیش کلمبیا، کانادا</span>
+              </li>
+              <li className="flex items-center gap-3">
+                <Mail className="text-emerald-500 shrink-0" size={18} />
+                <a href="mailto:contact@khesraw.com" className="text-sm text-zinc-500 hover:text-white transition-colors font-sans" dir="ltr">contact@khesraw.com</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p className="text-zinc-600 text-xs font-sans">
+            © {new Date().getFullYear()} Khesraw Academy. تمامی حقوق محفوظ است.
+          </p>
+          <div className="text-zinc-600 text-xs flex items-center gap-1">
+            با برتری برای جامعه طراحی شده است.
+          </div>
+        </div>
+      </div>
+    </footer>
+  );
+};
+
+// --- APPLICATION PRINCIPALE ---
+export default function App() {
+  return (
+    <>
+      <style dangerouslySetInnerHTML={{__html: `
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+        .font-persian { font-family: 'Vazirmatn', sans-serif; }
+      `}} />
+      
+      <div dir="rtl" className="min-h-screen bg-[#050A08] text-zinc-50 font-persian selection:bg-emerald-500/30 selection:text-emerald-200 scroll-smooth">
+        <Navbar />
+        <main>
+          <Hero />
+          <About />
+          <News />
+          <CommunityAndNewsletter />
+        </main>
+        <Footer />
+      </div>
+    </>
+  );
+}
