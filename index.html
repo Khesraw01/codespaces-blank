@@ -49,6 +49,31 @@
             background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0c16.568 0 30 13.432 30 30S46.568 60 30 60 0 46.568 0 30 13.432 0 30 0zm0 5c13.807 0 25 11.193 25 25S43.807 55 30 55 5 43.807 5 30 16.193 5 30 5zm0 10c8.284 0 15 6.716 15 15s-6.716 15-15 15-15-6.716-15-15 6.716-15 15-15zm0 5c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10z' fill='%23D4AF37' fill-rule='evenodd'/%3E%3C/svg%3E");
             background-size: 60px 60px;
         }
+
+        /* Formatage du texte enrichi pour le guide */
+        .guide-content p {
+            margin-bottom: 1.5rem;
+        }
+        .guide-content ul {
+            list-style-type: none;
+            padding-right: 0;
+            margin-bottom: 1.5rem;
+        }
+        .guide-content li {
+            position: relative;
+            padding-right: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+        .guide-content li::before {
+            content: "✦";
+            position: absolute;
+            right: 0;
+            color: #D4AF37;
+        }
+        .guide-content strong {
+            color: #D4AF37;
+            font-weight: 600;
+        }
     </style>
 </head>
 <body class="selection:bg-[#D4AF37] selection:text-[#050A18] relative">
@@ -216,10 +241,10 @@
                                 <i data-lucide="shopping-cart" class="w-7 h-7 text-[#D4AF37]"></i>
                             </div>
                             <h3 class="text-2xl font-bold text-[#F2F2F2] mb-2">تجارت آنلاین و دراپ‌شیپینگ</h3>
-                            <h4 class="text-sm font-semibold tracking-wider text-[#1DA4AC] mb-4">مراحل عملی شاپيفای</h4>
-                            <p class="text-gray-400 mb-6 flex-grow leading-relaxed">واقعیت دنیای تجارت. یاد بگیرید چگونه فروشگاه خود را بسازید، محصولات برنده را پیدا کنید و به استقلال مالی برسید.</p>
+                            <h4 class="text-sm font-semibold tracking-wider text-[#1DA4AC] mb-4">مراحل عملی شاپيفای + کتابچه کامل</h4>
+                            <p class="text-gray-400 mb-6 flex-grow leading-relaxed">واقعیت دنیای تجارت. یاد بگیرید چگونه فروشگاه خود را بسازید، محصولات برنده را پیدا کنید و به استقلال مالی برسید. (شامل متن کامل راهنمای PDF)</p>
                             <div class="flex items-center text-[#D4AF37] font-semibold text-sm group-hover:-translate-x-2 transition-transform mt-auto">
-                                <i data-lucide="chevron-left" class="w-4 h-4 me-1"></i> شروع ماژول 
+                                <i data-lucide="chevron-left" class="w-4 h-4 me-1"></i> ورود به مسترکلاس 
                             </div>
                         </div>
                     </div>
@@ -303,7 +328,7 @@
                     <div id="ebook-container" class="mt-8 hidden">
                         <a id="ebook-link" href="#" target="_blank" class="inline-flex items-center justify-center px-6 py-3 bg-[#1DA4AC]/10 border border-[#1DA4AC]/30 text-[#1DA4AC] rounded-xl hover:bg-[#1DA4AC] hover:text-[#050A18] transition-all duration-300 font-bold shadow-lg shadow-[#1DA4AC]/10 group">
                             <i data-lucide="download" class="w-5 h-5 ms-2 group-hover:-translate-y-1 transition-transform"></i>
-                            دانلود کتاب الکترونیکی: واقعیت دنیای تجارت آنلاین
+                            دانلود نسخه PDF کتاب
                         </a>
                     </div>
                 </div>
@@ -311,6 +336,11 @@
                 <!-- Liste des vidéos générée via JavaScript -->
                 <div id="video-list" class="space-y-12">
                     <!-- Les vidéos apparaitront ici -->
+                </div>
+
+                <!-- Section du Guide PDF intégré -->
+                <div id="guide-list" class="mt-24 space-y-16">
+                    <!-- Le texte du guide apparaitra ici -->
                 </div>
 
             </div>
@@ -342,23 +372,89 @@
         // Initialiser les icônes Lucide au démarrage
         lucide.createIcons();
 
-        // Données des cours
+        // Données des cours (Inclut le texte traduit du PDF de Dropshipping)
         const coursesData = {
             'ecommerce': {
                 title: "تجارت آنلاین و دراپ‌شیپینگ",
-                subtitle: "مراحل عملی شاپيفای",
+                subtitle: "مسترکلاس کامل + راهنمای جامع",
                 icon: "shopping-cart",
-                description: "واقعیت دنیای تجارت. یاد بگیرید چگونه فروشگاه خود را بسازید، محصولات برنده را پیدا کنید و به استقلال مالی برسید.",
+                description: "این ماژول فقط یک آموزش نیست، بلکه یک تغییر دهنده بازی است. از انتخاب محصول تا اتوماسیون کامل فروشگاه، تمام اسرار این تجارت را فرا بگیرید.",
                 ebookUrl: "https://drive.google.com/file/d/1AHa0CfGrcYZ1GJCZQ4K0AhB_HDwALaKK/view",
                 videos: [
-                    { title: "راه‌اندازی فروشگاه در Shopify", duration: "14:20" },
-                    { title: "یافتن محصولات با AliExpress و DSers", duration: "22:15" },
-                    { title: "بهینه‌سازی صفحه محصول و نظرات (Loox)", duration: "18:40" }
+                    { title: "راه‌اندازی فروشگاه حرفه‌ای در Shopify", duration: "14:20" },
+                    { title: "یافتن محصولات برنده با ابزارهای پیشرفته", duration: "22:15" }
                 ],
                 keyPoints: [
-                    "انتخاب محصول مناسب (Niche) و حل مشکل مشتری.",
-                    "استفاده از فاکتور شگفتی (Wow Factor) برای شبکه‌های اجتماعی.",
-                    "ارتباط مستقیم با تامین‌کنندگان (CJ Dropshipping, AliExpress)."
+                    "بدون نیاز به انبار و سرمایه کلان.",
+                    "مدیریت فروشگاه از هر کجای دنیا.",
+                    "استفاده از سیستم‌های اتوماسیون برای ارسال محصولات."
+                ],
+                // INTEGRATION DU GUIDE COMPLET TRADUIT EN DARI
+                guide: [
+                    {
+                        title: "بخش اول: دراپ‌شیپینگ (Dropshipping) چیست؟",
+                        image: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1200",
+                        content: `
+                            <p>دراپ‌شیپینگ یک مدل کسب‌وکار نوین و انقلابی در خرده‌فروشی است که در آن شما به عنوان صاحب فروشگاه، <strong>نیازی به خرید و نگهداری موجودی (Inventory) ندارید.</strong></p>
+                            <p>به جای این کار، هنگامی که مشتری محصولی را از وب‌سایت شما خریداری می‌کند، شما آن سفارش را دریافت کرده و محصول را از یک تامین‌کننده ثالث (معمولاً تولیدکننده یا عمده‌فروش در چین مانند AliExpress) خریداری می‌کنید.</p>
+                            <p>تامین‌کننده مستقیماً محصول را به درب منزل مشتری شما ارسال می‌کند. این یعنی شما هرگز محصول را نمی‌بینید و لمس نمی‌کنید. سود شما تفاوت بین قیمتی است که مشتری به شما پرداخته و قیمتی که شما به تامین‌کننده می‌پردازید.</p>
+                            <ul>
+                                <li>ریسک مالی بسیار پایین برای شروع.</li>
+                                <li>عدم درگیری با بسته‌بندی و ارسال فیزیکی.</li>
+                                <li>آزادی زمانی و مکانی (فقط به لپ‌تاپ و اینترنت نیاز دارید).</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "بخش دوم: یافتن نیچ (Niche) و محصول برنده",
+                        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
+                        content: `
+                            <p>مهم‌ترین عامل شکست یا موفقیت در تجارت آنلاین، محصولی است که می‌فروشید. یک فروشگاه عالی با محصولی ضعیف، هیچ فروشی نخواهد داشت.</p>
+                            <p>یک <strong>محصول برنده (Winning Product)</strong> باید دارای ویژگی‌های زیر باشد:</p>
+                            <ul>
+                                <li><strong>حل یک مشکل واقعی:</strong> محصولاتی که درد یا نیاز خاصی از مشتری را برطرف می‌کنند (مثل اصلاح‌کننده وضعیت کمر).</li>
+                                <li><strong>اثر شگفتی (Wow Factor):</strong> وقتی مشتری محصول را در تبلیغات فیسبوک یا تیک‌تاک می‌بیند، باید فوراً توجهش جلب شود و بگوید "من این را می‌خواهم!".</li>
+                                <li><strong>کمیاب بودن:</strong> این محصول نباید به راحتی در سوپرمارکت‌ها یا فروشگاه‌های محلی در دسترس باشد.</li>
+                            </ul>
+                            <p>برای پیدا کردن این محصولات، می‌توانید از ابزارهایی مانند Minea، TikTok Creative Center و جستجوی هشتگ‌های پربازدید استفاده کنید.</p>
+                        `
+                    },
+                    {
+                        title: "بخش سوم: ساخت فروشگاه حرفه‌ای با شاپيفای (Shopify)",
+                        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=1200",
+                        content: `
+                            <p>شاپيفای (Shopify) قدرتمندترین پلتفرم تجارت الکترونیک در جهان است که به شما اجازه می‌دهد در کمتر از چند ساعت یک فروشگاه زیبا و حرفه‌ای بسازید.</p>
+                            <p>مشتریان امروزی بسیار هوشمند هستند. اگر وب‌سایت شما شبیه یک سایت ارزان قیمت و غیرقابل اعتماد باشد، آن‌ها هرگز اطلاعات کارت بانکی خود را وارد نمی‌کنند. بنابراین رعایت موارد زیر الزامی است:</p>
+                            <ul>
+                                <li><strong>طراحی تمیز و مینیمال:</strong> از رنگ‌های آرامش‌بخش و یک لوگوی حرفه‌ای استفاده کنید.</li>
+                                <li><strong>توضیحات محصول متقاعدکننده (Copywriting):</strong> به جای لیست کردن مشخصات فیزیکی محصول، بر روی <strong>احساسات و مزایای</strong> آن برای مشتری تمرکز کنید.</li>
+                                <li><strong>نظرات مشتریان (Social Proof):</strong> با استفاده از برنامه‌هایی مانند Loox، نظرات و عکس‌های واقعی مشتریان قبلی را به سایت خود اضافه کنید تا اعتماد خریداران جدید جلب شود.</li>
+                            </ul>
+                        `
+                    },
+                    {
+                        title: "بخش چهارم: بازاریابی و جذب ترافیک (Ads)",
+                        image: "https://images.unsplash.com/photo-1533750349088-cd871a92f312?auto=format&fit=crop&q=80&w=1200",
+                        content: `
+                            <p>شما زیباترین فروشگاه جهان را ساخته‌اید، اما اگر کسی آن را نبیند، هیچ ارزشی ندارد. <strong>ترافیک یعنی پول.</strong></p>
+                            <p>برای جذب خریداران مشتاق، ما از شبکه‌های اجتماعی استفاده می‌کنیم:</p>
+                            <ul>
+                                <li><strong>تبلیغات فیسبوک (Facebook Ads):</strong> با الگوریتم قدرتمند متا، می‌توانید دقیقاً کسانی را هدف قرار دهید که به محصول شما علاقه دارند و رفتار خرید آنلاین دارند.</li>
+                                <li><strong>تبلیغات تیک‌تاک (TikTok Ads):</strong> برای محصولات ترند و بصری، تیک‌تاک پتانسیل ویروسی شدن (Viral) بالایی دارد. محتوای شما باید شبیه یک ویدیوی طبیعی باشد، نه یک تبلیغ خسته‌کننده.</li>
+                            </ul>
+                            <p>در این مرحله، باید بودجه‌ای را برای <em>آزمایش (Testing)</em> اختصاص دهید. ویدیوی تبلیغاتی شما (Creative) مهم‌ترین بخش کمپین است. ۳ تا ۵ ثانیه اول ویدیو باید مخاطب را میخکوب کند (Hook).</p>
+                        `
+                    },
+                    {
+                        title: "بخش پنجم: مدیریت سفارشات و مقیاس‌پذیری",
+                        image: "https://images.unsplash.com/photo-1586528116311-ad8ed7c6631b?auto=format&fit=crop&q=80&w=1200",
+                        content: `
+                            <p>وقتی فروش آغاز می‌شود، کار شما به پایان نرسیده است. اکنون باید سفارشات را مدیریت کنید و بیزنس خود را رشد دهید (Scaling).</p>
+                            <p>با نصب اپلیکیشن‌هایی مانند <strong>DSers</strong> روی فروشگاه شاپيفای خود، می‌توانید فرآیند خرید از AliExpress را خودکار کنید. با یک کلیک، تمام سفارشات روزانه شما به تامین‌کننده ارسال می‌شود.</p>
+                            <p>برای تبدیل شدن به یک برند واقعی، پس از موفقیت اولیه، از تامین‌کنندگان خصوصی (Private Agents) یا شرکت‌هایی مانند CJ Dropshipping استفاده کنید تا زمان ارسال کالا کاهش یابد و محصولات در بسته‌بندی‌های سفارشی با لوگوی شما ارسال شوند.</p>
+                            <p><strong>به یاد داشته باشید:</strong> خدمات پشتیبانی سریع و محترمانه باعث می‌شود مشتریان یک‌بار مصرف به خریداران وفادار تبدیل شوند.</p>
+                        `
+                    }
                 ]
             },
             'fb-ads': {
@@ -527,6 +623,44 @@
                 `;
                 videoListEl.insertAdjacentHTML('beforeend', videoHtml);
             });
+
+            // GENERER LE GUIDE PDF INTEGRE (Uniquement s'il existe)
+            const guideListEl = document.getElementById('guide-list');
+            guideListEl.innerHTML = ''; // Nettoyer l'ancien guide
+
+            if (course.guide) {
+                // Ajouter le titre de la section Guide
+                guideListEl.innerHTML = `
+                    <div class="text-center mb-16 pt-12 border-t border-white/10">
+                        <h2 class="text-3xl md:text-4xl font-bold text-[#F2F2F2]">راهنمای جامع و متنی</h2>
+                        <div class="w-24 h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mt-6 rounded-full"></div>
+                    </div>
+                `;
+
+                // Boucler sur chaque chapitre du guide
+                course.guide.forEach((section, index) => {
+                    const guideHtml = `
+                        <div class="bg-[#02050D]/80 border border-white/5 rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.5)] hover:border-[#D4AF37]/30 transition-colors duration-500 group">
+                            <!-- Image Bannière -->
+                            <div class="relative h-64 md:h-80 w-full overflow-hidden">
+                                <img src="${section.image}" alt="Chapitre Image" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#02050D] via-[#02050D]/50 to-transparent opacity-90"></div>
+                                <div class="absolute bottom-6 start-6 md:start-12 pr-6">
+                                    <span class="text-[#D4AF37] font-serif italic text-6xl md:text-7xl opacity-30 absolute -top-8 md:-top-12 -start-2 md:-start-4 z-0 pointer-events-none">0${index + 1}</span>
+                                    <h3 class="text-2xl md:text-3xl font-bold text-[#F2F2F2] relative z-10">${section.title}</h3>
+                                </div>
+                            </div>
+                            <!-- Contenu Texte -->
+                            <div class="p-6 md:p-12 guide-content">
+                                <div class="text-gray-300 leading-loose text-lg text-justify">
+                                    ${section.content}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    guideListEl.insertAdjacentHTML('beforeend', guideHtml);
+                });
+            }
 
             // Rafraîchir les icônes ajoutées dynamiquement
             lucide.createIcons();
