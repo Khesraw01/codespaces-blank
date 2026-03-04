@@ -3,689 +3,534 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آکادمی خسرو | Khesraw Academy</title>
     
-    <!-- ==========================================================================
-         SEO & META TAGS (Optimisation pour Google et Réseaux Sociaux)
-         ========================================================================== -->
-    <title>خسرو | Khesraw - Full-Stack, AI & E-commerce (Dropshipping)</title>
+    <!-- Polices Vazirmatn pour le Persan/Dari -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     
-    <meta name="description" content="پورتفولیو خسرو، متخصص توسعه وب (Full-Stack)، علاقه‌مند به هوش مصنوعی (AI)، تجارت الکترونیک (E-commerce) و دراپ‌شیپینگ (Dropshipping). مقالات و آموزش دیجیتال مارکتینگ.">
-    <meta name="keywords" content="خسرو, توسعه وب, فول استک, هوش مصنوعی, تجارت الکترونیک, دراپ‌شیپینگ, دیجیتال مارکتینگ, Khesraw, Full-Stack, E-commerce, Dropshipping, AI, SEO, Netlify, Web Development, Digital Marketing">
-    <meta name="author" content="Khesraw">
-    <meta name="robots" content="index, follow">
-
-    <!-- Google Tag Manager -->
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-    })(window,document,'script','dataLayer','GTM-TDCPMD4V');</script>
-    <!-- End Google Tag Manager -->
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="خسرو | Khesraw - Full-Stack & E-commerce">
-    <meta property="og:description" content="توسعه‌دهنده وب، علاقه‌مند به هوش مصنوعی و تجارت الکترونیک (دراپ‌شیپینگ).">
-    <meta property="og:url" content="https://storied-stardust-a5c278.netlify.app/">
-    <meta property="og:site_name" content="Khesraw Portfolio">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&q=80&w=1200">
-
-    <!-- Twitter Cards -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="خسرو | Khesraw - Tech & E-commerce">
-    <meta name="twitter:description" content="توسعه‌دهنده وب، علاقه‌مند به هوش مصنوعی و تجارت الکترونیک (دراپ‌شیپینگ).">
-    <meta name="twitter:image" content="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&q=80&w=1200">
-
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS (CDN pour HTML pur) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons (CDN) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* ==========================================================================
-           1. VARIABLES CSS
-           ========================================================================== */
-        :root {
-            --bg-color: #050507;
-            --bg-gradient: radial-gradient(circle at top right, #1a1a2e 0%, #050507 50%, #0a0a0a 100%);
-            --accent-gold: #FFD700;
-            --accent-gold-glow: rgba(255, 215, 0, 0.4);
-            --accent-neon: #00F0FF;
-            --glass-bg: rgba(255, 255, 255, 0.03);
-            --glass-border: rgba(255, 255, 255, 0.08);
-            --glass-blur: blur(16px);
-            --text-main: #FFFFFF;
-            --text-muted: #A0A0B0;
-            --font-primary: 'Vazirmatn', sans-serif;
-            --transition-smooth: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
-        }
-
-        /* ==========================================================================
-           2. RESET & BASE
-           ========================================================================== */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
-            font-family: var(--font-primary);
-            background: var(--bg-color);
-            background-image: var(--bg-gradient);
-            color: var(--text-main);
-            min-height: 100vh;
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #050A18;
+            color: #F2F2F2;
             overflow-x: hidden;
-            line-height: 1.6;
         }
 
-        .ambient-light {
-            position: fixed; top: -20%; left: -10%; width: 50vw; height: 50vw;
-            background: radial-gradient(circle, var(--accent-gold-glow) 0%, transparent 70%);
-            filter: blur(80px); z-index: -1; opacity: 0.5; animation: pulse 10s infinite alternate;
+        /* Animations personnalisées */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
-
-        .ambient-light-2 {
-            position: fixed; bottom: -20%; right: -10%; width: 40vw; height: 40vw;
-            background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
-            filter: blur(80px); z-index: -1; opacity: 0.4; animation: pulse 8s infinite alternate-reverse;
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
-
-        /* ==========================================================================
-           3. NAVIGATION
-           ========================================================================== */
-        nav {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
-            background: var(--glass-bg); backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border);
-            border-radius: 50px; padding: 10px 30px; display: flex; gap: 30px;
-            z-index: 1000; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-btn {
-            background: none; border: none; color: var(--text-muted); font-family: var(--font-primary);
-            font-size: 1.1rem; font-weight: 400; cursor: pointer; padding: 8px 16px;
-            border-radius: 30px; transition: var(--transition-smooth);
-        }
-
-        .nav-btn:hover { color: var(--text-main); }
-        .nav-btn.active {
-            color: var(--accent-gold); font-weight: 700; background: rgba(255, 215, 0, 0.1);
-            box-shadow: inset 0 0 10px var(--accent-gold-glow);
-        }
-
-        /* ==========================================================================
-           4. SECTIONS & LAYOUT
-           ========================================================================== */
-        main { padding-top: 100px; min-height: 100vh; display: flex; flex-direction: column; align-items: center; }
-        section { display: none; width: 100%; max-width: 1200px; padding: 40px 20px; animation: fadeIn 0.8s ease-out forwards; }
-        section.active { display: flex; flex-direction: column; align-items: center; }
-
-        /* ==========================================================================
-           5. SECTION : ACCUEIL (NOUVEAU DESIGN OPTIMISÉ)
-           ========================================================================== */
-        .hero-container {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 60px;
-            width: 100%;
-            margin-top: 5vh;
-        }
-
-        .hero-content {
-            flex: 1;
-            text-align: right;
-        }
-
-        .hero-content h1 {
-            font-size: 5rem;
-            font-weight: 900;
-            margin-bottom: 5px;
-            background: linear-gradient(45deg, var(--text-main), var(--accent-gold));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 0 0 30px var(--accent-gold-glow);
-            letter-spacing: -1px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--accent-neon);
-            font-weight: 400;
-            margin-bottom: 25px;
-        }
-
-        .hero-description {
-            font-size: 1.15rem;
-            color: var(--text-muted);
-            font-weight: 300;
-            line-height: 1.8;
-            margin-bottom: 35px;
-            max-width: 600px;
-        }
-
-        /* Boutons d'action */
-        .hero-buttons {
-            display: flex;
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .cta-btn {
-            background: var(--accent-gold);
-            color: #000;
-            border: 1px solid var(--accent-gold);
-            padding: 15px 35px;
-            font-size: 1.1rem;
-            font-weight: 700;
-            font-family: inherit;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
-        }
-
-        .cta-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 30px var(--accent-gold-glow);
-        }
-
-        .cta-btn-outline {
-            background: transparent;
-            color: var(--text-main);
-            border: 1px solid var(--glass-border);
-            padding: 15px 35px;
-            font-size: 1.1rem;
-            font-family: inherit;
-            border-radius: 30px;
-            cursor: pointer;
-            transition: var(--transition-smooth);
-        }
-
-        .cta-btn-outline:hover {
-            background: rgba(255, 255, 255, 0.05);
-            border-color: var(--text-main);
-            transform: translateY(-3px);
-        }
-
-        /* Réseaux Sociaux alignés à droite */
-        .social-links { 
-            display: flex; 
-            gap: 20px; 
-            justify-content: flex-start; 
-        }
+        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+        .animate-slide-up { animation: slideUp 1s ease-out forwards; }
         
-        .social-links a {
-            color: var(--text-muted); width: 35px; height: 35px; display: inline-flex;
-            align-items: center; justify-content: center; transition: var(--transition-smooth);
-        }
+        /* Cacher la barre de défilement pour un look plus épuré (optionnel) */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #050A18; }
+        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
         
-        .social-links a:hover { 
-            color: var(--accent-gold); transform: translateY(-5px); filter: drop-shadow(0 0 10px var(--accent-gold-glow)); 
-        }
-        
-        .social-links svg { width: 100%; height: 100%; }
-
-        /* Conteneur de la nouvelle image */
-        .hero-image-wrapper {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            position: relative;
-        }
-
-        .hero-image-inner {
-            width: 100%;
-            max-width: 420px;
-            aspect-ratio: 3/4; /* Format portrait élégant */
-            border-radius: 30px;
-            background: var(--glass-bg);
-            border: 1px solid var(--glass-border);
-            padding: 15px;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-            position: relative;
-        }
-
-        /* Effet de bordure lumineuse autour de l'image */
-        .hero-image-inner::before {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(45deg, var(--accent-gold), var(--accent-neon), transparent, transparent);
-            border-radius: 32px;
-            z-index: -1;
-            opacity: 0.6;
-            background-size: 200% 200%;
-            animation: gradientBorder 5s ease infinite alternate;
-        }
-
-        .hero-image-inner img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 20px;
-            background-color: var(--bg-color); /* Fond si l'image est transparente */
-        }
-
-        @keyframes gradientBorder {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-
-        /* ==========================================================================
-           6. SECTION : À PROPOS
-           ========================================================================== */
-        .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; width: 100%; margin-top: 50px; }
-        
-        .glass-card {
-            background: var(--glass-bg); backdrop-filter: var(--glass-blur);
-            -webkit-backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border);
-            border-radius: 20px; padding: 40px; transition: var(--transition-smooth);
-        }
-        .glass-card:hover { transform: translateY(-5px); border-color: rgba(255, 215, 0, 0.3); box-shadow: 0 10px 30px rgba(0,0,0,0.5); }
-        .glass-card h3 { color: var(--accent-gold); font-size: 1.8rem; margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 10px; }
-        .glass-card p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 15px; text-align: justify; }
-
-        .skills-list { list-style: none; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 15px; }
-        .skill-item {
-            background: rgba(255, 255, 255, 0.05); padding: 8px 15px; border-radius: 20px;
-            font-size: 0.9rem; border: 1px solid var(--glass-border); color: var(--accent-neon);
-            cursor: pointer; transition: var(--transition-smooth);
-        }
-        .skill-item:hover { background: var(--accent-gold); color: #000; border-color: var(--accent-gold); box-shadow: 0 0 15px var(--accent-gold-glow); transform: scale(1.05); }
-
-        /* ==========================================================================
-           6.5 SECTION : DÉTAIL DES COMPÉTENCES & DETAILS DU BLOG
-           ========================================================================== */
-        .detail-card {
-            background: var(--glass-bg); backdrop-filter: var(--glass-blur); border: 1px solid var(--glass-border);
-            border-radius: 20px; padding: 50px; max-width: 900px; width: 100%; text-align: right; margin-top: 20px;
-        }
-        .detail-title { color: var(--accent-neon); font-size: 2.5rem; margin-bottom: 20px; border-bottom: 1px solid var(--glass-border); padding-bottom: 15px; line-height: 1.4; }
-        .detail-description { color: var(--text-main); font-size: 1.15rem; line-height: 2; margin-bottom: 30px; text-align: justify; }
-        .detail-description strong { color: var(--accent-gold); }
-        .detail-description h4 { color: #fff; font-size: 1.4rem; margin-top: 25px; margin-bottom: 10px; border-right: 3px solid var(--accent-gold); padding-right: 10px;}
-
-        .blog-detail-image {
-            width: 100%; height: 400px; object-fit: cover; border-radius: 15px; margin-bottom: 30px;
-            border: 1px solid var(--glass-border); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-        }
-        
-        .back-btn {
-            background: transparent; color: var(--accent-gold); border: 1px solid var(--accent-gold);
-            padding: 10px 25px; font-size: 1rem; font-family: inherit; border-radius: 30px;
-            cursor: pointer; transition: var(--transition-smooth); display: inline-flex; align-items: center; gap: 10px; margin-bottom: 20px;
-        }
-        .back-btn:hover { background: var(--accent-gold); color: #000; box-shadow: 0 0 15px var(--accent-gold-glow); }
-
-        /* ==========================================================================
-           7. SECTION : BLOG (LISTE DES ARTICLES)
-           ========================================================================== */
-        .blog-header { text-align: center; margin-bottom: 40px; width: 100%; }
-        .blog-header h2 { font-size: 2.5rem; color: var(--accent-gold); }
-        .blog-header p { color: var(--text-muted); font-size: 1.1rem; margin-top: 10px; }
-
-        .blog-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; width: 100%; }
-        
-        .blog-item {
-            background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 15px;
-            overflow: hidden; transition: var(--transition-smooth); display: flex; flex-direction: column;
-            cursor: pointer;
-        }
-        .blog-item:hover { border-color: var(--accent-neon); box-shadow: 0 0 20px rgba(0, 240, 255, 0.2); transform: translateY(-5px); }
-
-        .blog-image { width: 100%; height: 220px; object-fit: cover; border-bottom: 1px solid var(--glass-border); }
-        .blog-content { padding: 25px; flex-grow: 1; display: flex; flex-direction: column; }
-        .blog-category { font-size: 0.8rem; color: #000; background: var(--accent-gold); padding: 3px 10px; border-radius: 10px; display: inline-block; margin-bottom: 10px; align-self: flex-start; font-weight: bold; }
-        .blog-title { font-size: 1.4rem; margin-bottom: 15px; color: var(--text-main); line-height: 1.4; transition: var(--transition-smooth); }
-        .blog-item:hover .blog-title { color: var(--accent-gold); }
-        .blog-excerpt { color: var(--text-muted); font-size: 1rem; line-height: 1.6; }
-
-        /* ==========================================================================
-           8. ANIMATIONS & MEDIA QUERIES
-           ========================================================================== */
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes pulse { from { transform: scale(1); opacity: 0.3; } to { transform: scale(1.2); opacity: 0.6; } }
-        
-        @media (max-width: 900px) {
-            .hero-container { flex-direction: column-reverse; text-align: center; gap: 40px; }
-            .hero-content { text-align: center; display: flex; flex-direction: column; align-items: center; }
-            .hero-content h1 { font-size: 3.5rem; }
-            .hero-subtitle { font-size: 1.2rem; }
-            .social-links { justify-content: center; }
-            .hero-buttons { justify-content: center; flex-wrap: wrap; }
-            .hero-image-inner { max-width: 300px; aspect-ratio: 1/1; border-radius: 50%; }
-            .hero-image-inner::before { border-radius: 50%; }
-            .hero-image-inner img { border-radius: 50%; }
-            .about-grid { grid-template-columns: 1fr; }
-            nav { width: 95%; justify-content: space-around; padding: 10px 10px; gap: 10px;}
-            .nav-btn { font-size: 0.9rem; padding: 6px 10px; }
-            .detail-card { padding: 30px; margin-top: 10px; }
-            .blog-detail-image { height: 250px; }
+        /* Motif d'arrière-plan */
+        .bg-pattern {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0c16.568 0 30 13.432 30 30S46.568 60 30 60 0 46.568 0 30 13.432 0 30 0zm0 5c13.807 0 25 11.193 25 25S43.807 55 30 55 5 43.807 5 30 16.193 5 30 5zm0 10c8.284 0 15 6.716 15 15s-6.716 15-15 15-15-6.716-15-15 6.716-15 15-15zm0 5c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10z' fill='%23D4AF37' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-size: 60px 60px;
         }
     </style>
 </head>
-<body>
+<body class="selection:bg-[#D4AF37] selection:text-[#050A18] relative">
 
-    <!-- Google Tag Manager (noscript) -->
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TDCPMD4V"
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-    <!-- End Google Tag Manager (noscript) -->
+    <div class="bg-pattern"></div>
 
-    <!-- Effets de lumière ambiante -->
-    <div class="ambient-light"></div>
-    <div class="ambient-light-2"></div>
-
-    <!-- Navigation (Onglets SPA) -->
-    <nav>
-        <button class="nav-btn active" data-target="home">خانه</button> <!-- Accueil -->
-        <button class="nav-btn" data-target="about">درباره من</button> <!-- À propos -->
-        <button class="nav-btn" data-target="blog">بلاگ</button> <!-- Blog -->
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 w-full z-50 bg-[#050A18]/80 backdrop-blur-lg border-b border-white/5">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="flex items-center gap-3 cursor-pointer group" onclick="navigate('home')">
+                <div class="w-10 h-10 bg-gradient-to-br from-[#D4AF37] to-[#8C7323] rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.4)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] transition-all">
+                    <span class="text-[#050A18] font-bold text-xl font-serif mt-1">K</span>
+                </div>
+                <span class="font-bold text-xl tracking-wide hidden sm:block mt-1">آکادمی خسرو</span>
+            </div>
+            
+            <div class="flex items-center gap-8">
+                <button id="nav-home" onclick="navigate('home')" class="text-sm font-medium transition-colors text-[#D4AF37]">
+                    خانه
+                </button>
+                <button id="nav-formation" onclick="navigate('formation')" class="text-sm font-medium transition-colors text-gray-400 hover:text-white">
+                    آموزش‌ها
+                </button>
+                <button class="hidden sm:flex items-center justify-center w-auto px-4 h-10 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition text-gray-300">
+                    <span class="text-xs">دری / FR</span>
+                </button>
+            </div>
+        </div>
     </nav>
 
-    <main>
-        <!-- SECTION 1 : ACCUEIL (NOUVEAU DESIGN) -->
-        <section id="home" class="active">
-            <div class="hero-container">
-                <!-- Colonne de texte -->
-                <div class="hero-content">
-                    <h1>خسرو</h1> <!-- Khesraw -->
-                    <h2 class="hero-subtitle">متخصص توسعه وب، هوش مصنوعی و تجارت الکترونیک</h2> <!-- Subtitle -->
-                    
-                    <p class="hero-description">
-                        من خسرو هستم. اگر به دنیای تجارت الکترونیک، هوش مصنوعی و هر آنچه که به کسب‌وکار و اینترنت مربوط می‌شود علاقه‌مند هستید، دقیقاً در جای درستی قرار دارید. من در اینجا بهترین توضیحات و آموزش‌ها را در زمینه تجارت و هوش مصنوعی با شما به اشتراک می‌گذارم. پس از این صفحه لذت ببرید و استفاده کنید!
+    <!-- MAIN CONTENT -->
+    <main class="pt-20">
+
+        <!-- ================= VUE ACCUEIL ================= -->
+        <div id="view-home" class="view-section animate-fade-in z-10 relative block">
+            
+            <!-- Hero Section -->
+            <section class="min-h-[85vh] flex flex-col justify-center items-center text-center px-6 pt-20">
+                <div class="max-w-4xl mx-auto space-y-8 animate-slide-up flex flex-col items-center">
+                    <div class="inline-block border border-[#D4AF37]/30 bg-[#D4AF37]/10 text-[#D4AF37] px-5 py-2 rounded-full text-sm font-medium tracking-widest mb-6 shadow-[0_0_15px_rgba(212,175,55,0.15)]">
+                        آکادمی خسرو (Khesraw Academy)
+                    </div>
+                    <h1 class="text-5xl md:text-7xl font-extrabold text-[#F2F2F2] leading-tight">
+                        تجارت آنلاین <br class="hidden md:block"/>
+                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#FFF0B3] drop-shadow-[0_0_15px_rgba(212,175,55,0.5)]">
+                            سرنوشت ماست
+                        </span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
+                        یاد بگیرید چگونه میراث دیجیتال خود را بسازید، حتی زمانی که جهان در خواب است.
                     </p>
+                    <div class="pt-8">
+                        <button onclick="navigate('formation')" class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-[#050A18] bg-[#D4AF37] rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(212,175,55,0.6)]">
+                            <span class="absolute inset-0 w-full h-full bg-gradient-to-br from-white/20 to-transparent"></span>
+                            <span class="relative flex items-center gap-2">
+                                ورود به واقعیت <i data-lucide="chevron-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
+                            </span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Story Section 1 -->
+            <section class="py-24 px-6 bg-gradient-to-b from-transparent to-[#0a1228]/50 relative z-10">
+                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div class="space-y-6">
+                        <h2 class="text-3xl md:text-4xl font-bold text-[#D4AF37]">داستان من و حقیقت پنهان</h2>
+                        <p class="text-lg md:text-xl text-gray-300 leading-relaxed text-justify">
+                            "مثل بسیاری از شما، من هم به اینجا آمدم و فهمیدم که دنیای قدیم تغییر کرده است. دیگر صرفاً با کار فیزیکی نمی‌توان آینده را تضمین کرد. من این پلتفرم را نساختم تا خودم را یک «استاد» معرفی کنم یا کورس‌های گران بفروشم."
+                        </p>
+                        <p class="text-gray-400 text-justify leading-relaxed">
+                            اینجا برای این است که چشمان ما به واقعیت اقتصاد باز شود. گوروهایی که کورس می‌فروشند حقیقت را پنهان می‌کنند. دراپ‌شیپینگ معجزه نیست، بلکه یک علم است. ما هم یاد می‌گیریم و با هم رشد می‌کنیم.
+                        </p>
+                    </div>
+                    <div class="relative flex justify-center">
+                        <div class="w-80 h-80 bg-gradient-to-br from-[#1DA4AC]/20 to-[#D4AF37]/20 relative flex items-center justify-center p-1" style="clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)">
+                            <div class="w-full h-full bg-[#050A18] relative flex items-center justify-center" style="clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)">
+                                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800" alt="Khesraw Vision" class="w-full h-full object-cover opacity-60 hover:opacity-80 transition-opacity duration-500" />
+                                <div class="absolute inset-0 bg-gradient-to-t from-[#050A18] to-transparent opacity-50"></div>
+                            </div>
+                        </div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#D4AF37]/10 blur-[60px] rounded-full pointer-events-none -z-10"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Story Section 2 -->
+            <section class="py-24 px-6 relative z-10">
+                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <div class="relative flex justify-center order-2 md:order-1">
+                        <div class="w-80 h-80 relative flex items-center justify-center rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_30px_rgba(29,164,172,0.15)]">
+                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="Digital Economy" class="w-full h-full object-cover opacity-70" />
+                            <div class="absolute inset-0 bg-gradient-to-tr from-[#050A18] to-transparent opacity-80"></div>
+                        </div>
+                    </div>
+                    <div class="space-y-6 order-1 md:order-2">
+                        <h2 class="text-3xl md:text-4xl font-bold text-[#F2F2F2]">چرا تجارت آنلاین سرنوشت ماست؟</h2>
+                        <p class="text-lg md:text-xl text-gray-300 leading-relaxed text-justify">
+                            دنیا در حال تغییر است. اقتصاد فیزیکی جای خود را به اقتصاد دیجیتال داده است. بیش از ۱۲۰ تریلیون دلار در سال‌های آینده به سمت تجارت آنلاین (E-commerce) و هوش مصنوعی (AI) سرازیر می‌شود.
+                        </p>
+                        <p class="text-gray-400 text-justify leading-relaxed">
+                            این بیزنس مختص متخصصان کامپیوتر نیست. این مسیر برای <span class="text-[#D4AF37] font-bold">مادران، دانشجویان و جویندگان استقلال مالی</span> طراحی شده است. کسانی که می‌خواهند پارت‌تایم برای آینده خود کار کنند. سرمایه اولیه کم، عدم نیاز به انبارداری و آزادی مکانی، این تجارت را به بهترین فرصت تبدیل کرده است.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Grid Compétences -->
+            <section class="py-24 px-6 z-10 relative">
+                <div class="max-w-6xl mx-auto text-center mb-16">
+                    <h2 class="text-3xl font-bold text-[#F2F2F2]">ابزارهای موفقیت</h2>
+                </div>
+                <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
+                    <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-center hover:bg-white/[0.08] transition-colors group">
+                        <i data-lucide="shopping-cart" class="w-10 h-10 text-[#D4AF37] mx-auto mb-4 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="font-semibold text-lg text-gray-200">شاپيفای (Shopify)</h3>
+                    </div>
+                    <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-center hover:bg-white/[0.08] transition-colors group">
+                        <i data-lucide="target" class="w-10 h-10 text-[#D4AF37] mx-auto mb-4 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="font-semibold text-lg text-gray-200">تبلیغات فیسبوک</h3>
+                    </div>
+                    <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-center hover:bg-white/[0.08] transition-colors group">
+                        <i data-lucide="search" class="w-10 h-10 text-[#D4AF37] mx-auto mb-4 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="font-semibold text-lg text-gray-200">سئو (SEO)</h3>
+                    </div>
+                    <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-center hover:bg-white/[0.08] transition-colors group">
+                        <i data-lucide="cpu" class="w-10 h-10 text-[#D4AF37] mx-auto mb-4 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="font-semibold text-lg text-gray-200">هوش مصنوعی (AI)</h3>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Manifeste -->
+            <section class="py-32 px-6 relative z-10 flex justify-center">
+                <div class="max-w-4xl text-center relative p-12">
+                    <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-e-2 border-[#D4AF37]/50 rounded-tr-lg"></div>
+                    <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-s-2 border-[#D4AF37]/50 rounded-tl-lg"></div>
+                    <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-e-2 border-[#D4AF37]/50 rounded-br-lg"></div>
+                    <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-s-2 border-[#D4AF37]/50 rounded-bl-lg"></div>
                     
-                    <div class="hero-buttons">
-                        <button class="cta-btn" onclick="goToSection('about')">بیشتر بدانید</button>
-                        <button class="cta-btn-outline" onclick="goToSection('blog')">خواندن مقالات</button>
+                    <h2 class="text-4xl md:text-5xl font-serif italic text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 leading-tight">
+                        "یا با تکنولوژی پیشرفت می‌کنیم، <br class="hidden md:block"/> یا در حاشیه تاریخ فراموش می‌شویم."
+                    </h2>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ================= VUE FORMATIONS (BENTO GRID) ================= -->
+        <div id="view-formation" class="view-section animate-fade-in z-10 relative py-20 px-6 min-h-screen hidden">
+            <div class="max-w-6xl mx-auto">
+                <div class="mb-16">
+                    <h1 class="text-4xl md:text-5xl font-bold text-[#F2F2F2] mb-4">مسیر عملی</h1>
+                    <p class="text-xl text-gray-400">یک ماژول را برای ساختن سرنوشت خود انتخاب کنید.</p>
+                </div>
+
+                <!-- Grille Bento -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Ecommerce -->
+                    <div onclick="navigate('lesson-ecommerce')" class="md:col-span-2 md:row-span-2 group cursor-pointer relative bg-white/[0.03] border border-white/10 backdrop-blur-md rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)] hover:border-[#D4AF37]/30 overflow-hidden flex flex-col">
+                        <div class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/0 to-[#D4AF37]/[0.05] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="relative z-10 flex-grow flex flex-col">
+                            <div class="bg-[#050A18] w-14 h-14 rounded-2xl flex items-center justify-center border border-white/10 mb-6 group-hover:border-[#D4AF37]/50 transition-colors shadow-lg">
+                                <i data-lucide="shopping-cart" class="w-7 h-7 text-[#D4AF37]"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-[#F2F2F2] mb-2">تجارت آنلاین و دراپ‌شیپینگ</h3>
+                            <h4 class="text-sm font-semibold tracking-wider text-[#1DA4AC] mb-4">مراحل عملی شاپيفای</h4>
+                            <p class="text-gray-400 mb-6 flex-grow leading-relaxed">واقعیت دنیای تجارت. یاد بگیرید چگونه فروشگاه خود را بسازید، محصولات برنده را پیدا کنید و به استقلال مالی برسید.</p>
+                            <div class="flex items-center text-[#D4AF37] font-semibold text-sm group-hover:-translate-x-2 transition-transform mt-auto">
+                                <i data-lucide="chevron-left" class="w-4 h-4 me-1"></i> شروع ماژول 
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Icônes Réseaux Sociaux -->
-                    <div class="social-links">
-                        <a href="https://www.facebook.com/share/1CLpAcsVVd/?mibextid=wwXIfr" target="_blank" aria-label="Facebook">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.675 0h-21.35c-.732 0-1.325.593-1.325 1.325v21.351c0 .731.593 1.324 1.325 1.324h11.495v-9.294h-3.128v-3.622h3.128v-2.671c0-3.1 1.893-4.788 4.659-4.788 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.504 0-1.795.715-1.795 1.763v2.313h3.587l-.467 3.622h-3.12v9.293h6.116c.73 0 1.323-.593 1.323-1.325v-21.35c0-.732-.593-1.325-1.325-1.325z"/></svg>
-                        </a>
-                        <a href="#" target="_blank" aria-label="Instagram">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4s1.791-4 4-4 4 1.79 4 4-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                        </a>
-                        <a href="#" target="_blank" aria-label="TikTok">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.525.02c1.31-.02 2.61-.01 3.91.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
-                        </a>
-                        <a href="#" target="_blank" aria-label="YouTube">
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    <!-- Facebook Ads -->
+                    <div onclick="navigate('lesson-fb-ads')" class="md:col-span-1 md:row-span-1 group cursor-pointer relative bg-white/[0.03] border border-white/10 backdrop-blur-md rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)] hover:border-[#D4AF37]/30 overflow-hidden flex flex-col">
+                        <div class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/0 to-[#D4AF37]/[0.05] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="relative z-10 flex-grow flex flex-col">
+                            <div class="bg-[#050A18] w-14 h-14 rounded-2xl flex items-center justify-center border border-white/10 mb-6 group-hover:border-[#D4AF37]/50 transition-colors shadow-lg">
+                                <i data-lucide="target" class="w-7 h-7 text-[#D4AF37]"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-[#F2F2F2] mb-2">تبلیغات فیسبوک (رایگان)</h3>
+                            <h4 class="text-sm font-semibold tracking-wider text-[#1DA4AC] mb-4">جذب ترافیک</h4>
+                            <p class="text-gray-400 mb-6 flex-grow leading-relaxed">الگوریتم متا را برای هدف‌گیری خریداران واقعی مسلط شوید.</p>
+                            <div class="flex items-center text-[#D4AF37] font-semibold text-sm group-hover:-translate-x-2 transition-transform mt-auto">
+                                <i data-lucide="chevron-left" class="w-4 h-4 me-1"></i> شروع ماژول 
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- IA -->
+                    <div onclick="navigate('lesson-ia')" class="md:col-span-1 md:row-span-1 group cursor-pointer relative bg-white/[0.03] border border-white/10 backdrop-blur-md rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)] hover:border-[#D4AF37]/30 overflow-hidden flex flex-col">
+                        <div class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/0 to-[#D4AF37]/[0.05] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="relative z-10 flex-grow flex flex-col">
+                            <div class="bg-[#050A18] w-14 h-14 rounded-2xl flex items-center justify-center border border-white/10 mb-6 group-hover:border-[#D4AF37]/50 transition-colors shadow-lg">
+                                <i data-lucide="cpu" class="w-7 h-7 text-[#D4AF37]"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-[#F2F2F2] mb-2">تسلط بر هوش مصنوعی</h3>
+                            <h4 class="text-sm font-semibold tracking-wider text-[#1DA4AC] mb-4">اتوماسیون (Automation)</h4>
+                            <p class="text-gray-400 mb-6 flex-grow leading-relaxed">از هوش مصنوعی برای نوشتن، طراحی و بهینه‌سازی استفاده کنید.</p>
+                            <div class="flex items-center text-[#D4AF37] font-semibold text-sm group-hover:-translate-x-2 transition-transform mt-auto">
+                                <i data-lucide="chevron-left" class="w-4 h-4 me-1"></i> شروع ماژول 
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- SEO -->
+                    <div onclick="navigate('lesson-seo')" class="md:col-span-3 md:row-span-1 group cursor-pointer relative bg-white/[0.03] border border-white/10 backdrop-blur-md rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)] hover:border-[#D4AF37]/30 overflow-hidden flex flex-col">
+                        <div class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/0 to-[#D4AF37]/[0.05] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                        <div class="relative z-10 flex-grow flex flex-col">
+                            <div class="bg-[#050A18] w-14 h-14 rounded-2xl flex items-center justify-center border border-white/10 mb-6 group-hover:border-[#D4AF37]/50 transition-colors shadow-lg">
+                                <i data-lucide="search" class="w-7 h-7 text-[#D4AF37]"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-[#F2F2F2] mb-2">استراتژی‌های سئو (SEO)</h3>
+                            <h4 class="text-sm font-semibold tracking-wider text-[#1DA4AC] mb-4">ترافیک ارگانیک</h4>
+                            <p class="text-gray-400 mb-6 flex-grow leading-relaxed">با استفاده از موتورهای جستجو، یک میراث دیجیتال ماندگار بسازید.</p>
+                            <div class="flex items-center text-[#D4AF37] font-semibold text-sm group-hover:-translate-x-2 transition-transform mt-auto">
+                                <i data-lucide="chevron-left" class="w-4 h-4 me-1"></i> شروع ماژول 
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================= VUE LECON (DYNAMIQUE) ================= -->
+        <div id="view-lesson" class="view-section animate-fade-in z-10 relative py-20 px-6 min-h-screen hidden">
+            <div class="max-w-5xl mx-auto">
+                <button onclick="navigate('formation')" class="flex items-center text-gray-400 hover:text-[#D4AF37] transition-colors mb-10 font-medium">
+                    <i data-lucide="arrow-right" class="w-5 h-5 ms-2"></i> بازگشت به دیدگاه کلی
+                </button>
+
+                <div class="mb-12 border-b border-white/10 pb-8">
+                    <div class="flex items-center gap-4 mb-6">
+                        <div class="bg-[#D4AF37]/20 p-3 rounded-xl border border-[#D4AF37]/30">
+                            <i id="lesson-icon" data-lucide="book-open" class="w-8 h-8 text-[#D4AF37]"></i>
+                        </div>
+                        <div>
+                            <h1 id="lesson-title" class="text-3xl md:text-5xl font-bold text-[#F2F2F2]">Titre</h1>
+                            <p id="lesson-subtitle" class="text-[#1DA4AC] mt-2 font-medium tracking-wider">Sous-titre</p>
+                        </div>
+                    </div>
+                    
+                    <p class="text-xl text-gray-300 mt-6 max-w-3xl leading-relaxed text-justify">
+                        <span class="text-[#D4AF37] font-bold">چرا این ماژول برای سرنوشت شما حیاتی است:</span> <span id="lesson-desc">Description</span>
+                    </p>
+
+                    <!-- Bouton de téléchargement dynamique Ebook -->
+                    <div id="ebook-container" class="mt-8 hidden">
+                        <a id="ebook-link" href="#" target="_blank" class="inline-flex items-center justify-center px-6 py-3 bg-[#1DA4AC]/10 border border-[#1DA4AC]/30 text-[#1DA4AC] rounded-xl hover:bg-[#1DA4AC] hover:text-[#050A18] transition-all duration-300 font-bold shadow-lg shadow-[#1DA4AC]/10 group">
+                            <i data-lucide="download" class="w-5 h-5 ms-2 group-hover:-translate-y-1 transition-transform"></i>
+                            دانلود کتاب الکترونیکی: واقعیت دنیای تجارت آنلاین
                         </a>
                     </div>
                 </div>
 
-                <!-- Colonne de l'Image -->
-                <div class="hero-image-wrapper">
-                    <div class="hero-image-inner">
-                        <!-- J'ai ajouté une image de secours (onerror) au cas où l'image locale ne charge pas -->
-                        <img src="WhatsApp Image 2026-03-02 at 21.09.53.jpg" alt="خسرو" onerror="this.src='https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800'">
-                    </div>
+                <!-- Liste des vidéos générée via JavaScript -->
+                <div id="video-list" class="space-y-12">
+                    <!-- Les vidéos apparaitront ici -->
                 </div>
-            </div>
-        </section>
 
-        <!-- SECTION 2 : À PROPOS -->
-        <section id="about">
-            <div class="about-grid">
-                <div class="glass-card">
-                    <h3>درباره من</h3>
-                    <p>من <strong>خسرو</strong> هستم. اصالتاً اهل افغانستان می‌باشم و به اروپا مهاجرت کرده‌ام.</p>
-                    <p>من شیفته‌ی هر چیزی هستم که به تکنولوژی مربوط می‌شود، به‌ویژه <strong>هوش مصنوعی (AI)</strong>. همچنین یک علاقه‌مند و تازه‌کار پرانگیزه در دنیای <strong>تجارت الکترونیک (E-commerce) و دراپ‌شیپینگ (Dropshipping)</strong> هستم و دائماً در حال یادگیری در این زمینه‌ها می‌باشم.</p>
-                </div>
-                <div class="glass-card">
-                    <h3>تخصص‌ها و مهارت‌ها (برای جزئیات کلیک کنید)</h3>
-                    <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 5px;">تخصص‌های من در زمینه تکنولوژی، مارکتینگ و فروش آنلاین:</p>
-                    <ul class="skills-list">
-                        <li class="skill-item" data-skill="web">HTML5 / CSS3 / JavaScript</li>
-                        <li class="skill-item" data-skill="ai">هوش مصنوعی (AI)</li>
-                        <li class="skill-item" data-skill="shopify">Shopify (شاپایفای) & Dropshipping</li>
-                        <li class="skill-item" data-skill="fb">Facebook Ads</li>
-                        <li class="skill-item" data-skill="google">Google Ads</li>
-                        <li class="skill-item" data-skill="seo">SEO (سئو)</li>
-                        <li class="skill-item" data-skill="sea">SEA (تبلیغات جستجو)</li>
-                    </ul>
-                </div>
             </div>
-        </section>
+        </div>
 
-        <!-- SECTION 2.5 : DÉTAILS DES COMPÉTENCES (Skills) -->
-        <section id="skill-details">
-            <button class="back-btn" onclick="goToSection('about')" style="align-self: flex-start; margin-right: 20px;">
-                &rarr; بازگشت به درباره من
-            </button>
-            <div class="detail-card">
-                <h2 id="detail-title" class="detail-title">عنوان</h2>
-                <div id="detail-desc" class="detail-description">توضیحات در اینجا قرار می‌گیرد...</div>
-            </div>
-        </section>
-
-        <!-- SECTION 3 : BLOG (LISTE DES ARTICLES) -->
-        <section id="blog">
-            <div class="blog-header">
-                <h2>وبلاگ آموزشی و مقالات</h2>
-                <p>دانش و تجربیات من در زمینه تجارت الکترونیک، هوش مصنوعی و دیجیتال مارکتینگ.</p>
-            </div>
-            <div id="blog-container" class="blog-grid">
-                <!-- Les cartes du blog seront injectées ici par JavaScript -->
-            </div>
-        </section>
-
-        <!-- SECTION 3.5 : PAGE COMPLÈTE D'UN ARTICLE DE BLOG -->
-        <section id="blog-post-details">
-            <button class="back-btn" onclick="goToSection('blog')" style="align-self: flex-start; margin-right: 20px;">
-                &rarr; بازگشت به لیست مقالات 
-            </button>
-            <div class="detail-card" style="max-width: 1000px;">
-                <img id="post-image" class="blog-detail-image" src="" alt="Cover">
-                <span id="post-category" class="blog-category" style="margin-bottom: 15px;">دسته‌بندی</span>
-                <h2 id="post-title" class="detail-title" style="font-size: 2.2rem; border-bottom: none; padding-bottom: 0;">عنوان مقاله</h2>
-                <div id="post-content" class="detail-description" style="margin-top: 20px;">محتوای مقاله در اینجا قرار می‌گیرد...</div>
-            </div>
-        </section>
     </main>
 
-    <!-- ==========================================================================
-         JAVASCRIPT VANILLA 
-         ========================================================================== -->
+    <!-- FOOTER -->
+    <footer class="border-t border-white/5 bg-[#02050D] py-12 px-6 relative z-10">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-gradient-to-br from-[#D4AF37] to-[#8C7323] rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)]">
+                    <span class="text-[#050A18] font-bold text-xl font-serif mt-1">K</span>
+                </div>
+                <span class="text-[#F2F2F2] font-bold text-xl">آکادمی خسرو</span>
+            </div>
+            <p class="text-gray-500 text-sm">
+                © 2025 Khesraw Academy. میراث خود را بسازید.
+            </p>
+            <div class="flex gap-6 text-sm text-gray-500">
+                <a href="#" class="hover:text-[#D4AF37] transition">قوانین و مقررات</a>
+                <a href="#" class="hover:text-[#D4AF37] transition">تماس با ما</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- LOGIQUE JAVASCRIPT -->
     <script>
-        // Fonction globale pour changer de section
-        function goToSection(targetId) {
-            const sections = document.querySelectorAll('section');
-            const navButtons = document.querySelectorAll('.nav-btn');
+        // Initialiser les icônes Lucide au démarrage
+        lucide.createIcons();
 
-            sections.forEach(s => s.classList.remove('active'));
-            document.getElementById(targetId).classList.add('active');
+        // Données des cours
+        const coursesData = {
+            'ecommerce': {
+                title: "تجارت آنلاین و دراپ‌شیپینگ",
+                subtitle: "مراحل عملی شاپيفای",
+                icon: "shopping-cart",
+                description: "واقعیت دنیای تجارت. یاد بگیرید چگونه فروشگاه خود را بسازید، محصولات برنده را پیدا کنید و به استقلال مالی برسید.",
+                ebookUrl: "https://drive.google.com/file/d/1AHa0CfGrcYZ1GJCZQ4K0AhB_HDwALaKK/view",
+                videos: [
+                    { title: "راه‌اندازی فروشگاه در Shopify", duration: "14:20" },
+                    { title: "یافتن محصولات با AliExpress و DSers", duration: "22:15" },
+                    { title: "بهینه‌سازی صفحه محصول و نظرات (Loox)", duration: "18:40" }
+                ],
+                keyPoints: [
+                    "انتخاب محصول مناسب (Niche) و حل مشکل مشتری.",
+                    "استفاده از فاکتور شگفتی (Wow Factor) برای شبکه‌های اجتماعی.",
+                    "ارتباط مستقیم با تامین‌کنندگان (CJ Dropshipping, AliExpress)."
+                ]
+            },
+            'fb-ads': {
+                title: "تبلیغات فیسبوک (رایگان)",
+                subtitle: "جذب ترافیک",
+                icon: "target",
+                description: "الگوریتم متا را برای هدف‌گیری خریداران واقعی مسلط شوید.",
+                videos: [
+                    { title: "آموزش کامل بیزینس منیجر (Business Manager)", duration: "15:00" },
+                    { title: "راه‌اندازی اولین کمپین آزمایشی", duration: "25:30" }
+                ],
+                keyPoints: [
+                    "استراتژی جذب هدفمند.",
+                    "بهینه‌سازی هزینه‌ها (ROAS).",
+                    "روانشناسی خریدار."
+                ]
+            },
+            'ia': {
+                title: "تسلط بر هوش مصنوعی",
+                subtitle: "اتوماسیون (Automation)",
+                icon: "cpu",
+                description: "از هوش مصنوعی برای نوشتن، طراحی و بهینه‌سازی استفاده کنید.",
+                videos: [
+                    { title: "استفاده از ChatGPT برای کپی‌رایتینگ", duration: "12:45" },
+                    { title: "طراحی تصاویر با Midjourney", duration: "19:10" }
+                ],
+                keyPoints: [
+                    "تولید محتوای سریع.",
+                    "طراحی بدون نیاز به گرافیست.",
+                    "اتوماسیون پشتیبانی مشتری."
+                ]
+            },
+            'seo': {
+                title: "استراتژی‌های سئو (SEO)",
+                subtitle: "ترافیک ارگانیک",
+                icon: "search",
+                description: "با استفاده از موتورهای جستجو، یک میراث دیجیتال ماندگار بسازید.",
+                videos: [
+                    { title: "اصول اولیه سئو برای شاپيفای", duration: "20:00" },
+                    { title: "بهینه‌سازی تصاویر (SEO Image Optimizer) و سرعت سایت", duration: "16:20" }
+                ],
+                keyPoints: [
+                    "تحقیق کلمات کلیدی درآمدزا.",
+                    "بهینه‌سازی سرعت سایت.",
+                    "ساخت بک‌لینک‌های قدرتمند."
+                ]
+            }
+        };
 
-            // Gestion de l'état actif des boutons du menu
-            navButtons.forEach(b => {
-                b.classList.remove('active');
-                if(b.getAttribute('data-target') === targetId) {
-                    b.classList.add('active');
-                } else if (targetId === 'skill-details' && b.getAttribute('data-target') === 'about') {
-                    b.classList.add('active');
-                } else if (targetId === 'blog-post-details' && b.getAttribute('data-target') === 'blog') {
-                    b.classList.add('active');
-                }
+        // Fonction pour changer de page (vue)
+        function navigate(viewName) {
+            // Cacher toutes les sections
+            document.querySelectorAll('.view-section').forEach(el => {
+                el.classList.add('hidden');
+                el.classList.remove('block');
             });
-            window.scrollTo(0, 0); // Remonter en haut de page lors d'un clic
+            
+            // Remonter en haut de page
+            window.scrollTo({ top: 0, behavior: 'smooth' });
 
-            // Google Tag Manager : Suivi des pages virtuelles
-            window.dataLayer = window.dataLayer || [];
-            window.dataLayer.push({
-                'event': 'VirtualPageview',
-                'virtualPageURL': '/' + targetId,
-                'virtualPageTitle': targetId
-            });
+            // Changer la couleur des liens de navigation
+            document.getElementById('nav-home').className = "text-sm font-medium transition-colors text-gray-400 hover:text-white";
+            document.getElementById('nav-formation').className = "text-sm font-medium transition-colors text-gray-400 hover:text-white";
+
+            if (viewName === 'home') {
+                document.getElementById('view-home').classList.remove('hidden');
+                document.getElementById('nav-home').className = "text-sm font-medium transition-colors text-[#D4AF37]";
+            } 
+            else if (viewName === 'formation') {
+                document.getElementById('view-formation').classList.remove('hidden');
+                document.getElementById('nav-formation').className = "text-sm font-medium transition-colors text-[#D4AF37]";
+            }
+            // Si c'est une leçon spécifique
+            else if (viewName.startsWith('lesson-')) {
+                const courseId = viewName.replace('lesson-', '');
+                loadLesson(courseId);
+                document.getElementById('view-lesson').classList.remove('hidden');
+                document.getElementById('nav-formation').className = "text-sm font-medium transition-colors text-[#D4AF37]";
+            }
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
+        // Fonction pour charger dynamiquement une leçon
+        function loadLesson(courseId) {
+            const course = coursesData[courseId];
+            if (!course) return;
+
+            // Remplir l'en-tête
+            document.getElementById('lesson-title').innerText = course.title;
+            document.getElementById('lesson-subtitle').innerText = course.subtitle;
+            document.getElementById('lesson-desc').innerText = course.description;
             
-            /* --- 1. GESTION DE LA NAVIGATION PRINCIPALE --- */
-            const navButtons = document.querySelectorAll('.nav-btn');
-            navButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    goToSection(btn.getAttribute('data-target'));
-                });
-            });
+            // Changer l'icône
+            const iconEl = document.getElementById('lesson-icon');
+            iconEl.setAttribute('data-lucide', course.icon);
 
-            /* --- 2. GESTION DES SOUS-PAGES DE COMPÉTENCES --- */
-            const skillsData = {
-                web: {
-                    title: "توسعه وب: HTML5 / CSS3 / JavaScript",
-                    desc: "این سه زبان برنامه‌نویسی، هسته اصلی توسعه وب مدرن را تشکیل می‌دهند. <strong>HTML</strong> ساختار معنایی صفحات را بنا می‌کند، <strong>CSS</strong> با طراحی واکنش‌گرا (Responsive Design) و انیمیشن‌های روان، تجربه کاربری (UX) بی‌نظیری خلق می‌کند و <strong>JavaScript</strong> با مدیریت رویدادها و ارتباط با سرور، وب‌سایت‌های پویا و تعاملی می‌سازد."
-                },
-                ai: {
-                    title: "هوش مصنوعی (AI) در کسب‌وکار",
-                    desc: "هوش مصنوعی در حال بازنویسی قوانین دنیای دیجیتال است. من در زمینه پیاده‌سازی راهکارهای مبتنی بر هوش مصنوعی بسیار فعال هستم؛ از جمله استفاده از یادگیری ماشین (Machine Learning) برای تحلیل رفتار مشتریان در فروشگاه‌های آنلاین، ادغام چت‌بات‌های هوشمند برای پشتیبانی ۲۴ ساعته، و تولید محتوای خودکار و هدفمند."
-                },
-                shopify: {
-                    title: "Shopify و سیستم Dropshipping",
-                    desc: "<strong>شاپایفای (Shopify)</strong> به عنوان برترین پلتفرم تجارت الکترونیک در جهان، امکان ساخت فروشگاه‌های آنلاین مقیاس‌پذیر و امن را فراهم می‌کند. تخصص من در این حوزه شامل راه‌اندازی صفر تا صد فروشگاه، بهینه‌سازی نرخ تبدیل (CRO)، و یکپارچه‌سازی سیستم‌های <strong>دراپ‌شیپینگ (Dropshipping)</strong> است."
-                },
-                fb: {
-                    title: "تبلیغات هدفمند: Facebook Ads",
-                    desc: "پلتفرم تبلیغاتی شرکت متا (فیس‌بوک و اینستاگرام) یکی از قدرتمندترین ابزارهای تارگتینگ در جهان مارکتینگ است. من در طراحی کمپین‌های تبلیغاتی با بازدهی بالا (High ROI) مهارت دارم. این شامل استفاده از <strong>Meta Pixel</strong> برای ردیابی دقیق رفتار کاربران است."
-                },
-                google: {
-                    title: "Google Ads: جذب مشتریان آماده به خرید",
-                    desc: "برخلاف شبکه‌های اجتماعی که بر اساس علایق هدف‌گذاری می‌کنند، گوگل ادز بر اساس <strong>نیاز لحظه‌ای کاربر (Search Intent)</strong> عمل می‌کند. تخصص من شامل تحقیق عمیق کلمات کلیدی و بهینه‌سازی هزینه هر کلیک (CPC) است."
-                },
-                seo: {
-                    title: "سئو (SEO): تسخیر رتبه‌های برتر گوگل",
-                    desc: "سئو (بهینه‌سازی برای موتورهای جستجو) هنر و علم قرار گرفتن در رتبه‌های برتر گوگل به صورت کاملاً ارگانیک است. استراتژی من بر سه ستون اصلی استوار است: <strong>سئوی تکنیکال</strong>، <strong>سئوی داخلی یا On-Page</strong>، و <strong>سئوی خارجی یا Off-Page</strong>."
-                },
-                sea: {
-                    title: "SEA: تبلیغات کلیکی در موتورهای جستجو",
-                    desc: "تبلیغات در موتورهای جستجو (مانند Google Ads) روشی سریع برای تسخیر صفحه اول نتایج است. تخصص اصلی من در ترکیب استراتژی‌های SEA با SEO است برای ایجاد فروش در کوتاه‌مدت و کاهش هزینه‌ها در بلندمدت."
-                }
-            };
-
-            const skillItems = document.querySelectorAll('.skill-item');
-            const detailTitle = document.getElementById('detail-title');
-            const detailDesc = document.getElementById('detail-desc');
-
-            skillItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const skillKey = item.getAttribute('data-skill');
-                    const data = skillsData[skillKey];
-                    if (data) {
-                        detailTitle.innerHTML = data.title;
-                        detailDesc.innerHTML = data.desc;
-                        goToSection('skill-details');
-                    }
-                });
-            });
-
-            /* --- 3. GESTION DU BLOG ET PAGES D'ARTICLES --- */
-            const blogContainer = document.getElementById('blog-container');
-
-            const blogPosts = [
-                {
-                    id: "e-commerce",
-                    category: "تجارت الکترونیک", 
-                    title: "تجارت الکترونیک چیست و چگونه کار می‌کند؟",
-                    excerpt: "بررسی جامع اصول فروش آنلاین، انتخاب پلتفرم‌های مناسب مانند Shopify و مزایای راه‌اندازی فروشگاه اینترنتی در دنیای دیجیتال امروز.",
-                    imageUrl: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&q=80&w=1200",
-                    content: `
-                        <p><strong>تجارت الکترونیک (E-commerce)</strong> به زبان ساده یعنی خرید و فروش کالا یا خدمات از طریق اینترنت. این مدل کسب‌وکار به دلیل حذف محدودیت‌های جغرافیایی و زمانی، به یکی از پردرآمدترین صنایع جهان تبدیل شده است.</p>
-                        <h4>چگونه کار می‌کند؟</h4>
-                        <p>برای شروع تجارت الکترونیک، شما به یک پلتفرم یا فروشگاه ساز نیاز دارید. <strong>Shopify (شاپایفای)</strong> یکی از بهترین انتخاب‌ها برای این کار است. این پلتفرم به شما اجازه می‌دهد تا بدون نیاز به کدنویسی، یک ویترین دیجیتال بسازید، محصولات خود را با عکس و توضیحات کامل قرار دهید و با اتصال به درگاه‌های پرداخت، مستقیماً از مشتری پول دریافت کنید.</p>
-                        <h4>مزایای اصلی تجارت الکترونیک:</h4>
-                        <ul>
-                            <li><strong>دسترسی جهانی:</strong> مشتریان شما فقط محدود به محله یا شهر شما نیستند، بلکه کل کشور (یا حتی جهان) می‌توانند از شما خرید کنند.</li>
-                            <li><strong>فروش ۲۴ ساعته:</strong> برخلاف فروشگاه‌های فیزیکی، وب‌سایت شما هرگز تعطیل نمی‌شود و حتی در زمان خواب شما نیز در حال تولید درآمد است.</li>
-                            <li><strong>هزینه راه‌اندازی پایین:</strong> نیازی به اجاره مغازه، دکوراسیون گران‌قیمت یا استخدام کارمندان متعدد ندارید.</li>
-                        </ul>
-                        <p>برای موفقیت در تجارت الکترونیک، داشتن یک وب‌سایت بهینه‌سازی شده (SEO) و یک استراتژی قدرتمند در دیجیتال مارکتینگ الزامی است تا بتوانید ترافیک باکیفیت را به سمت فروشگاه خود هدایت کنید.</p>
-                    `
-                },
-                {
-                    id: "ai",
-                    category: "هوش مصنوعی", 
-                    title: "هوش مصنوعی (AI) چگونه کسب‌وکارها را متحول می‌کند؟",
-                    excerpt: "از پیش‌بینی رفتار مشتریان تا اتوماسیون وظایف تکراری. راهنمای کاربردی استفاده از AI برای افزایش درآمد و کاهش هزینه‌های عملیاتی.",
-                    imageUrl: "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&q=80&w=1200",
-                    content: `
-                        <p><strong>هوش مصنوعی (Artificial Intelligence)</strong> دیگر یک مفهوم علمی‌تخیلی نیست، بلکه قلب تپنده تکنولوژی و تجارت مدرن است. هوش مصنوعی به ماشین‌ها و سیستم‌های کامپیوتری این قابلیت را می‌دهد که مانند انسان یاد بگیرند، تحلیل کنند و تصمیم بگیرند.</p>
-                        <h4>کاربرد هوش مصنوعی در کسب‌وکار و فروش:</h4>
-                        <p>یکی از بزرگترین تاثیرات AI در دنیای امروز، <strong>شخصی‌سازی (Personalization)</strong> است. الگوریتم‌های هوش مصنوعی رفتار کاربران را در وب‌سایت شما تحلیل می‌کنند و دقیقاً محصولاتی را به آن‌ها پیشنهاد می‌دهند که بیشترین احتمال خرید را دارند (مثل سیستم پیشنهادگر آمازون یا نتفلیکس).</p>
-                        <h4>چرا استفاده از AI ضروری است؟</h4>
-                        <ul>
-                            <li><strong>اتوماسیون بازاریابی:</strong> ابزارهای AI می‌توانند ایمیل‌های تبلیغاتی هوشمند بفرستند، محتوای متنی و تصویری سئو شده تولید کنند (مانند ChatGPT) و کمپین‌های تبلیغاتی را مدیریت کنند.</li>
-                            <li><strong>پشتیبانی ۲۴ ساعته:</strong> چت‌بات‌های هوشمند (Chatbots) می‌توانند در هر ساعت از شبانه‌روز به سوالات مشتریان پاسخ دهند، مشکلات آن‌ها را حل کنند و حتی فرآیند فروش را تکمیل نمایند.</li>
-                        </ul>
-                        <p>استفاده از هوش مصنوعی باعث می‌شود تا سرعت پردازش داده‌ها هزاران بار سریع‌تر شود، خطای انسانی به صفر برسد و در نهایت، حاشیه سود کسب‌وکار (ROI) به طرز چشمگیری افزایش یابد.</p>
-                    `
-                },
-                {
-                    id: "digital-marketing",
-                    category: "دیجیتال مارکتینگ", 
-                    title: "مبانی دیجیتال مارکتینگ: از استراتژی تا فروش",
-                    excerpt: "آشنایی با ابزارهای قدرتمند دیجیتال مارکتینگ مانند سئو (SEO)، گوگل ادز و فیس‌بوک ادز برای جذب مشتریان هدفمند در فضای آنلاین.",
-                    imageUrl: "https://images.unsplash.com/photo-1432888117426-146608595cb1?auto=format&fit=crop&q=80&w=1200",
-                    content: `
-                        <p><strong>دیجیتال مارکتینگ (بازاریابی دیجیتال)</strong> به هرگونه فعالیت بازاریابی گفته می‌شود که از طریق دستگاه‌های الکترونیکی و اینترنت انجام می‌گیرد. در دنیایی که همه آنلاین هستند، اگر کسب‌وکار شما در اینترنت دیده نشود، عملاً وجود ندارد.</p>
-                        <h4>ستون‌های اصلی دیجیتال مارکتینگ:</h4>
-                        <h4>۱. سئو (SEO - بهینه‌سازی موتورهای جستجو)</h4>
-                        <p>سئو فرآیند بهبود کیفیت و ساختار وب‌سایت است تا گوگل آن را به عنوان بهترین پاسخ برای جستجوی کاربران بشناسد. با سئو قدرتمند، زمانی که شخصی به دنبال محصولات یا خدمات شما می‌گردد، سایت شما در رتبه اول نتایج گوگل قرار می‌گیرد. این یعنی جذب مشتریان کاملاً ارگانیک و رایگان.</p>
-                        <h4>۲. تبلیغات کلیکی (PPC - Google Ads & Facebook Ads)</h4>
-                        <p>در حالی که سئو به زمان نیاز دارد، <strong>گوگل ادز</strong> و <strong>فیس‌بوک ادز</strong> نتایج فوری به همراه دارند. با استفاده از پلتفرم متا (فیس‌بوک و اینستاگرام)، شما می‌توانید مشتریان را بر اساس سن، علایق و رفتارشان هدف‌گذاری کنید (Targeting). و با گوگل ادز، دقیقاً زمانی که کاربر قصد خرید دارد و کلمه‌ای را جستجو می‌کند، آگهی خود را به او نمایش می‌دهید.</p>
-                        <p>یک استراتژی موفق در دیجیتال مارکتینگ همیشه ترکیبی از سئو (برای برندسازی بلندمدت) و تبلیغات هدفمند (برای فروش سریع) است.</p>
-                    `
-                },
-                {
-                    id: "dropshipping",
-                    category: "دراپ‌شیپینگ", 
-                    title: "دراپ‌شیپینگ (Dropshipping): کسب‌وکار بدون نیاز به انبار",
-                    excerpt: "صفر تا صد مدل کسب‌وکار دراپ‌شیپینگ، نحوه پیدا کردن محصولات پرفروش (Winning Products) و اتصال مستقیم تامین‌کننده به مشتری.",
-                    imageUrl: "https://images.unsplash.com/photo-1661956602116-aa6865609028?auto=format&fit=crop&q=80&w=1200",
-                    content: `
-                        <p><strong>دراپ‌شیپینگ (Dropshipping)</strong> یکی از جذاب‌ترین و کم‌ریسک‌ترین روش‌های ورود به دنیای تجارت الکترونیک است. در این مدل فروش خرد، شما نیازی به خرید عمده محصولات، داشتن انبار، یا بسته‌بندی و ارسال کالا ندارید.</p>
-                        <h4>سیستم دراپ‌شیپینگ چگونه کار می‌کند؟</h4>
-                        <ol>
-                            <li><strong>ساخت فروشگاه:</strong> شما یک فروشگاه آنلاین (مثلاً با Shopify) می‌سازید و تصاویر محصولاتی را که تامین‌کنندگانی در چین، اروپا یا آمریکا دارند، در سایت خود قرار می‌دهید.</li>
-                            <li><strong>فروش و بازاریابی:</strong> با استفاده از دیجیتال مارکتینگ (مانند Facebook Ads یا TikTok Ads)، مشتری را به سایت خود می‌آورید. مشتری محصول را به قیمت خرده‌فروشی (مثلاً ۵۰ دلار) از شما می‌خرد.</li>
-                            <li><strong>انتقال سفارش:</strong> شما سفارش را دریافت کرده و همان محصول را به قیمت عمده (مثلاً ۱۵ دلار) از تامین‌کننده اصلی خریداری می‌کنید و آدرس مشتری را به او می‌دهید.</li>
-                            <li><strong>ارسال و سود:</strong> تامین‌کننده محصول را مستقیماً برای مشتری ارسال می‌کند. سود شما در اینجا ۳۵ دلار خواهد بود بدون اینکه حتی محصول را لمس کرده باشید!</li>
-                        </ol>
-                        <h4>کلیدهای موفقیت در دراپ‌شیپینگ:</h4>
-                        <p>موفقیت در این کار به پیدا کردن <strong>محصولات برنده (Winning Products)</strong> بستگی دارد؛ محصولاتی که مشکل خاصی را حل می‌کنند یا اثر "واو" (Wow Factor) دارند. همچنین، مهارت بالا در تولید ویدیوهای تبلیغاتی خلاقانه و تسلط بر الگوریتم‌های شبکه‌های اجتماعی برای هدایت ترافیک، رمز اصلی پیروزی در دراپ‌شیپینگ است.</p>
-                    `
-                }
-            ];
-
-            function renderBlogList() {
-                blogContainer.innerHTML = ''; 
-                blogPosts.forEach(post => {
-                    const articleHTML = `
-                        <article class="blog-item" onclick="openBlogPost('${post.id}')">
-                            <img src="${post.imageUrl}" class="blog-image" alt="${post.title}">
-                            <div class="blog-content">
-                                <span class="blog-category">${post.category}</span>
-                                <h3 class="blog-title">${post.title}</h3>
-                                <p class="blog-excerpt">${post.excerpt}</p>
-                            </div>
-                        </article>
-                    `;
-                    blogContainer.insertAdjacentHTML('beforeend', articleHTML);
-                });
+            // Gérer le bouton E-Book
+            const ebookContainer = document.getElementById('ebook-container');
+            const ebookLink = document.getElementById('ebook-link');
+            if (course.ebookUrl) {
+                ebookLink.href = course.ebookUrl;
+                ebookContainer.classList.remove('hidden');
+            } else {
+                ebookContainer.classList.add('hidden');
             }
 
-            renderBlogList();
+            // Générer les vidéos et les points clés
+            const videoListEl = document.getElementById('video-list');
+            videoListEl.innerHTML = ''; // Nettoyer l'ancienne liste
 
-            window.openBlogPost = function(postId) {
-                const post = blogPosts.find(p => p.id === postId);
-                if (post) {
-                    document.getElementById('post-image').src = post.imageUrl;
-                    document.getElementById('post-category').innerText = post.category;
-                    document.getElementById('post-title').innerText = post.title;
-                    document.getElementById('post-content').innerHTML = post.content;
-                    goToSection('blog-post-details');
-                }
-            };
-        });
+            const placeholderImages = [
+                '1460925895917-afdab827c52f',
+                '1551288049-bebda4e38f71',
+                '1504868584819-28eb2065ea0c'
+            ];
+
+            course.videos.forEach((video, idx) => {
+                const imgId = placeholderImages[idx % 3];
+                const pointsHtml = course.keyPoints.map(point => `
+                    <li class="flex items-start text-gray-400 leading-relaxed text-justify">
+                        <span class="text-[#D4AF37] ms-3 mt-1 text-lg">✦</span>
+                        ${point}
+                    </li>
+                `).join('');
+
+                const videoHtml = `
+                    <div class="bg-white/[0.02] border border-white/5 rounded-3xl p-6 md:p-8 backdrop-blur-sm shadow-xl">
+                        <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
+                            <span class="text-[#D4AF37] ms-3 font-serif italic text-3xl">0${idx + 1}.</span> 
+                            ${video.title}
+                        </h3>
+                        
+                        <div class="relative w-full aspect-video bg-[#02050D] rounded-2xl overflow-hidden border border-white/10 group cursor-pointer shadow-[0_0_20px_rgba(0,0,0,0.5)]">
+                            <img src="https://images.unsplash.com/photo-${imgId}?auto=format&fit=crop&q=80&w=1200" alt="Thumbnail" class="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
+                            <div class="absolute inset-0 flex items-center justify-center">
+                                <div class="w-20 h-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:bg-[#D4AF37]/20 transition-all duration-300">
+                                    <i data-lucide="play" class="w-8 h-8 text-[#D4AF37] ms-1" fill="currentColor"></i>
+                                </div>
+                            </div>
+                            <div class="absolute bottom-4 left-4 bg-black/70 px-3 py-1 rounded text-sm font-medium">
+                                ${video.duration}
+                            </div>
+                        </div>
+
+                        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div>
+                                <h4 class="text-[#F2F2F2] font-semibold mb-4 text-lg">نکات کلیدی</h4>
+                                <ul class="space-y-3">
+                                    ${pointsHtml}
+                                </ul>
+                            </div>
+                            <div class="bg-[#050A18] rounded-2xl p-6 border border-white/5">
+                                <h4 class="text-[#F2F2F2] font-semibold mb-4 text-lg">منابع</h4>
+                                <div class="space-y-3">
+                                    <button class="w-full text-start px-4 py-3 bg-white/5 hover:bg-white/10 rounded-xl text-gray-300 transition flex justify-between items-center">
+                                        <span>لینک ارائه (PDF)</span>
+                                        <i data-lucide="book-open" class="w-4 h-4 text-[#1DA4AC]"></i>
+                                    </button>
+                                    <button class="w-full text-start px-4 py-3 bg-white/5 hover:bg-white/10 rounded-xl text-gray-300 transition flex justify-between items-center">
+                                        <span>دسترسی به ابزارهای معرفی شده</span>
+                                        <i data-lucide="globe" class="w-4 h-4 text-[#1DA4AC]"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+                videoListEl.insertAdjacentHTML('beforeend', videoHtml);
+            });
+
+            // Rafraîchir les icônes ajoutées dynamiquement
+            lucide.createIcons();
+        }
     </script>
 </body>
 </html>
