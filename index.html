@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title id="page-title">Khesraw | Création de sites web haute conversion pour artisans</title>
-    <meta id="page-desc" name="description" content="Khesraw crée des sites web ultra-optimisés et rapides pour les artisans, coiffeurs et commerçants. Devenez n°1 sur Google avec un SEO local puissant.">
+    <title id="page-title">Khesraw | Création de sites web haute conversion pour artisans en Belgique</title>
+    <meta id="page-desc" name="description" content="Khesraw : Agence digitale pour artisans. Expert en conversion pour entrepreneurs, nous transformons votre site vitrine en machine à prospects partout en Belgique.">
     
     <!-- Tailwind CSS pour un design moderne et rapide -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -40,21 +40,22 @@
     <style>
         .lang-active { font-weight: bold; color: #14b8a6; border-bottom: 2px solid #14b8a6; }
         .glass-effect { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
+        .article-transition { transition: opacity 0.4s ease-in-out, transform 0.4s ease-in-out; }
     </style>
 </head>
 <body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
 
-    <!-- CONTACT MODAL -->
+    <!-- CONTACT MODAL (AUDIT) -->
     <div id="contactModal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
         <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl relative transform scale-95 transition-transform duration-300" id="contactModalContent">
             <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-dark">
                 <i data-lucide="x" class="w-6 h-6"></i>
             </button>
-            <h3 class="text-2xl font-heading font-bold text-dark mb-2" data-i18n="modal_title">Demander un devis</h3>
-            <p class="text-slate-500 mb-6 text-sm" data-i18n="modal_desc">Laissez-nous vos coordonnées, nous vous rappelons sous 24h.</p>
+            <h3 class="text-2xl font-heading font-bold text-dark mb-2" data-i18n="modal_title">Demander votre audit gratuit</h3>
+            <p class="text-slate-500 mb-6 text-sm" data-i18n="modal_desc">Laissez-nous vos coordonnées, nous analysons votre visibilité sous 24h.</p>
             
             <form onsubmit="submitForm(event)" class="space-y-4">
-                <input type="hidden" id="selectedPackage" name="package" value="">
+                <input type="hidden" id="selectedPackage" name="package" value="Audit">
                 <div>
                     <label class="block text-sm font-medium text-slate-700 mb-1" data-i18n="modal_name">Votre nom / entreprise</label>
                     <input type="text" required class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition">
@@ -63,7 +64,7 @@
                     <label class="block text-sm font-medium text-slate-700 mb-1" data-i18n="modal_phone">Numéro de téléphone</label>
                     <input type="tel" required class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition">
                 </div>
-                <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-brand-500/30 mt-4" data-i18n="modal_submit">Envoyer ma demande</button>
+                <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-brand-500/30 mt-4" data-i18n="modal_submit">Réserver mon audit</button>
             </form>
         </div>
     </div>
@@ -73,7 +74,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
-                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                <div onclick="hideArticle()" class="flex-shrink-0 flex items-center gap-2 cursor-pointer hover:opacity-80 transition">
                     <i data-lucide="zap" class="text-brand-500 w-8 h-8"></i>
                     <span class="font-heading text-2xl font-black text-dark tracking-tight">Khesraw.</span>
                 </div>
@@ -89,256 +90,284 @@
 
                 <!-- CTA Droite -->
                 <div class="flex items-center">
-                    <a href="#tarifs" class="bg-dark hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-semibold text-sm transition-all shadow-lg hover:shadow-brand-500/30 transform hover:-translate-y-0.5" data-i18n="nav_cta">
-                        Demander une offre
-                    </a>
+                    <button onclick="openModal('Audit Header')" class="bg-dark hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-semibold text-sm transition-all shadow-lg hover:shadow-brand-500/30 transform hover:-translate-y-0.5" data-i18n="nav_cta">
+                        Réservez votre audit de visibilité gratuit
+                    </button>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- HERO SECTION -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
-        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-100 blur-3xl opacity-50"></div>
-        
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-heading font-black text-dark leading-tight mb-6" data-i18n="hero_h1">
-                En 2026, un site vitrine ne suffit plus.<br/> <span class="text-brand-500">Il vous faut une machine à convertir.</span>
-            </h1>
-            <p class="mt-4 text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto mb-10 font-medium leading-relaxed" data-i18n="hero_sub">
-                Des sites web ultra-optimisés pour artisans et commerçants. Soyez n°1 sur Google et transformez vos visiteurs en clients fidèles.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#tarifs" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl shadow-brand-500/20 transition-all transform hover:scale-105 flex items-center justify-center gap-2" data-i18n="hero_cta">
-                    Mon site à 500€ <i data-lucide="arrow-right" class="w-5 h-5"></i>
-                </a>
-            </div>
-            
-            <!-- Trust badges -->
-            <div class="mt-16 pt-8 border-t border-slate-100 flex flex-wrap justify-center gap-8 items-center text-slate-400 text-sm font-semibold uppercase tracking-wider" data-i18n="hero_trust">
-                <span>Artisans</span> • <span>Jardiniers</span> • <span>Coiffeurs</span> • <span>Salons de beauté</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- AGITATION (Le Problème) -->
-    <section class="py-20 bg-dark text-white relative">
-        <div class="max-w-4xl mx-auto px-4 text-center">
-            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-500/20 text-red-400 mb-6">
-                <i data-lucide="alert-triangle" class="w-8 h-8"></i>
-            </div>
-            <h2 class="text-3xl font-heading font-bold mb-6" data-i18n="problem_h2">Stop aux arnaques des agences traditionnelles.</h2>
-            <p class="text-xl text-slate-300 leading-relaxed" data-i18n="problem_text">
-                Stop aux agences qui facturent 1000€ la création + 300€ de frais annuels cachés. En 2026, la transparence prime. Vos clients s'en fichent des belles animations complexes ; ils veulent trouver votre numéro, vos services et vous contacter rapidement. Vous avez besoin d'une structure qui vend.
-            </p>
-        </div>
-    </section>
-
-    <!-- LA SOLUTION KESHRA (Expertise) -->
-    <section id="expertise" class="py-24 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-brand-500 font-bold tracking-wide uppercase text-sm mb-2" data-i18n="solution_surtitle">L'Expertise</h2>
-                <h3 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-6" data-i18n="solution_h2">La Solution Khesraw</h3>
-                <p class="text-lg text-slate-600" data-i18n="solution_text">
-                    Je m'appelle Keshra, expert en code et SEO. Ma passion : propulser les entrepreneurs locaux avec des outils web taillés pour dominer leur secteur.
-                </p>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-10">
-                <!-- Feature 1 -->
-                <div class="bg-slate-50 p-8 rounded-3xl hover:shadow-xl transition-shadow duration-300 border border-slate-100">
-                    <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center mb-6">
-                        <i data-lucide="code-2" class="w-7 h-7"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-dark mb-3" data-i18n="feat1_title">Programmation Propre</h4>
-                    <p class="text-slate-600" data-i18n="feat1_desc">Code sur-mesure et structure ultra-légère. C'est exactement ce que les robots (crawling) de Google adorent pour vous classer premier.</p>
-                </div>
-                <!-- Feature 2 -->
-                <div class="bg-slate-50 p-8 rounded-3xl hover:shadow-xl transition-shadow duration-300 border border-slate-100">
-                    <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center mb-6">
-                        <i data-lucide="network" class="w-7 h-7"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-dark mb-3" data-i18n="feat2_title">SEO Inside-of-sight</h4>
-                    <p class="text-slate-600" data-i18n="feat2_desc">Maillage interne intelligent et indexation ultra-rapide. Votre site est conçu à la base pour les moteurs de recherche.</p>
-                </div>
-                <!-- Feature 3 -->
-                <div class="bg-slate-50 p-8 rounded-3xl hover:shadow-xl transition-shadow duration-300 border border-slate-100">
-                    <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center mb-6">
-                        <i data-lucide="target" class="w-7 h-7"></i>
-                    </div>
-                    <h4 class="text-xl font-bold text-dark mb-3" data-i18n="feat3_title">Conversion Maximisée</h4>
-                    <p class="text-slate-600" data-i18n="feat3_desc">Un design psychologique qui pousse à l'action. Fini le site "carte de visite", place à la machine à générer des appels.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CLIENTS SATISFAITS (TESTIMONIALS) -->
-    <section class="py-20 bg-dark text-white relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" data-i18n="testi_h2">Ils ont explosé leur carnet de commandes</h2>
-                <p class="text-slate-400 text-lg" data-i18n="testi_sub">Ne nous croyez pas sur parole, écoutez nos clients.</p>
-            </div>
-            
-            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-                <!-- Testimonial 1 -->
-                <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 relative">
-                    <i data-lucide="quote" class="absolute top-6 right-6 w-10 h-10 text-slate-700"></i>
-                    <div class="flex items-center gap-1 text-yellow-400 mb-4">
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    </div>
-                    <p class="text-slate-300 mb-6 italic" data-i18n="testi_1_text">"Depuis que Khesraw a refait mon site, je reçois 3 fois plus d'appels pour des devis d'aménagement paysager. Un investissement rentabilisé en 2 semaines."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center font-bold text-white text-xl">M</div>
-                        <div>
-                            <h4 class="font-bold text-white">Marc D.</h4>
-                            <span class="text-slate-400 text-sm" data-i18n="testi_1_role">Entrepreneur de jardin</span>
-                        </div>
-                    </div>
-                </div>
-                <!-- Testimonial 2 -->
-                <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 relative">
-                    <i data-lucide="quote" class="absolute top-6 right-6 w-10 h-10 text-slate-700"></i>
-                    <div class="flex items-center gap-1 text-yellow-400 mb-4">
-                        <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
-                    </div>
-                    <p class="text-slate-300 mb-6 italic" data-i18n="testi_2_text">"Rapide, clair et sans frais cachés. Mon ancien site me coûtait cher pour zéro résultat. Aujourd'hui, je suis 1er sur Google dans ma ville."</p>
-                    <div class="flex items-center gap-4">
-                        <div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center font-bold text-white text-xl">S</div>
-                        <div>
-                            <h4 class="font-bold text-white">Sophie L.</h4>
-                            <span class="text-slate-400 text-sm" data-i18n="testi_2_role">Gérante Salon de Beauté</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- TARIFICATION -->
-    <section id="tarifs" class="py-24 bg-slate-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl md:text-5xl font-heading font-bold text-dark mb-6" data-i18n="pricing_h2">Tarification claire. <br/>Zéro mauvaise surprise.</h2>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <!-- Pack Classique -->
-                <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 relative overflow-hidden flex flex-col">
-                    <h3 class="text-2xl font-bold text-dark mb-2" data-i18n="price_pack_title">Pack Classique</h3>
-                    <p class="text-slate-500 mb-6" data-i18n="price_pack_desc">Site moderne & Responsive pour artisans.</p>
-                    <div class="mb-8">
-                        <span class="text-5xl font-black text-dark">500€</span>
-                        <span class="text-slate-500 font-medium">/unique</span>
-                    </div>
-                    <ul class="space-y-4 mb-8 flex-1">
-                        <li class="flex items-center gap-3 text-slate-700"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> Design Haute Conversion</li>
-                        <li class="flex items-center gap-3 text-slate-700"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> Adaptation Mobile/Tablette parfaite</li>
-                        <li class="flex items-center gap-3 text-slate-700"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> Intégration de vos textes & photos</li>
-                    </ul>
-                    <button type="button" onclick="openModal('Pack Classique')" class="w-full block text-center bg-slate-100 hover:bg-slate-200 text-dark font-bold py-3 rounded-xl transition cursor-pointer" data-i18n="price_cta1">Je veux ce site</button>
-                </div>
-
-                <!-- Option SEO Turbo -->
-                <div class="bg-dark rounded-3xl p-8 shadow-2xl border border-dark relative overflow-hidden flex flex-col transform md:-translate-y-4">
-                    <div class="absolute top-0 right-0 bg-brand-500 text-white text-xs font-bold px-4 py-1 rounded-bl-xl uppercase tracking-wider">Recommandé</div>
-                    <h3 class="text-2xl font-bold text-white mb-2" data-i18n="price_seo_title">Option SEO Turbo</h3>
-                    <p class="text-slate-400 mb-6" data-i18n="price_seo_desc">Optimisation sémantique pour dominer votre ville.</p>
-                    <div class="mb-8 text-brand-400">
-                        <span class="text-5xl font-black">+250€</span>
-                    </div>
-                    <ul class="space-y-4 mb-8 flex-1">
-                        <li class="flex items-center gap-3 text-slate-300"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> <span data-i18n="seo_li1">Recherche de mots-clés stratégiques</span></li>
-                        <li class="flex items-center gap-3 text-slate-300"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> <span data-i18n="seo_li2">Optimisation Google My Business</span></li>
-                        <li class="flex items-center gap-3 text-slate-300"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> <span data-i18n="seo_li3">Structure de maillage interne avancée</span></li>
-                    </ul>
-                    <button type="button" onclick="openModal('Option SEO Turbo')" class="w-full block text-center bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-brand-500/30 cursor-pointer" data-i18n="price_cta2">Ajouter le SEO Turbo</button>
-                </div>
-            </div>
-
-            <!-- Maintenance Highlight -->
-            <div class="mt-12 max-w-3xl mx-auto bg-brand-50 border border-brand-200 rounded-2xl p-6 text-center">
-                <i data-lucide="shield-check" class="w-8 h-8 text-brand-500 mx-auto mb-3"></i>
-                <p class="text-lg text-brand-900 font-medium" data-i18n="price_maint_text">
-                    <strong>Frais de maintenance : 30€/an</strong> (Nom de domaine + CMS inclus). <br/>Oui, vous avez bien lu : 30€ par AN, pas par mois.
-                </p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SEO LOCAL CONTEXT SECTION (Technique SEO) -->
-    <section class="py-16 bg-white border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
-            <h2 class="font-bold text-slate-700 mb-4 text-base" data-i18n="seo_footer_h2">Dominez votre marché local</h2>
-            <p class="max-w-4xl mx-auto leading-relaxed" id="seo-context-text">
-                Que vous cherchiez une <strong>création site web pas cher</strong>, un <strong>SEO local artisan</strong> percutant, ou un <strong>site internet rapide pour coiffeur</strong>, l'architecture Keshra est faite pour vous. Nous incluons l'<strong>optimisation Google My Business</strong> pour capter directement les clients de votre ville. Nos sites se chargent instantanément pour ne perdre aucun prospect.
-            </p>
-        </div>
-    </section>
-
-    <!-- BLOG SECTION -->
-    <section class="py-20 bg-slate-50 border-t border-slate-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-end mb-12">
-                <div>
-                    <h2 class="text-brand-500 font-bold tracking-wide uppercase text-sm mb-2" data-i18n="blog_surtitle">Ressources & Conseils</h2>
-                    <h3 class="text-3xl md:text-4xl font-heading font-bold text-dark" data-i18n="blog_h2">Derniers Articles</h3>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-3 gap-8">
-                <!-- Article 1 -->
-                <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition">
-                    <div class="h-48 bg-slate-200 w-full overflow-hidden relative">
-                        <div class="absolute inset-0 bg-brand-900/10 mix-blend-multiply"></div>
-                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600&h=400" alt="SEO" class="w-full h-full object-cover">
-                    </div>
-                    <div class="p-6">
-                        <span class="text-brand-500 text-xs font-bold uppercase tracking-wider mb-2 block">SEO Local</span>
-                        <h4 class="text-xl font-bold text-dark mb-3 leading-tight" data-i18n="blog_1_title">Comment attirer des clients locaux grâce à Google en 2026 ?</h4>
-                        <p class="text-slate-500 text-sm mb-4" data-i18n="blog_1_desc">Découvrez les 3 stratégies pour dominer les résultats de recherche dans votre ville et doubler vos devis.</p>
-                        <a href="#" class="text-brand-600 font-semibold text-sm flex items-center gap-1 hover:text-brand-800 transition" data-i18n="blog_readmore">Lire l'article <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
-                    </div>
-                </article>
+    <main id="main-content">
+        <!-- VUE D'ACCUEIL (LANDING PAGE) -->
+        <div id="home-view" class="article-transition opacity-100 transform translate-y-0">
+            <!-- HERO SECTION -->
+            <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+                <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-100 blur-3xl opacity-50"></div>
                 
-                <!-- Article 2 -->
-                <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition">
-                    <div class="h-48 bg-slate-200 w-full overflow-hidden relative">
-                        <div class="absolute inset-0 bg-brand-900/10 mix-blend-multiply"></div>
-                        <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&q=80&w=600&h=400" alt="Conversion" class="w-full h-full object-cover">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                    <h1 class="text-4xl sm:text-5xl lg:text-7xl font-heading font-black text-dark leading-tight mb-6" data-i18n="hero_h1">
+                        Le partenaire digital des artisans et entrepreneurs partout en Belgique.
+                    </h1>
+                    <p class="mt-4 text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto mb-10 font-medium leading-relaxed" data-i18n="hero_sub">
+                        En 2026, un <strong>site web vitrine vs conversion</strong> fait toute la différence. En tant qu'<strong>expert en conversion pour entrepreneurs</strong>, je crée des plateformes qui inspirent confiance et génèrent des devis.
+                    </p>
+                    <div class="flex flex-col sm:flex-row justify-center gap-4">
+                        <button onclick="openModal('Audit Hero')" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl shadow-brand-500/20 transition-all transform hover:scale-105 flex items-center justify-center gap-2" data-i18n="hero_cta">
+                            Réservez votre audit gratuit <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </button>
                     </div>
-                    <div class="p-6">
-                        <span class="text-brand-500 text-xs font-bold uppercase tracking-wider mb-2 block">Conversion</span>
-                        <h4 class="text-xl font-bold text-dark mb-3 leading-tight" data-i18n="blog_2_title">Pourquoi votre site vitrine actuel vous fait perdre de l'argent</h4>
-                        <p class="text-slate-500 text-sm mb-4" data-i18n="blog_2_desc">Un beau site ne suffit plus. Il faut une architecture pensée pour transformer un visiteur en client.</p>
-                        <a href="#" class="text-brand-600 font-semibold text-sm flex items-center gap-1 hover:text-brand-800 transition" data-i18n="blog_readmore">Lire l'article <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    
+                    <!-- Trust badges -->
+                    <div class="mt-16 pt-8 border-t border-slate-100 flex flex-wrap justify-center gap-8 items-center text-slate-400 text-sm font-semibold uppercase tracking-wider" data-i18n="hero_trust">
+                        <span>Artisans</span> • <span>Jardiniers</span> • <span>Coiffeurs</span> • <span>Entrepreneurs</span>
                     </div>
-                </article>
+                </div>
+            </section>
 
-                <!-- Article 3 -->
-                <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition">
-                    <div class="h-48 bg-slate-200 w-full overflow-hidden relative">
-                        <div class="absolute inset-0 bg-brand-900/10 mix-blend-multiply"></div>
-                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600&h=400" alt="Design" class="w-full h-full object-cover">
+            <!-- AGITATION (Le Problème) -->
+            <section class="py-20 bg-dark text-white relative">
+                <div class="max-w-4xl mx-auto px-4 text-center">
+                    <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-500/20 text-red-400 mb-6">
+                        <i data-lucide="alert-triangle" class="w-8 h-8"></i>
                     </div>
-                    <div class="p-6">
-                        <span class="text-brand-500 text-xs font-bold uppercase tracking-wider mb-2 block">Webdesign</span>
-                        <h4 class="text-xl font-bold text-dark mb-3 leading-tight" data-i18n="blog_3_title">5 éléments indispensables sur la page d'accueil d'un artisan</h4>
-                        <p class="text-slate-500 text-sm mb-4" data-i18n="blog_3_desc">Appliquez ces principes simples pour rassurer vos prospects et faciliter la prise de contact.</p>
-                        <a href="#" class="text-brand-600 font-semibold text-sm flex items-center gap-1 hover:text-brand-800 transition" data-i18n="blog_readmore">Lire l'article <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    <h2 class="text-3xl font-heading font-bold mb-6" data-i18n="problem_h2">Pourquoi 90% des sites d'artisans échouent (manque de conversion).</h2>
+                    <p class="text-xl text-slate-300 leading-relaxed" data-i18n="problem_text">
+                        Que vous soyez en Wallonie ou en Flandre, vos clients cherchent sur Google exactement de la même manière. Un site classique ne rassure pas et ne convertit pas. Le manque à gagner est le même partout. En tant qu'<strong>agence digitale pour artisans</strong>, nous savons que la <strong>conversion de prospects</strong> nécessite de bâtir une relation de confiance immédiate dès la première visite.
+                    </p>
+                </div>
+            </section>
+
+            <!-- LA SOLUTION KHESRAW (La Méthode) -->
+            <section id="expertise" class="py-24 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-brand-500 font-bold tracking-wide uppercase text-sm mb-2" data-i18n="solution_surtitle">La Méthode</h2>
+                        <h3 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-6" data-i18n="solution_h2">Une ingénierie pensée pour votre image</h3>
+                        <p class="text-lg text-slate-600" data-i18n="solution_text">
+                            Fini les sites inutiles. Ma méthode repose sur trois piliers fondamentaux pour valoriser votre savoir-faire et faciliter la vie de vos futurs clients.
+                        </p>
                     </div>
-                </article>
+
+                    <div class="grid md:grid-cols-3 gap-10">
+                        <!-- Feature 1 -->
+                        <div class="bg-slate-50 p-8 rounded-3xl hover:shadow-xl transition-shadow duration-300 border border-slate-100">
+                            <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center mb-6">
+                                <i data-lucide="pen-tool" class="w-7 h-7"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-dark mb-3" data-i18n="feat1_title">Copywriting Persuasif</h4>
+                            <p class="text-slate-600" data-i18n="feat1_desc">Des mots qui résonnent avec vos valeurs. Nous racontons votre histoire pour instaurer une confiance immédiate avec vos futurs clients.</p>
+                        </div>
+                        <!-- Feature 2 -->
+                        <div class="bg-slate-50 p-8 rounded-3xl hover:shadow-xl transition-shadow duration-300 border border-slate-100">
+                            <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center mb-6">
+                                <i data-lucide="calendar-clock" class="w-7 h-7"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-dark mb-3" data-i18n="feat2_title">Agenda Intégré</h4>
+                            <p class="text-slate-600" data-i18n="feat2_desc">Simplifiez la vie de vos prospects avec une prise de rendez-vous fluide et directe. Cela renforce instantanément votre image professionnelle.</p>
+                        </div>
+                        <!-- Feature 3 -->
+                        <div class="bg-slate-50 p-8 rounded-3xl hover:shadow-xl transition-shadow duration-300 border border-slate-100">
+                            <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center mb-6">
+                                <i data-lucide="smartphone" class="w-7 h-7"></i>
+                            </div>
+                            <h4 class="text-xl font-bold text-dark mb-3" data-i18n="feat3_title">Vitesse Mobile Parfaite</h4>
+                            <p class="text-slate-600" data-i18n="feat3_desc">80% des recherches se font sur smartphone. Une navigation ultra-rapide prouve votre fiabilité et votre sérieux avant même le premier contact.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CLIENTS SATISFAITS (TESTIMONIALS) -->
+            <section class="py-20 bg-dark text-white relative">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" data-i18n="testi_h2">Ils ont explosé leur carnet de commandes</h2>
+                        <p class="text-slate-400 text-lg" data-i18n="testi_sub">Ne nous croyez pas sur parole, écoutez nos clients.</p>
+                    </div>
+                    
+                    <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                        <!-- Testimonial 1 -->
+                        <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 relative">
+                            <i data-lucide="quote" class="absolute top-6 right-6 w-10 h-10 text-slate-700"></i>
+                            <div class="flex items-center gap-1 text-yellow-400 mb-4">
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            </div>
+                            <p class="text-slate-300 mb-6 italic" data-i18n="testi_1_text">"Depuis que Khesraw a refait mon site, je reçois 3 fois plus d'appels pour des devis d'aménagement paysager. Un investissement rentabilisé en 2 semaines."</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center font-bold text-white text-xl">M</div>
+                                <div>
+                                    <h4 class="font-bold text-white">Marc D.</h4>
+                                    <span class="text-slate-400 text-sm" data-i18n="testi_1_role">Entrepreneur de jardin</span>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Testimonial 2 -->
+                        <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 relative">
+                            <i data-lucide="quote" class="absolute top-6 right-6 w-10 h-10 text-slate-700"></i>
+                            <div class="flex items-center gap-1 text-yellow-400 mb-4">
+                                <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                            </div>
+                            <p class="text-slate-300 mb-6 italic" data-i18n="testi_2_text">"Rapide, clair et rassurant pour mes clients. Mon ancien site ne me rapportait rien. Aujourd'hui, je suis une référence locale sur Google."</p>
+                            <div class="flex items-center gap-4">
+                                <div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center font-bold text-white text-xl">S</div>
+                                <div>
+                                    <h4 class="font-bold text-white">Sophie L.</h4>
+                                    <span class="text-slate-400 text-sm" data-i18n="testi_2_role">Gérante Salon de Beauté</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TARIFICATION -->
+            <section id="tarifs" class="py-24 bg-slate-50">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="text-center max-w-3xl mx-auto mb-16">
+                        <h2 class="text-3xl md:text-5xl font-heading font-bold text-dark mb-6" data-i18n="pricing_h2">Tarification claire. <br/>Zéro mauvaise surprise.</h2>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                        <!-- Pack Classique -->
+                        <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 relative overflow-hidden flex flex-col">
+                            <h3 class="text-2xl font-bold text-dark mb-2" data-i18n="price_pack_title">Pack Classique</h3>
+                            <p class="text-slate-500 mb-6" data-i18n="price_pack_desc">Site de conversion pour artisans.</p>
+                            <div class="mb-8">
+                                <span class="text-5xl font-black text-dark">500€</span>
+                                <span class="text-slate-500 font-medium">/unique</span>
+                            </div>
+                            <ul class="space-y-4 mb-8 flex-1">
+                                <li class="flex items-center gap-3 text-slate-700"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> Design Haute Conversion</li>
+                                <li class="flex items-center gap-3 text-slate-700"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> Vitesse Mobile & Agenda intégré</li>
+                                <li class="flex items-center gap-3 text-slate-700"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> Copywriting persuasif inclus</li>
+                            </ul>
+                            <button type="button" onclick="openModal('Audit - Pack Classique')" class="w-full block text-center bg-slate-100 hover:bg-slate-200 text-dark font-bold py-3 rounded-xl transition cursor-pointer" data-i18n="price_cta1">Demander un audit pour ce pack</button>
+                        </div>
+
+                        <!-- Option SEO Turbo -->
+                        <div class="bg-dark rounded-3xl p-8 shadow-2xl border border-dark relative overflow-hidden flex flex-col transform md:-translate-y-4">
+                            <div class="absolute top-0 right-0 bg-brand-500 text-white text-xs font-bold px-4 py-1 rounded-bl-xl uppercase tracking-wider">Recommandé</div>
+                            <h3 class="text-2xl font-bold text-white mb-2" data-i18n="price_seo_title">Option SEO Turbo</h3>
+                            <p class="text-slate-400 mb-6" data-i18n="price_seo_desc">Optimisation pour dominer votre région.</p>
+                            <div class="mb-8 text-brand-400">
+                                <span class="text-5xl font-black">+250€</span>
+                            </div>
+                            <ul class="space-y-4 mb-8 flex-1">
+                                <li class="flex items-center gap-3 text-slate-300"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> <span data-i18n="seo_li1">Recherche de mots-clés stratégiques</span></li>
+                                <li class="flex items-center gap-3 text-slate-300"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> <span data-i18n="seo_li2">Optimisation Google My Business</span></li>
+                                <li class="flex items-center gap-3 text-slate-300"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> <span data-i18n="seo_li3">Structure de maillage interne avancée</span></li>
+                            </ul>
+                            <button type="button" onclick="openModal('Audit - SEO Turbo')" class="w-full block text-center bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-brand-500/30 cursor-pointer" data-i18n="price_cta2">Demander un audit pour ce pack</button>
+                        </div>
+                    </div>
+
+                    <!-- Maintenance Highlight -->
+                    <div class="mt-12 max-w-3xl mx-auto bg-brand-50 border border-brand-200 rounded-2xl p-6 text-center">
+                        <i data-lucide="shield-check" class="w-8 h-8 text-brand-500 mx-auto mb-3"></i>
+                        <p class="text-lg text-brand-900 font-medium" data-i18n="price_maint_text">
+                            <strong>Frais de maintenance : 30€/an</strong> (Nom de domaine + CMS inclus). <br/>Oui, vous avez bien lu : 30€ par AN, pas par mois.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SEO LOCAL CONTEXT SECTION (Technique SEO) -->
+            <section class="py-16 bg-white border-t border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
+                    <h2 class="font-bold text-slate-700 mb-4 text-base" data-i18n="seo_footer_h2">Leader de la création de sites web pour artisans en Belgique</h2>
+                    <p class="max-w-4xl mx-auto leading-relaxed" id="seo-context-text">
+                        Spécialiste de la <strong>création de sites web pour artisans en Belgique</strong>, Khesraw s'assure de l'optimisation locale de votre entreprise. Ne vous contentez pas d'un simple site web, exigez une véritable présence en ligne qui transforme vos visiteurs en clients fidèles.
+                    </p>
+                </div>
+            </section>
+
+            <!-- BLOG SECTION -->
+            <section class="py-20 bg-slate-50 border-t border-slate-100">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="flex justify-between items-end mb-12">
+                        <div>
+                            <h2 class="text-brand-500 font-bold tracking-wide uppercase text-sm mb-2" data-i18n="blog_surtitle">Ressources & Conseils</h2>
+                            <h3 class="text-3xl md:text-4xl font-heading font-bold text-dark" data-i18n="blog_h2">Derniers Articles</h3>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <!-- Article 1 -->
+                        <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition cursor-pointer flex flex-col" onclick="showArticle('article_1')">
+                            <div class="h-48 bg-slate-200 w-full overflow-hidden relative">
+                                <div class="absolute inset-0 bg-brand-900/10 mix-blend-multiply"></div>
+                                <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=600&h=400" alt="SEO Local Network" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <span class="text-brand-500 text-xs font-bold uppercase tracking-wider mb-2 block">SEO Local</span>
+                                <h4 class="text-xl font-bold text-dark mb-3 leading-tight" data-i18n="blog_1_title">Comment attirer des clients locaux grâce à Google en 2026 ?</h4>
+                                <p class="text-slate-500 text-sm mb-4 flex-1" data-i18n="blog_1_desc">Découvrez les 3 stratégies pour dominer les résultats de recherche dans votre ville et doubler vos devis.</p>
+                                <span class="text-brand-600 font-semibold text-sm flex items-center gap-1 hover:text-brand-800 transition mt-auto" data-i18n="blog_readmore">Lire l'article <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                            </div>
+                        </article>
+                        
+                        <!-- Article 2 -->
+                        <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition cursor-pointer flex flex-col" onclick="showArticle('article_2')">
+                            <div class="h-48 bg-slate-200 w-full overflow-hidden relative">
+                                <div class="absolute inset-0 bg-brand-900/10 mix-blend-multiply"></div>
+                                <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&q=80&w=600&h=400" alt="Conversion" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <span class="text-brand-500 text-xs font-bold uppercase tracking-wider mb-2 block">Conversion</span>
+                                <h4 class="text-xl font-bold text-dark mb-3 leading-tight" data-i18n="blog_2_title">Pourquoi votre site vitrine actuel vous fait perdre de l'argent</h4>
+                                <p class="text-slate-500 text-sm mb-4 flex-1" data-i18n="blog_2_desc">Un beau site ne suffit plus. Il faut une architecture pensée pour transformer un visiteur en client.</p>
+                                <span class="text-brand-600 font-semibold text-sm flex items-center gap-1 hover:text-brand-800 transition mt-auto" data-i18n="blog_readmore">Lire l'article <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                            </div>
+                        </article>
+
+                        <!-- Article 3 -->
+                        <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition cursor-pointer flex flex-col" onclick="showArticle('article_3')">
+                            <div class="h-48 bg-slate-200 w-full overflow-hidden relative">
+                                <div class="absolute inset-0 bg-brand-900/10 mix-blend-multiply"></div>
+                                <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600&h=400" alt="Design" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105">
+                            </div>
+                            <div class="p-6 flex-1 flex flex-col">
+                                <span class="text-brand-500 text-xs font-bold uppercase tracking-wider mb-2 block">Webdesign</span>
+                                <h4 class="text-xl font-bold text-dark mb-3 leading-tight" data-i18n="blog_3_title">5 éléments indispensables sur la page d'accueil d'un artisan</h4>
+                                <p class="text-slate-500 text-sm mb-4 flex-1" data-i18n="blog_3_desc">Appliquez ces principes simples pour rassurer vos prospects et faciliter la prise de contact.</p>
+                                <span class="text-brand-600 font-semibold text-sm flex items-center gap-1 hover:text-brand-800 transition mt-auto" data-i18n="blog_readmore">Lire l'article <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                            </div>
+                        </article>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- VUE ARTICLE COMPLET (Caché par défaut) -->
+        <div id="article-view" class="hidden article-transition opacity-0 transform translate-y-4 pt-32 pb-24 bg-white min-h-screen">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <!-- Back Button -->
+                <button onclick="hideArticle()" class="flex items-center gap-2 text-slate-500 hover:text-brand-600 font-semibold mb-8 transition-colors">
+                    <i data-lucide="arrow-left" class="w-5 h-5"></i> <span data-i18n="article_back">Retour à l'accueil</span>
+                </button>
+
+                <!-- Article Header / Image -->
+                <div class="w-full h-[400px] rounded-3xl overflow-hidden relative mb-10 shadow-lg">
+                    <img id="article-hero-img" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000" alt="Article Hero Image" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-dark/80 to-transparent flex items-end p-8">
+                        <span id="article-hero-tag" class="bg-brand-500 text-white text-sm font-bold uppercase tracking-wider py-1.5 px-4 rounded-full">SEO & Conversion 2026</span>
+                    </div>
+                </div>
+
+                <!-- Article Content Injected via JS Translation -->
+                <div id="article-content-wrapper" data-i18n="article_1_content" class="text-slate-700">
+                    <!-- Le contenu sera injecté ici par JavaScript -->
+                </div>
             </div>
         </div>
-    </section>
+    </main>
 
     <!-- FOOTER -->
     <footer class="bg-dark text-slate-400 py-12 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2">
+            <div onclick="hideArticle()" class="flex items-center gap-2 cursor-pointer hover:opacity-80 transition">
                 <i data-lucide="zap" class="text-brand-500 w-6 h-6"></i>
                 <span class="font-heading text-xl font-black text-white tracking-tight">Khesraw.</span>
             </div>
@@ -354,44 +383,332 @@
         // Initialisation des icônes Lucide
         lucide.createIcons();
 
-        // Dictionnaire de traductions
+        // Contenus HTML pour l'article 1 (FR/NL)
+        const articleFrHtml_1 = `
+            <h1 class="text-4xl md:text-5xl font-heading font-black text-dark leading-tight mb-8">Comment attirer des clients locaux grâce à Google en 2026 ?</h1>
+            
+            <div class="space-y-8 text-lg leading-relaxed">
+                <p class="text-xl font-medium text-slate-600">Le paysage numérique a radicalement changé. En 2026, le bouche-à-oreille ne suffit plus à remplir le carnet de commandes d'un artisan. Aujourd'hui, un client à Courtrai, Gand ou Waterloo ne cherche plus seulement un service ; il cherche une solution immédiate, crédible et accessible en un clic.</p>
+                
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">1. L'ère de la Recherche Générative (SGE) et de la Confiance</h2>
+                <p>Google privilégie désormais l'E-E-A-T (Expérience, Expertise, Autorité, Confiance). Pour dominer les résultats locaux, votre site ne doit plus être une simple plaquette. Il doit démontrer votre savoir-faire. Chez Khesraw, nous optimisons chaque page pour que l'IA de Google comprenne que vous êtes l'expert n°1 dans votre secteur, que ce soit pour de l'élagage à Zwevegem ou de la menuiserie à Namur.</p>
+                
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">2. Du Trafic à la Conversion : Ne perdez plus de prospects</h2>
+                <p>Avoir des visiteurs, c'est bien. Avoir des clients, c'est mieux. Un site lent ou non sécurisé fait fuir 70% des prospects avant même qu'ils n'aient vu votre travail.</p>
+                <ul class="space-y-4 mt-6 bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <li class="flex gap-3"><i data-lucide="smartphone" class="w-6 h-6 text-brand-500 shrink-0 mt-1"></i> <div><strong>Vitesse Mobile-First :</strong> Vos clients sont sur les chantiers, ils utilisent leur smartphone. Votre site doit charger instantanément.</div></li>
+                    <li class="flex gap-3"><i data-lucide="pen-tool" class="w-6 h-6 text-brand-500 shrink-0 mt-1"></i> <div><strong>Copywriting Persuasif :</strong> Nos textes sont conçus pour transformer un simple curieux en une demande de devis ferme.</div></li>
+                    <li class="flex gap-3"><i data-lucide="calendar-clock" class="w-6 h-6 text-brand-500 shrink-0 mt-1"></i> <div><strong>Agenda Intégré :</strong> En 2026, l'instantanéité est la règle. Réservez une démo de notre système d'agenda pour voir comment automatiser vos prises de rendez-vous.</div></li>
+                </ul>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">3. Dominer les petites villes : La puissance du SEO Hyper-Local</h2>
+                <p>La compétition est féroce dans les grandes métropoles comme Bruxelles ou Anvers. La stratégie gagnante ? Cibler les localités où vos concurrents dorment.</p>
+                <ul class="list-disc pl-6 space-y-2 mt-4 text-slate-600 marker:text-brand-500">
+                    <li><strong>Ciblage précis :</strong> Nous créons des pages spécifiques pour des villes comme Waregem, Harelbeke ou Braine-l'Alleud.</li>
+                    <li><strong>Mots-clés Transactionnels :</strong> Nous ne visons pas juste "jardinier", mais "devis rapide jardinier Courtrai" ou "meilleur paveur à Gand".</li>
+                </ul>
+
+                <blockquote class="border-l-4 border-dark pl-6 italic text-slate-600 my-10 py-2">
+                    "Un artisan sans site web optimisé en 2026 perd en moyenne 35% de son chiffre d'affaires potentiel au profit de concurrents plus connectés." 
+                    <br><span class="font-bold mt-2 text-dark block">— L'équipe Khesraw</span>
+                </blockquote>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">4. Checklist pour votre succès local</h2>
+                <div class="overflow-x-auto rounded-xl border border-slate-200 mt-6 shadow-sm">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-dark text-white">
+                                <th class="p-4 font-semibold text-sm uppercase tracking-wider">Élément</th>
+                                <th class="p-4 font-semibold text-sm uppercase tracking-wider">Impact SEO</th>
+                                <th class="p-4 font-semibold text-sm uppercase tracking-wider">Avantage Khesraw</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white text-base">
+                            <tr class="hover:bg-slate-50 transition"><td class="p-4 font-bold text-dark">Google Business Profile</td><td class="p-4">Visibilité Maps</td><td class="p-4 text-brand-600 font-medium">Optimisation complète et fiches GMB</td></tr>
+                            <tr class="hover:bg-slate-50 transition"><td class="p-4 font-bold text-dark">Preuve Sociale</td><td class="p-4">Confiance client</td><td class="p-4 text-brand-600 font-medium">Intégration de vos études de cas</td></tr>
+                            <tr class="hover:bg-slate-50 transition"><td class="p-4 font-bold text-dark">Formulaires Intelligents</td><td class="p-4">Conversion</td><td class="p-4 text-brand-600 font-medium">Qualification automatique des leads</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bg-gradient-to-br from-slate-50 to-brand-50 rounded-3xl p-8 md:p-12 text-center mt-16 border border-brand-100 shadow-xl">
+                    <h3 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-4">Prêt à dominer votre marché local ?</h3>
+                    <p class="text-slate-600 mb-8 max-w-2xl mx-auto">Ne laissez pas vos futurs clients appeler la concurrence. Passez à la vitesse supérieure avec une stratégie de conversion qui a fait ses preuves partout en Belgique.</p>
+                    <button onclick="openModal('Audit - Depuis Article')" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl shadow-brand-500/30 transition-all transform hover:scale-105 inline-flex items-center gap-2">
+                        👉 Demandez votre audit de visibilité gratuit
+                    </button>
+                </div>
+            </div>
+        `;
+
+        const articleNlHtml_1 = `
+            <h1 class="text-4xl md:text-5xl font-heading font-black text-dark leading-tight mb-8">Hoe trekt u in 2026 lokale klanten aan via Google?</h1>
+            
+            <div class="space-y-8 text-lg leading-relaxed">
+                <p class="text-xl font-medium text-slate-600">Het digitale landschap is radicaal veranderd. In 2026 is mond-tot-mondreclame alleen niet meer genoeg om de orderportefeuille van een vakman te vullen. Vandaag de dag zoekt een klant in Kortrijk, Gent of Antwerpen niet alleen een dienst; ze zoeken een onmiddellijke, geloofwaardige oplossing die met één klik bereikbaar is.</p>
+                
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">1. Het tijdperk van Search Generative Experience (SGE) en Vertrouwen</h2>
+                <p>Google geeft nu prioriteit aan E-E-A-T (Ervaring, Expertise, Autoriteit, Betrouwbaarheid). Om de lokale resultaten te domineren, mag uw website niet langer een eenvoudige online brochure zijn. Het moet uw vakmanschap bewijzen. Bij Khesraw optimaliseren we elke pagina zodat de AI van Google begrijpt dat ú de nummer 1 expert bent in uw sector, of het nu gaat om tuinaanleg in Zwevegem of schrijnwerk in Halle.</p>
+                
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">2. Van Bezoeker naar Klant: Verlies geen leads meer</h2>
+                <p>Bezoekers hebben is goed. Klanten hebben is beter. Een trage of onbeveiligde website schrikt 70% van de potentiële klanten af nog voordat ze uw werk hebben gezien.</p>
+                <ul class="space-y-4 mt-6 bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <li class="flex gap-3"><i data-lucide="smartphone" class="w-6 h-6 text-brand-500 shrink-0 mt-1"></i> <div><strong>Mobile-First Snelheid:</strong> Uw klanten zitten op de werf en gebruiken hun smartphone. Uw site moet onmiddellijk laden.</div></li>
+                    <li class="flex gap-3"><i data-lucide="pen-tool" class="w-6 h-6 text-brand-500 shrink-0 mt-1"></i> <div><strong>Psychologische Copywriting:</strong> Onze teksten zijn ontworpen om een nieuwsgierige kijker om te zetten in een concrete offerteaanvraag.</div></li>
+                    <li class="flex gap-3"><i data-lucide="calendar-clock" class="w-6 h-6 text-brand-500 shrink-0 mt-1"></i> <div><strong>Geïntegreerde Agenda:</strong> In 2026 is snelheid de norm. Bekijk een demo van ons agendasysteem en zie hoe u afspraken automatiseert terwijl u aan het werk bent.</div></li>
+                </ul>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">3. Kleine steden domineren: De kracht van Hyper-Lokale SEO</h2>
+                <p>De concurrentie is moordend in grote steden zoals Brussel of Antwerpen. De winnende strategie? U richten op de gemeenten waar uw concurrenten nog slapen.</p>
+                <ul class="list-disc pl-6 space-y-2 mt-4 text-slate-600 marker:text-brand-500">
+                    <li><strong>Precieze targeting:</strong> We maken specifieke pagina's voor steden als Waregem, Harelbeke of Knokke.</li>
+                    <li><strong>Transactionele zoekwoorden:</strong> We mikken niet alleen op "tuinman", maar op "snel offerte tuinier Kortrijk" of "beste klinkerlegger in Gent".</li>
+                </ul>
+
+                <blockquote class="border-l-4 border-dark pl-6 italic text-slate-600 my-10 py-2">
+                    "Een vakman zonder geoptimaliseerde website verliest in 2026 gemiddeld 35% van zijn potentiële omzet aan concurrenten die digitaal sterker staan." 
+                    <br><span class="font-bold mt-2 text-dark block">— Team Khesraw</span>
+                </blockquote>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">4. Checklist voor uw lokaal succes</h2>
+                <div class="overflow-x-auto rounded-xl border border-slate-200 mt-6 shadow-sm">
+                    <table class="w-full text-left border-collapse">
+                        <thead>
+                            <tr class="bg-dark text-white">
+                                <th class="p-4 font-semibold text-sm uppercase tracking-wider">Element</th>
+                                <th class="p-4 font-semibold text-sm uppercase tracking-wider">SEO Impact</th>
+                                <th class="p-4 font-semibold text-sm uppercase tracking-wider">Khesraw Voordeel</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-200 bg-white text-base">
+                            <tr class="hover:bg-slate-50 transition"><td class="p-4 font-bold text-dark">Google Business Profile</td><td class="p-4">Zichtbaarheid in Maps</td><td class="p-4 text-brand-600 font-medium">Volledige optimalisatie en beheer</td></tr>
+                            <tr class="hover:bg-slate-50 transition"><td class="p-4 font-bold text-dark">Social Proof</td><td class="p-4">Klantvertrouwen</td><td class="p-4 text-brand-600 font-medium">Integratie van uw projecten en reviews</td></tr>
+                            <tr class="hover:bg-slate-50 transition"><td class="p-4 font-bold text-dark">Slimme Formulieren</td><td class="p-4">Conversie</td><td class="p-4 text-brand-600 font-medium">Automatische kwalificatie van leads</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="bg-gradient-to-br from-slate-50 to-brand-50 rounded-3xl p-8 md:p-12 text-center mt-16 border border-brand-100 shadow-xl">
+                    <h3 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-4">Klaar om uw lokale markt te domineren?</h3>
+                    <p class="text-slate-600 mb-8 max-w-2xl mx-auto">Laat uw toekomstige klanten niet naar de concurrentie bellen. Schakel een versnelling hoger met een conversiestrategie die zichzelf overal in België bewijst.</p>
+                    <button onclick="openModal('Audit - Vanuit Artikel')" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl shadow-brand-500/30 transition-all transform hover:scale-105 inline-flex items-center gap-2">
+                        👉 Vraag uw gratis website-audit aan
+                    </button>
+                </div>
+            </div>
+        `;
+
+        // Contenus HTML pour l'article 2 (FR/NL)
+        const articleFrHtml_2 = `
+            <h1 class="text-4xl md:text-5xl font-heading font-black text-dark leading-tight mb-8">Pourquoi votre site vitrine actuel vous fait perdre de l'argent</h1>
+            
+            <div class="space-y-8 text-lg leading-relaxed">
+                <p class="text-xl font-medium text-slate-600">En 2026, avoir un "beau site" est devenu le strict minimum, mais c’est aussi devenu un piège. Beaucoup d'artisans en Belgique pensent qu'une simple présence en ligne suffit. Pourtant, si votre site se contente d'être une "vitrine" passive, il ne travaille pas pour vous : il vous coûte de l'argent.</p>
+                
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">1. Le syndrome de la "Vitrine Fantôme"</h2>
+                <p>Un site vitrine classique est souvent une impasse. Le visiteur arrive, regarde trois photos, et repart. Sans architecture de conversion, vous perdez ce prospect à jamais. À l'agence Khesraw, nous ne construisons pas des vitrines, nous construisons des tunnels de vente. Que vous soyez à Waterloo, Namur ou Bruxelles, votre site doit guider le client de la curiosité à la signature.</p>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">2. L'absence d'appel à l'action (CTA) : Le silence qui coûte cher</h2>
+                <p>La plupart des sites d'artisans obligent le client à chercher le numéro de téléphone ou à copier-coller une adresse mail. C'est une erreur fatale.</p>
+                <ul class="space-y-4 mt-6 bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <li class="flex gap-3"><i data-lucide="zap" class="w-6 h-6 text-brand-500 shrink-0 mt-1"></i> <div><strong>L'instantanéité 2026 :</strong> Un client veut cliquer et réserver.</div></li>
+                    <li class="flex gap-3"><i data-lucide="check-circle" class="w-6 h-6 text-brand-500 shrink-0 mt-1"></i> <div><strong>Notre solution :</strong> Nous intégrons des agendas synchronisés et des formulaires intelligents qui capturent le besoin du client au moment où il est le plus chaud.</div></li>
+                </ul>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">3. Le Copywriting : Parler au cerveau, pas seulement aux yeux</h2>
+                <p>Un beau design flatte l'œil, mais c'est le copywriting stratégique qui vide le carnet de commandes des concurrents. Si votre texte dit "Nous faisons de la menuiserie", vous êtes invisible. S'il dit "Protégez votre maison avec des châssis haute performance installés en 48h à Liège", vous gagnez un client.</p>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">4. La vitesse et le SEO local : Le coût de l'invisibilité</h2>
+                <p>Chaque seconde de chargement supplémentaire fait chuter votre taux de conversion de 20%. Si votre site est lourd, Google vous punit et vos clients à Courtrai ou Charleroi ne vous trouvent même pas.</p>
+                
+                <blockquote class="border-l-4 border-dark pl-6 italic text-slate-600 my-10 py-2">
+                    "Le calcul est simple : Un site qui génère 0 devis par mois coûte son prix d'hébergement. Un site Khesraw qui génère 5 devis qualifiés par semaine s'autofinance en moins d'un mois."
+                </blockquote>
+
+                <div class="bg-gradient-to-br from-slate-50 to-brand-50 rounded-3xl p-8 md:p-12 text-center mt-16 border border-brand-100 shadow-xl">
+                    <h3 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-4">👉 Arrêtez de perdre des leads</h3>
+                    <p class="text-slate-600 mb-8 max-w-2xl mx-auto">Demandez votre audit de conversion gratuit et découvrez combien de clients vous perdez chaque mois.</p>
+                    <button onclick="openModal('Audit - Depuis Article 2')" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl shadow-brand-500/30 transition-all transform hover:scale-105 inline-flex items-center gap-2">
+                        Demander votre audit de conversion gratuit
+                    </button>
+                </div>
+            </div>
+        `;
+
+        const articleNlHtml_2 = `
+            <h1 class="text-4xl md:text-5xl font-heading font-black text-dark leading-tight mb-8">Waarom uw huidige 'visitekaartje' website u geld kost</h1>
+            
+            <div class="space-y-8 text-lg leading-relaxed">
+                <p class="text-xl font-medium text-slate-600">In 2026 is een "mooie website" de absolute minimumvereiste, maar het is ook een valkuil geworden. Veel vakmannen in Vlaanderen denken dat een eenvoudige online aanwezigheid volstaat. Echter, als uw site slechts een passief "visitekaartje" is, werkt hij niet voor u: hij kost u geld.</p>
+                
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">1. Het syndroom van de "Passieve Etalage"</h2>
+                <p>Een klassieke vitrine-website is vaak een doodlopende straat. De bezoeker komt aan, bekijkt drie foto's en vertrekt weer. Zonder een conversie-architectuur bent u die prospect voorgoed kwijt. Bij Khesraw bouwen we geen etalages, we bouwen verkoopmachines. Of u nu in Gent, Antwerpen of Brugge bent, uw site moet de klant van nieuwsgierigheid naar een getekende offerte leiden.</p>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">2. Geen Call-to-Action (CTA): De stilte die geld kost</h2>
+                <p>De meeste websites van vakmannen dwingen de klant om naar het telefoonnummer te zoeken of een e-mailadres te kopiëren en plakken. Dit is een kapitale fout.</p>
+                <ul class="space-y-4 mt-6 bg-slate-50 p-6 rounded-2xl border border-slate-100">
+                    <li class="flex gap-3"><i data-lucide="zap" class="w-6 h-6 text-brand-500 shrink-0 mt-1"></i> <div><strong>De 2026-norm:</strong> Een klant wil klikken en reserveren.</div></li>
+                    <li class="flex gap-3"><i data-lucide="check-circle" class="w-6 h-6 text-brand-500 shrink-0 mt-1"></i> <div><strong>Onze oplossing:</strong> Wij integreren gesynchroniseerde agenda's en slimme formulieren die de behoefte van de klant vastleggen op het moment dat ze het meest bereid zijn om te kopen.</div></li>
+                </ul>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">3. Strategische Copywriting: Spreek tot het brein, niet alleen tot het oog</h2>
+                <p>Een mooi design is leuk voor het oog, maar het is de strategische copywriting die de agenda van uw concurrenten leegmaakt. Als uw tekst zegt "Wij doen aan schrijnwerk", bent u onzichtbaar. Als er staat "Beveilig uw woning met hoogwaardige ramen, geplaatst binnen 48 uur in Kortrijk", wint u een klant.</p>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">4. Snelheid en Lokale SEO: De prijs van onzichtbaarheid</h2>
+                <p>Elke extra seconde laadtijd verlaagt uw conversieratio met 20%. Als uw site traag is, straft Google u af en vinden klanten in Waregem of Roeselare u niet eens.</p>
+                
+                <blockquote class="border-l-4 border-dark pl-6 italic text-slate-600 my-10 py-2">
+                    "De rekensom is snel gemaakt: Een website die 0 offertes per maand genereert, kost u elke maand geld. Een Khesraw website die 5 gekwalificeerde leads per week genereert, verdient zichzelf in minder dan een maand terug."
+                </blockquote>
+
+                <div class="bg-gradient-to-br from-slate-50 to-brand-50 rounded-3xl p-8 md:p-12 text-center mt-16 border border-brand-100 shadow-xl">
+                    <h3 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-4">👉 Stop met het mislopen van leads</h3>
+                    <p class="text-slate-600 mb-8 max-w-2xl mx-auto">Vraag uw gratis conversie-audit aan en ontdek hoeveel klanten u elke maand verliest.</p>
+                    <button onclick="openModal('Audit - Vanuit Artikel 2')" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl shadow-brand-500/30 transition-all transform hover:scale-105 inline-flex items-center gap-2">
+                        Vraag uw gratis conversie-audit aan
+                    </button>
+                </div>
+            </div>
+        `;
+
+        // Contenus HTML pour l'article 3 (FR/NL)
+        const articleFrHtml_3 = `
+            <h1 class="text-4xl md:text-5xl font-heading font-black text-dark leading-tight mb-8">Webdesign : 5 éléments indispensables sur la page d'accueil d'un artisan en 2026</h1>
+            
+            <div class="space-y-8 text-lg leading-relaxed">
+                <p class="text-xl font-medium text-slate-600">En 2026, la page d'accueil de votre site web n'est plus une simple porte d'entrée ; c'est votre meilleur ouvrier. Elle doit rassurer en un coup d'œil et transformer un visiteur hésitant en un client prêt à signer.<br><br>Voici les 5 éléments critiques que nous intégrons chez Khesraw pour maximiser vos résultats, que vous soyez à Bruxelles, Mons ou Arlon.</p>
+                
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">1. Une Proposition de Valeur Claire (H1)</h2>
+                <p>Ne dites pas "Menuiserie Janssens". Dites ce que vous apportez au client.</p>
+                <ul class="list-disc pl-6 space-y-2 mt-4 text-slate-600 marker:text-brand-500">
+                    <li><strong>Exemple :</strong> "Des châssis haute performance pour réduire votre facture d'énergie à Wavre."</li>
+                    <li><strong>L'objectif :</strong> Le client doit savoir immédiatement qu'il est au bon endroit pour résoudre son problème.</li>
+                </ul>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">2. La Preuve Sociale Immédiate</h2>
+                <p>Les gens achètent ce que les autres ont déjà validé.</p>
+                <ul class="list-disc pl-6 space-y-2 mt-4 text-slate-600 marker:text-brand-500">
+                    <li><strong>Ce qu'il faut :</strong> Des photos avant/après de haute qualité et des avis clients géolocalisés.</li>
+                    <li><strong>L'astuce Khesraw :</strong> Nous mettons en avant vos réalisations locales (ex: "Aménagement d'un jardin contemporain à Tournai") pour renforcer votre crédibilité régionale.</li>
+                </ul>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">3. Le Bouton de Conversion (CTA) "Sans Effort"</h2>
+                <p>Si un client doit chercher votre numéro de téléphone, vous l'avez déjà perdu.</p>
+                <ul class="list-disc pl-6 space-y-2 mt-4 text-slate-600 marker:text-brand-500">
+                    <li><strong>La solution :</strong> Un bouton "Demander un devis gratuit" ou mieux, un agenda en ligne intégré.</li>
+                    <li><strong>Le plus :</strong> Nos systèmes permettent à vos clients de Courtrai ou de Namur de réserver une visite de chantier directement sur votre site.</li>
+                </ul>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">4. La Rapidité Mobile : Le critère n°1 de Google</h2>
+                <p>90% des recherches pour un artisan local se font sur smartphone.</p>
+                <ul class="list-disc pl-6 space-y-2 mt-4 text-slate-600 marker:text-brand-500">
+                    <li><strong>Le danger :</strong> Un site qui met plus de 3 secondes à charger est un site qui ne vend pas.</li>
+                    <li><strong>Notre engagement :</strong> Des architectures légères et ultra-rapides pour que vous ne ratiez aucun appel, même avec une faible connexion 4G.</li>
+                </ul>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">5. L'Humain au Cœur du Digital</h2>
+                <p>En Belgique, on achète un artisan, pas une machine.</p>
+                <ul class="list-disc pl-6 space-y-2 mt-4 text-slate-600 marker:text-brand-500">
+                    <li><strong>L'indispensable :</strong> Une photo de vous ou de votre équipe en action. Cela crée un lien de confiance immédiat avant même le premier contact.</li>
+                </ul>
+
+                <div class="bg-gradient-to-br from-slate-50 to-brand-50 rounded-3xl p-8 md:p-12 text-center mt-16 border border-brand-100 shadow-xl">
+                    <h3 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-4">👉 Votre site actuel respecte-t-il ces 5 points ?</h3>
+                    <p class="text-slate-600 mb-8 max-w-2xl mx-auto">Faites le test avec notre audit gratuit et découvrez comment maximiser vos résultats.</p>
+                    <button onclick="openModal('Audit - Depuis Article 3')" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl shadow-brand-500/30 transition-all transform hover:scale-105 inline-flex items-center gap-2">
+                        Demander votre audit de conversion gratuit
+                    </button>
+                </div>
+            </div>
+        `;
+
+        const articleNlHtml_3 = `
+            <h1 class="text-4xl md:text-5xl font-heading font-black text-dark leading-tight mb-8">Webdesign: 5 onmisbare elementen op de homepage van een vakman in 2026</h1>
+            
+            <div class="space-y-8 text-lg leading-relaxed">
+                <p class="text-xl font-medium text-slate-600">In 2026 is de homepage van uw website niet langer een eenvoudige voordeur; het is uw beste werknemer. Het moet in één oogopslag vertrouwen wekken en een aarzelende bezoeker omzetten in een klant die klaar is om te tekenen.<br><br>Hier zijn de 5 cruciale elementen die wij bij Khesraw integreren om uw resultaten te maximaliseren, of u nu in Antwerpen, Hasselt of Brugge gevestigd bent.</p>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">1. Een duidelijke Waardepropositie (H1)</h2>
+                <p>Zeg niet "Schrijnwerkerij Janssens". Zeg wat u de klant brengt.</p>
+                <ul class="list-disc pl-6 space-y-2 mt-4 text-slate-600 marker:text-brand-500">
+                    <li><strong>Voorbeeld:</strong> "Hoogwaardige ramen om uw energiefactuur te verlagen in Leuven."</li>
+                    <li><strong>Het doel:</strong> De klant moet onmiddellijk weten dat hij op de juiste plek is om zijn probleem op te lossen.</li>
+                </ul>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">2. Onmiddellijk Sociaal Bewijs (Social Proof)</h2>
+                <p>Mensen kopen wat anderen al hebben goedgekeurd.</p>
+                <ul class="list-disc pl-6 space-y-2 mt-4 text-slate-600 marker:text-brand-500">
+                    <li><strong>Wat u nodig heeft:</strong> Voor-en-na foto's van hoge kwaliteit en gelokaliseerde klantbeoordelingen.</li>
+                    <li><strong>De Khesraw-truc:</strong> We leggen de nadruk op uw lokale realisaties (bijv. "Aanleg van een moderne tuin in Gent") om uw regionale geloofwaardigheid te versterken.</li>
+                </ul>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">3. De "Moeiteloze" Conversieknop (CTA)</h2>
+                <p>Als een klant naar uw telefoonnummer moet zoeken, bent u hem al kwijt.</p>
+                <ul class="list-disc pl-6 space-y-2 mt-4 text-slate-600 marker:text-brand-500">
+                    <li><strong>De oplossing:</strong> Een knop "Vraag een gratis offerte aan" of, nog beter, een geïntegreerde online agenda.</li>
+                    <li><strong>Het voordeel:</strong> Onze systemen stellen uw klanten uit Kortrijk of Genk in staat om direct een werfbezoek in te plannen via uw site.</li>
+                </ul>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">4. Mobiele Snelheid: Google's nr. 1 criterium</h2>
+                <p>90% van de zoekopdrachten voor een lokale vakman gebeurt op een smartphone.</p>
+                <ul class="list-disc pl-6 space-y-2 mt-4 text-slate-600 marker:text-brand-500">
+                    <li><strong>Het gevaar:</strong> Een site die langer dan 3 seconden nodig heeft om te laden, verkoopt niet.</li>
+                    <li><strong>Onze belofte:</strong> Lichte en ultrasnelle architecturen zodat u geen enkel gesprek mist, zelfs niet met een zwakke 4G-verbinding.</li>
+                </ul>
+
+                <h2 class="text-3xl font-heading font-bold text-dark mt-12 mb-6 border-l-4 border-brand-500 pl-4">5. De mens achter het digitale</h2>
+                <p>In België koopt men van een vakman, niet van een machine.</p>
+                <ul class="list-disc pl-6 space-y-2 mt-4 text-slate-600 marker:text-brand-500">
+                    <li><strong>Onmisbaar:</strong> Een foto van u of uw team in actie. Dit creëert onmiddellijk een vertrouwensband nog vóór het eerste contact.</li>
+                </ul>
+
+                <div class="bg-gradient-to-br from-slate-50 to-brand-50 rounded-3xl p-8 md:p-12 text-center mt-16 border border-brand-100 shadow-xl">
+                    <h3 class="text-2xl md:text-3xl font-heading font-bold text-dark mb-4">👉 Voldoet uw huidige site aan deze 5 punten?</h3>
+                    <p class="text-slate-600 mb-8 max-w-2xl mx-auto">Doe de test met onze gratis audit en ontdek hoe u uw resultaten kunt maximaliseren.</p>
+                    <button onclick="openModal('Audit - Vanuit Artikel 3')" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl shadow-brand-500/30 transition-all transform hover:scale-105 inline-flex items-center gap-2">
+                        Vraag uw gratis conversie-audit aan
+                    </button>
+                </div>
+            </div>
+        `;
+
         const translations = {
             fr: {
-                nav_cta: "Demander une offre",
-                hero_h1: "En 2026, un site vitrine ne suffit plus.<br/> <span class='text-brand-500'>Il vous faut une machine à convertir.</span>",
-                hero_sub: "Des sites web ultra-optimisés pour artisans et commerçants. Soyez n°1 sur Google et transformez vos visiteurs en clients fidèles.",
-                hero_cta: "Mon site à 500€ <i data-lucide='arrow-right' class='w-5 h-5 inline'></i>",
-                hero_trust: "<span>Artisans</span> • <span>Jardiniers</span> • <span>Coiffeurs</span> • <span>Salons de beauté</span>",
-                problem_h2: "Stop aux arnaques des agences traditionnelles.",
-                problem_text: "Stop aux agences qui facturent 1000€ la création + 300€ de frais annuels cachés. En 2026, la transparence prime. Vos clients s'en fichent des belles animations complexes ; ils veulent trouver votre numéro, vos services et vous contacter rapidement. Vous avez besoin d'une structure qui vend.",
-                solution_surtitle: "L'Expertise",
-                solution_h2: "La Solution Khesraw",
-                solution_text: "Je m'appelle Khesraw, expert en code et SEO. Ma passion : propulser les entrepreneurs locaux avec des outils web taillés pour dominer leur secteur.",
-                feat1_title: "Programmation Propre",
-                feat1_desc: "Code sur-mesure et structure ultra-légère. C'est exactement ce que les robots (crawling) de Google adorent pour vous classer premier.",
-                feat2_title: "SEO Inside-of-sight",
-                feat2_desc: "Maillage interne intelligent et indexation ultra-rapide. Votre site est conçu à la base pour les moteurs de recherche.",
-                feat3_title: "Conversion Maximisée",
-                feat3_desc: "Un design psychologique qui pousse à l'action. Fini le site \"carte de visite\", place à la machine à générer des appels.",
+                nav_cta: "Réservez votre audit de visibilité gratuit",
+                hero_h1: "Le partenaire digital des artisans et entrepreneurs partout en Belgique.",
+                hero_sub: "En 2026, un <strong>site web vitrine vs conversion</strong> fait toute la différence. En tant qu'<strong>expert en conversion pour entrepreneurs</strong>, je crée des plateformes qui inspirent confiance et génèrent des devis.",
+                hero_cta: "Réservez votre audit gratuit <i data-lucide='arrow-right' class='w-5 h-5 inline'></i>",
+                hero_trust: "<span>Artisans</span> • <span>Jardiniers</span> • <span>Coiffeurs</span> • <span>Entrepreneurs</span>",
+                problem_h2: "Pourquoi 90% des sites d'artisans échouent (manque de conversion).",
+                problem_text: "Que vous soyez en Wallonie ou en Flandre, vos clients cherchent sur Google exactement de la même manière. Un site classique ne rassure pas et ne convertit pas. Le manque à gagner est le même partout. En tant qu'<strong>agence digitale pour artisans</strong>, nous savons que la <strong>conversion de prospects</strong> nécessite de bâtir une relation de confiance immédiate dès la première visite.",
+                solution_surtitle: "La Méthode",
+                solution_h2: "Une ingénierie pensée pour votre image",
+                solution_text: "Fini les sites inutiles. Ma méthode repose sur trois piliers fondamentaux pour valoriser votre savoir-faire et faciliter la vie de vos futurs clients.",
+                feat1_title: "Copywriting Persuasif",
+                feat1_desc: "Des mots qui résonnent avec vos valeurs. Nous racontons votre histoire pour instaurer une confiance immédiate avec vos futurs clients.",
+                feat2_title: "Agenda Intégré",
+                feat2_desc: "Simplifiez la vie de vos prospects avec une prise de rendez-vous fluide et directe. Cela renforce instantanément votre image professionnelle.",
+                feat3_title: "Vitesse Mobile Parfaite",
+                feat3_desc: "80% des recherches se font sur smartphone. Une navigation ultra-rapide prouve votre fiabilité et votre sérieux avant même le premier contact.",
                 testi_h2: "Ils ont explosé leur carnet de commandes",
                 testi_sub: "Ne nous croyez pas sur parole, écoutez nos clients.",
                 testi_1_text: "\"Depuis que Khesraw a refait mon site, je reçois 3 fois plus d'appels pour des devis d'aménagement paysager. Un investissement rentabilisé en 2 semaines.\"",
                 testi_1_role: "Entrepreneur de jardin",
-                testi_2_text: "\"Rapide, clair et sans frais cachés. Mon ancien site me coûtait cher pour zéro résultat. Aujourd'hui, je suis 1er sur Google dans ma ville.\"",
+                testi_2_text: "\"Rapide, clair et rassurant pour mes clients. Mon ancien site ne me rapportait rien. Aujourd'hui, je suis une référence locale sur Google.\"",
                 testi_2_role: "Gérante Salon de Beauté",
                 pricing_h2: "Tarification claire. <br/>Zéro mauvaise surprise.",
                 price_pack_title: "Pack Classique",
-                price_pack_desc: "Site moderne & Responsive pour artisans.",
-                price_cta1: "Je veux ce site",
+                price_pack_desc: "Site de conversion pour artisans.",
+                price_cta1: "Demander un audit pour ce pack",
                 price_seo_title: "Option SEO Turbo",
-                price_seo_desc: "Optimisation sémantique pour dominer votre ville.",
+                price_seo_desc: "Optimisation pour dominer votre région.",
                 seo_li1: "Recherche de mots-clés stratégiques",
                 seo_li2: "Optimisation Google My Business",
                 seo_li3: "Structure de maillage interne avancée",
-                price_cta2: "Ajouter le SEO Turbo",
+                price_cta2: "Demander un audit pour ce pack",
                 price_maint_text: "<strong>Frais de maintenance : 30€/an</strong> (Nom de domaine + CMS inclus). <br/>Oui, vous avez bien lu : 30€ par AN, pas par mois.",
-                seo_footer_h2: "Dominez votre marché local",
-                seo_context_html: "Que vous cherchiez une <strong>création site web pas cher</strong>, un <strong>SEO local artisan</strong> percutant, ou un <strong>site internet rapide pour coiffeur</strong>, l'architecture Khesraw est faite pour vous. Nous incluons l'<strong>optimisation Google My Business</strong> pour capter directement les clients de votre ville. Nos sites se chargent instantanément pour ne perdre aucun prospect.",
+                seo_footer_h2: "Leader de la création de sites web pour artisans en Belgique",
+                seo_context_html: "Spécialiste de la <strong>création de sites web pour artisans en Belgique</strong>, Khesraw s'assure de l'optimisation locale de votre entreprise. Ne vous contentez pas d'un simple site web, exigez une véritable présence en ligne qui transforme vos visiteurs en clients fidèles.",
                 blog_surtitle: "Ressources & Conseils",
                 blog_h2: "Derniers Articles",
                 blog_1_title: "Comment attirer des clients locaux grâce à Google en 2026 ?",
@@ -402,74 +719,82 @@
                 blog_3_desc: "Appliquez ces principes simples pour rassurer vos prospects et faciliter la prise de contact.",
                 blog_readmore: "Lire l'article",
                 footer_contact: "Contactez Khesraw : +32 465 70 42 15",
-                modal_title: "Demander un devis",
-                modal_desc: "Laissez-nous vos coordonnées, nous vous rappelons sous 24h.",
+                modal_title: "Demander votre audit gratuit",
+                modal_desc: "Laissez-nous vos coordonnées, nous analysons votre visibilité sous 24h.",
                 modal_name: "Votre nom / entreprise",
                 modal_phone: "Numéro de téléphone",
-                modal_submit: "Envoyer ma demande"
+                modal_submit: "Réserver mon audit",
+                article_back: "Retour à l'accueil",
+                article_1_content: articleFrHtml_1,
+                article_2_content: articleFrHtml_2,
+                article_3_content: articleFrHtml_3
             },
             nl: {
-                nav_cta: "Offerte aanvragen",
-                hero_h1: "Conversiegericht webdesign<br/> <span class='text-brand-500'>voor vakmannen.</span>",
-                hero_sub: "Krijg <strong>nieuwe klanten via Google</strong>. Wij bouwen een <strong>professionele website voor zelfstandigen</strong> die bezoekers direct omzet in leads.",
-                hero_cta: "Mijn website voor €500 <i data-lucide='arrow-right' class='w-5 h-5 inline'></i>",
+                nav_cta: "Vraag uw gratis website-audit aan",
+                hero_h1: "De digitale partner voor vakmannen en ondernemers in heel België.",
+                hero_sub: "Stop met geld verspillen aan onzichtbare sites. Als <strong>conversie-expert voor zelfstandigen</strong> garandeer ik u maximaal rendement en structurele <strong>leadgeneratie in België</strong>.",
+                hero_cta: "Vraag uw gratis audit aan <i data-lucide='arrow-right' class='w-5 h-5 inline'></i>",
                 hero_trust: "<span>Tuinaannemers</span> • <span>Vakmannen</span> • <span>Kappers</span> • <span>Bouwbedrijven</span>",
-                problem_h2: "Geen website nadelen? U loopt dagelijks opdrachten mis.",
-                problem_text: "De nadelen van geen website zijn groot. Uw concurrenten stelen uw klanten omdat u online onzichtbaar bent. Tijd om dat te veranderen. Stop met onnodige kosten. U heeft een snelle site nodig, ontworpen om de <strong>online offerteaanvragen te optimaliseren</strong> en uw bedrijf te laten groeien.",
-                solution_surtitle: "De Expertise",
-                solution_h2: "De Khesraw Aanpak",
-                solution_text: "Mijn doel: <strong>Leadgeneratie voor vakmannen</strong>. Ik bouw tools die niet alleen mooi zijn, maar vooral zorgen dat uw agenda altijd vol zit.",
-                feat1_title: "Website laten maken voor tuinaannemers & bouw",
-                feat1_desc: "Wij ontwerpen uw site met één doel: meer contactaanvragen. Geen nutteloze toeters en bellen, maar pure conversie.",
-                feat2_title: "Google zichtbaarheid verbeteren",
-                feat2_desc: "We zorgen voor de ultieme <strong>lokale SEO voor bedrijven</strong> zodat u lokaal gevonden wordt door mensen die nú uw diensten zoeken.",
-                feat3_title: "Conversiegericht webdesign",
-                feat3_desc: "Elke bezoeker wordt psychologisch begeleid naar het aanvragen van een offerte. Maximale return on investment.",
+                problem_h2: "Waarom 90% van de websites faalt (en u omzet mist).",
+                problem_text: "Of u nu in West-Vlaanderen of Wallonië actief bent, het zoekgedrag op Google is identiek. Een simpele 'online folder' levert niets op, de gemiste inkomsten zijn enorm. U heeft <strong>webdesign voor vakmannen in heel België</strong> nodig dat keihard focust op ROI en uw bezoekers direct omzet in betalende klanten.",
+                solution_surtitle: "De Methode",
+                solution_h2: "Een architectuur gebouwd voor conversie",
+                solution_text: "Vergeet de nutteloze details. Mijn methode focust zich exclusief op drie pijlers die direct impact hebben op uw bottom-line en efficiëntie.",
+                feat1_title: "High-Converting Copywriting",
+                feat1_desc: "Geen vage teksten, maar directe, wervende boodschappen die uw bezoeker dwingen om actie te ondernemen. Tijd is geld, wij maken het direct concreet.",
+                feat2_title: "Geïntegreerde Agenda",
+                feat2_desc: "Automatiseer uw afspraken en offertes. Laat uw website het zware werk doen en leads verzamelen, terwijl u zich 100% focust op uw vak.",
+                feat3_title: "Mobiele Snelheid",
+                feat3_desc: "Uw klanten wachten niet. Een website die in een fractie van een seconde laadt op smartphones is cruciaal voor een torenhoge conversieratio.",
                 testi_h2: "Zij gingen u succesvol voor",
-                testi_sub: "Luister naar de ervaringen van onze vakmannen.",
-                testi_1_text: "\"Dankzij Khesraw is mijn <strong>Google zichtbaarheid verbeterd</strong>. Mijn agenda zit vol en ik krijg wekelijks nieuwe aanvragen voor tuinaanleg.\"",
+                testi_sub: "Luister naar de directe resultaten van onze vakmannen.",
+                testi_1_text: "\"Dankzij Khesraw is mijn zichtbaarheid verveelvoudigd. Mijn agenda zit vol en ik krijg wekelijks nieuwe aanvragen voor tuinaanleg. Binnen 2 weken terugverdiend.\"",
                 testi_1_role: "Tuinaannemer",
-                testi_2_text: "\"Eindelijk een eerlijke <strong>website voor kleine ondernemingen prijs</strong>. Geen verborgen kosten, en direct resultaat.\"",
+                testi_2_text: "\"Snel, transparant en met focus op resultaat. Mijn oude site kostte enkel geld. Nu ben ik de nummer één in mijn regio op Google.\"",
                 testi_2_role: "Zelfstandig Elektricien",
-                pricing_h2: "Website voor kleine ondernemingen prijs.<br/>Transparant en eerlijk.",
+                pricing_h2: "Transparante prijzen.<br/>Maximale ROI.",
                 price_pack_title: "Klassiek Pakket",
-                price_pack_desc: "Professionele website voor zelfstandigen.",
-                price_cta1: "Ik wil deze website",
+                price_pack_desc: "De conversiemachine voor zelfstandigen.",
+                price_cta1: "Audit aanvragen voor dit pakket",
                 price_seo_title: "SEO Turbo Optie",
                 price_seo_desc: "Voor de vakman die zijn regio wil domineren.",
                 seo_li1: "Strategisch zoekwoordenonderzoek",
                 seo_li2: "Google My Business optimalisatie",
-                seo_li3: "Lokale SEO voor bedrijven versterken",
-                price_cta2: "Voeg SEO Turbo toe",
-                price_maint_text: "<strong>Onderhoudskosten: €30/jaar</strong> (Domeinnaam + CMS inbegrepen). <br/>Geen maandelijkse verrassingen.",
-                seo_footer_h2: "Lokale SEO voor Bedrijven",
-                seo_context_html: "We combineren <strong>conversiegericht webdesign</strong> met krachtige SEO om uw <strong>Google zichtbaarheid te verbeteren</strong>. Perfect wanneer u een <strong>website wilt laten maken voor tuinaannemers</strong> of bouw. Krijg structureel <strong>nieuwe klanten via Google</strong>.",
+                seo_li3: "Geavanceerde interne linkstructuur",
+                price_cta2: "Audit aanvragen voor dit pakket",
+                price_maint_text: "<strong>Onderhoudskosten: €30/jaar</strong> (Domeinnaam + CMS inbegrepen). <br/>Geen maandelijkse verrassingen, pure efficiëntie.",
+                seo_footer_h2: "Webdesign België: Domineer uw regio",
+                seo_context_html: "Wilt u een <strong>website laten maken (Vlaanderen)</strong> of daarbuiten? Wij combineren <strong>webdesign België</strong> met ijzersterke conversietechnieken. Krijg structureel nieuwe opdrachten binnen via Google en vergroot uw marktaandeel.",
                 blog_surtitle: "Kennisbank",
                 blog_h2: "Laatste Inzichten",
                 blog_1_title: "Hoe u als vakman nieuwe klanten via Google krijgt",
-                blog_1_desc: "Ontdek de geheimen van online zichtbaarheid in 2026.",
-                blog_2_title: "Geen website nadelen: Wat kost onzichtbaarheid u?",
-                blog_2_desc: "Lees waarom u elke maand duizenden euro's aan omzet misloopt.",
-                blog_3_title: "Online offerteaanvragen optimaliseren: 5 Tips",
-                blog_3_desc: "Simpele aanpassingen die direct zorgen voor meer leads.",
+                blog_1_desc: "Ontdek de geheimen van online zichtbaarheid en conversie in 2026.",
+                blog_2_title: "Waarom uw huidige site u dagelijks geld kost",
+                blog_2_desc: "Lees waarom u elke maand duizenden euro's aan omzet misloopt zonder een conversiemachine.",
+                blog_3_title: "Meer offerteaanvragen genereren: 5 Tips",
+                blog_3_desc: "Simpele en efficiënte aanpassingen die direct zorgen voor meer waardevolle leads.",
                 blog_readmore: "Lees artikel",
-                footer_contact: "Neem contact op met Khesraw: +32 465 70 42 15",
-                modal_title: "Offerte aanvragen",
-                modal_desc: "Laat uw gegevens achter, wij bellen u binnen 24 uur terug.",
-                modal_name: "Uw naam / bedrijf",
+                footer_contact: "Neem direct contact op met Khesraw: +32 465 70 42 15",
+                modal_title: "Vraag uw gratis website-audit aan",
+                modal_desc: "Laat uw gegevens achter. Wij analyseren uw online potentieel binnen 24 uur.",
+                modal_name: "Uw naam / bedrijfsnaam",
                 modal_phone: "Telefoonnummer",
-                modal_submit: "Aanvraag versturen"
+                modal_submit: "Mijn audit aanvragen",
+                article_back: "Terug naar home",
+                article_1_content: articleNlHtml_1,
+                article_2_content: articleNlHtml_2,
+                article_3_content: articleNlHtml_3
             }
         };
 
         const seoData = {
             fr: {
-                title: "Khesraw | Création de sites web haute conversion pour artisans",
-                desc: "Khesraw crée des sites web ultra-optimisés et rapides pour les artisans, coiffeurs et commerçants. Devenez n°1 sur Google avec un SEO local puissant."
+                title: "Khesraw | Création de sites web haute conversion pour artisans en Belgique",
+                desc: "Khesraw : Agence digitale pour artisans. Expert en conversion pour entrepreneurs, nous transformons votre site vitrine en machine à prospects partout en Belgique."
             },
             nl: {
-                title: "Webdesign & Conversie voor Vakmannen in Kortrijk & Zwevegem | Khesraw",
-                desc: "Wilt u meer offerteaanvragen via uw website? Khesraw helpt tuinaannemers en vakmannen in regio Waregem/Kortrijk met websites die echt klanten opleveren. Ontdek onze aanpak."
+                title: "Khesraw | Conversiegericht Webdesign voor Tuinaannemers in West-Vlaanderen",
+                desc: "Wilt u meer offerteaanvragen via uw website? Khesraw helpt tuinaannemers en vakmannen in heel België met websites die keihard focussen op ROI. Vraag uw audit aan."
             }
         };
 
@@ -498,8 +823,73 @@
             document.getElementById('page-title').innerText = seoData[lang].title;
             document.getElementById('page-desc').setAttribute('content', seoData[lang].desc);
 
-            // Re-render icons if any were in the translated HTML
+            // Re-render icons after DOM modification (Important pour l'article injecté)
             lucide.createIcons();
+        }
+
+        // --- Logique d'affichage Article Dynamique (SPA) ---
+        function showArticle(articleId) {
+            // Prépare le contenu en changeant la référence d'injection de la traduction
+            document.getElementById('article-content-wrapper').setAttribute('data-i18n', articleId + '_content');
+            
+            // Mise à jour de l'image et du tag en fonction de l'article cliqué
+            const heroImg = document.getElementById('article-hero-img');
+            const heroTag = document.getElementById('article-hero-tag');
+            
+            if (articleId === 'article_1') {
+                heroImg.src = "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=2000";
+                heroTag.innerText = "SEO & Conversion 2026";
+            } else if (articleId === 'article_2') {
+                heroImg.src = "https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&q=80&w=2000";
+                heroTag.innerText = "Conversion & ROI";
+            } else if (articleId === 'article_3') {
+                heroImg.src = "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=2000";
+                heroTag.innerText = "Webdesign & UX";
+            }
+
+            // Force la mise à jour des traductions pour afficher le nouveau contenu
+            changeLang(document.documentElement.lang);
+
+            const homeView = document.getElementById('home-view');
+            const articleView = document.getElementById('article-view');
+            
+            homeView.classList.remove('opacity-100', 'translate-y-0');
+            homeView.classList.add('opacity-0', '-translate-y-4');
+            
+            setTimeout(() => {
+                homeView.classList.add('hidden');
+                articleView.classList.remove('hidden');
+                
+                // Trigger reflow
+                void articleView.offsetWidth;
+                
+                articleView.classList.remove('opacity-0', 'translate-y-4');
+                articleView.classList.add('opacity-100', 'translate-y-0');
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Re-render icons on the new content
+                lucide.createIcons();
+            }, 400); // Correspond à la durée de transition
+        }
+
+        function hideArticle() {
+            const homeView = document.getElementById('home-view');
+            const articleView = document.getElementById('article-view');
+            
+            articleView.classList.remove('opacity-100', 'translate-y-0');
+            articleView.classList.add('opacity-0', 'translate-y-4');
+            
+            setTimeout(() => {
+                articleView.classList.add('hidden');
+                homeView.classList.remove('hidden');
+                
+                // Trigger reflow
+                void homeView.offsetWidth;
+                
+                homeView.classList.remove('opacity-0', '-translate-y-4');
+                homeView.classList.add('opacity-100', 'translate-y-0');
+                window.scrollTo({ top: document.getElementById('expertise').offsetTop - 100, behavior: 'smooth' });
+            }, 400);
         }
 
         // --- Logique du Modal de Contact ---
@@ -531,7 +921,7 @@
         function submitForm(event) {
             event.preventDefault();
             const isNl = document.documentElement.lang === 'nl';
-            alert(isNl ? "Bedankt! We nemen snel contact met u op." : "Merci ! Nous vous recontactons très vite.");
+            alert(isNl ? "Bedankt! We nemen binnen 24 uur contact met u op voor uw audit." : "Merci ! Nous vous recontactons sous 24h pour votre audit.");
             closeModal();
             event.target.reset();
         }
