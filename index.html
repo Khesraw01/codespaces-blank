@@ -102,29 +102,29 @@
         </div>
     </div>
 
-    <!-- HEADER -->
+    <!-- HEADER (Optimisé pour Mobile) -->
     <header class="fixed w-full top-0 z-50 glass-effect border-b border-slate-200 shadow-sm transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-20">
+            <div class="flex justify-between items-center h-16 md:h-20">
                 <!-- Logo -->
-                <div onclick="hideArticle()" class="flex-shrink-0 flex items-center gap-2 cursor-pointer hover:opacity-80 transition">
-                    <i data-lucide="zap" class="text-brand-500 w-8 h-8"></i>
-                    <span class="font-heading text-2xl font-black text-dark tracking-tight">Khesraw.</span>
+                <div onclick="hideArticle()" class="flex-shrink-0 flex items-center gap-1.5 md:gap-2 cursor-pointer hover:opacity-80 transition">
+                    <i data-lucide="zap" class="text-brand-500 w-6 h-6 md:w-8 md:h-8"></i>
+                    <span class="font-heading text-xl md:text-2xl font-black text-dark tracking-tight">Khesraw.</span>
                 </div>
 
-                <!-- Menu Central & Sélecteur de langue -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <div class="flex space-x-4 text-sm font-medium">
+                <!-- Right Elements: Sélecteur & CTA -->
+                <div class="flex items-center gap-3 md:gap-8">
+                    <!-- Sélecteur de langue (Visible sur mobile) -->
+                    <div class="flex items-center space-x-2 md:space-x-4 text-xs md:text-sm font-medium">
                         <button onclick="changeLang('fr')" id="btn-fr" class="lang-active uppercase tracking-wide hover:text-brand-500 transition">FR</button>
                         <span class="text-slate-300">|</span>
                         <button onclick="changeLang('nl')" id="btn-nl" class="uppercase tracking-wide text-slate-500 hover:text-brand-500 transition">NL</button>
                     </div>
-                </div>
 
-                <!-- CTA Droite -->
-                <div class="flex items-center">
-                    <button onclick="openModal('Audit Header')" class="bg-dark hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-semibold text-sm transition-all shadow-lg hover:shadow-brand-500/30 transform hover:-translate-y-0.5" data-i18n="nav_cta">
-                        Réservez votre audit de visibilité gratuit
+                    <!-- CTA Droite (Texte court sur mobile, texte long sur PC) -->
+                    <button onclick="openModal('Audit Header')" class="bg-dark hover:bg-brand-600 text-white px-4 py-2 md:px-6 md:py-2.5 rounded-full font-semibold text-xs md:text-sm transition-all shadow-lg hover:shadow-brand-500/30 transform hover:-translate-y-0.5 whitespace-nowrap flex items-center">
+                        <span class="hidden md:inline" data-i18n="nav_cta">Réservez votre audit de visibilité gratuit</span>
+                        <span class="md:hidden" data-i18n="nav_cta_mobile">Audit gratuit</span>
                     </button>
                 </div>
             </div>
@@ -708,6 +708,7 @@
         const translations = {
             fr: {
                 nav_cta: "Réservez votre audit de visibilité gratuit",
+                nav_cta_mobile: "Audit gratuit",
                 hero_h1: "Le partenaire digital des artisans et entrepreneurs partout en Belgique.",
                 hero_sub: "En 2026, un <strong>site web vitrine vs conversion</strong> fait toute la différence. En tant qu'<strong>expert en conversion pour entrepreneurs</strong>, je crée des plateformes qui inspirent confiance et génèrent des devis.",
                 hero_cta: "Réservez votre audit gratuit <i data-lucide='arrow-right' class='w-5 h-5 inline'></i>",
@@ -769,6 +770,7 @@
             },
             nl: {
                 nav_cta: "Vraag uw gratis website-audit aan",
+                nav_cta_mobile: "Gratis audit",
                 hero_h1: "De digitale partner voor vakmannen en ondernemers in heel België.",
                 hero_sub: "Stop met geld verspillen aan onzichtbare sites. Als <strong>conversie-expert voor zelfstandigen</strong> garandeer ik u maximaal rendement en structurele <strong>leadgeneratie in België</strong>.",
                 hero_cta: "Vraag uw gratis audit aan <i data-lucide='arrow-right' class='w-5 h-5 inline'></i>",
