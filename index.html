@@ -1,691 +1,539 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+<html lang="fr" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>آکادمی خسرو | Khesraw.com</title>
+    <title id="page-title">Khesraw | Création de sites web haute conversion pour artisans</title>
+    <meta id="page-desc" name="description" content="Khesraw crée des sites web ultra-optimisés et rapides pour les artisans, coiffeurs et commerçants. Devenez n°1 sur Google avec un SEO local puissant.">
     
-    <!-- Polices Vazirmatn pour le Persan/Dari -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS (CDN pour HTML pur) -->
+    <!-- Tailwind CSS pour un design moderne et rapide -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons (CDN) -->
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Poppins:wght@700;900&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            50: '#f0fdfa',
+                            100: '#ccfbf1',
+                            500: '#14b8a6', // Teal vibrant pour la conversion
+                            600: '#0d9488',
+                            900: '#134e4a',
+                        },
+                        dark: '#0f172a'
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        body {
-            font-family: 'Vazirmatn', sans-serif;
-            background-color: #050A18;
-            color: #F2F2F2;
-            overflow-x: hidden;
-        }
-
-        /* Animations personnalisées */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
-        .animate-slide-up { animation: slideUp 1s ease-out forwards; }
-        
-        /* Cacher la barre de défilement pour un look plus épuré (optionnel) */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #050A18; }
-        ::-webkit-scrollbar-thumb { background: #D4AF37; border-radius: 4px; }
-        
-        /* Motif d'arrière-plan */
-        .bg-pattern {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 0;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0c16.568 0 30 13.432 30 30S46.568 60 30 60 0 46.568 0 30 13.432 0 30 0zm0 5c13.807 0 25 11.193 25 25S43.807 55 30 55 5 43.807 5 30 16.193 5 30 5zm0 10c8.284 0 15 6.716 15 15s-6.716 15-15 15-15-6.716-15-15 6.716-15 15-15zm0 5c5.523 0 10 4.477 10 10s-4.477 10-10 10-10-4.477-10-10 4.477-10 10-10z' fill='%23D4AF37' fill-rule='evenodd'/%3E%3C/svg%3E");
-            background-size: 60px 60px;
-        }
-
-        /* Formatage du texte enrichi pour le guide */
-        .guide-content p {
-            margin-bottom: 1.5rem;
-        }
-        .guide-content ul {
-            list-style-type: none;
-            padding-right: 0;
-            margin-bottom: 1.5rem;
-        }
-        .guide-content li {
-            position: relative;
-            padding-right: 1.5rem;
-            margin-bottom: 0.75rem;
-        }
-        .guide-content li::before {
-            content: "✦";
-            position: absolute;
-            right: 0;
-            color: #D4AF37;
-        }
-        .guide-content strong {
-            color: #D4AF37;
-            font-weight: 600;
-        }
+        .lang-active { font-weight: bold; color: #14b8a6; border-bottom: 2px solid #14b8a6; }
+        .glass-effect { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); }
     </style>
 </head>
-<body class="selection:bg-[#D4AF37] selection:text-[#050A18] relative">
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-brand-500 selection:text-white">
 
-    <div class="bg-pattern"></div>
-
-    <!-- NAVBAR -->
-    <nav class="fixed top-0 w-full z-50 bg-[#050A18]/80 backdrop-blur-lg border-b border-white/5">
-        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
-            <div class="flex items-center gap-3 cursor-pointer group" onclick="navigate('home')">
-                <div class="w-10 h-10 bg-gradient-to-br from-[#D4AF37] to-[#8C7323] rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.4)] group-hover:shadow-[0_0_25px_rgba(212,175,55,0.6)] transition-all">
-                    <span class="text-[#050A18] font-bold text-xl font-serif mt-1">K</span>
+    <!-- CONTACT MODAL -->
+    <div id="contactModal" class="hidden fixed inset-0 bg-slate-900/80 backdrop-blur-sm z-[100] flex items-center justify-center p-4 transition-opacity duration-300 opacity-0">
+        <div class="bg-white rounded-3xl p-8 max-w-md w-full shadow-2xl relative transform scale-95 transition-transform duration-300" id="contactModalContent">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-dark">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+            <h3 class="text-2xl font-heading font-bold text-dark mb-2" data-i18n="modal_title">Demander un devis</h3>
+            <p class="text-slate-500 mb-6 text-sm" data-i18n="modal_desc">Laissez-nous vos coordonnées, nous vous rappelons sous 24h.</p>
+            
+            <form onsubmit="submitForm(event)" class="space-y-4">
+                <input type="hidden" id="selectedPackage" name="package" value="">
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1" data-i18n="modal_name">Votre nom / entreprise</label>
+                    <input type="text" required class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition">
                 </div>
-                <span class="font-bold text-xl tracking-wide hidden sm:block mt-1">Khesraw.com</span>
+                <div>
+                    <label class="block text-sm font-medium text-slate-700 mb-1" data-i18n="modal_phone">Numéro de téléphone</label>
+                    <input type="tel" required class="w-full px-4 py-2 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition">
+                </div>
+                <button type="submit" class="w-full bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-brand-500/30 mt-4" data-i18n="modal_submit">Envoyer ma demande</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="fixed w-full top-0 z-50 glass-effect border-b border-slate-200 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center gap-2 cursor-pointer">
+                    <i data-lucide="zap" class="text-brand-500 w-8 h-8"></i>
+                    <span class="font-heading text-2xl font-black text-dark tracking-tight">Khesraw.</span>
+                </div>
+
+                <!-- Menu Central & Sélecteur de langue -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <div class="flex space-x-4 text-sm font-medium">
+                        <button onclick="changeLang('fr')" id="btn-fr" class="lang-active uppercase tracking-wide hover:text-brand-500 transition">FR</button>
+                        <span class="text-slate-300">|</span>
+                        <button onclick="changeLang('nl')" id="btn-nl" class="uppercase tracking-wide text-slate-500 hover:text-brand-500 transition">NL</button>
+                    </div>
+                </div>
+
+                <!-- CTA Droite -->
+                <div class="flex items-center">
+                    <a href="#tarifs" class="bg-dark hover:bg-brand-600 text-white px-6 py-2.5 rounded-full font-semibold text-sm transition-all shadow-lg hover:shadow-brand-500/30 transform hover:-translate-y-0.5" data-i18n="nav_cta">
+                        Demander une offre
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden bg-white">
+        <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5"></div>
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-brand-100 blur-3xl opacity-50"></div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-heading font-black text-dark leading-tight mb-6" data-i18n="hero_h1">
+                En 2026, un site vitrine ne suffit plus.<br/> <span class="text-brand-500">Il vous faut une machine à convertir.</span>
+            </h1>
+            <p class="mt-4 text-lg sm:text-xl text-slate-600 max-w-3xl mx-auto mb-10 font-medium leading-relaxed" data-i18n="hero_sub">
+                Des sites web ultra-optimisés pour artisans et commerçants. Soyez n°1 sur Google et transformez vos visiteurs en clients fidèles.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#tarifs" class="bg-brand-500 hover:bg-brand-600 text-white px-8 py-4 rounded-full font-bold text-lg shadow-xl shadow-brand-500/20 transition-all transform hover:scale-105 flex items-center justify-center gap-2" data-i18n="hero_cta">
+                    Mon site à 500€ <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                </a>
             </div>
             
-            <div class="flex items-center gap-8">
-                <button id="nav-home" onclick="navigate('home')" class="text-sm font-medium transition-colors text-[#D4AF37]">
-                    خانه
-                </button>
-                <button id="nav-formation" onclick="navigate('formation')" class="text-sm font-medium transition-colors text-gray-400 hover:text-white">
-                    آموزش‌ها
-                </button>
-                <button class="hidden sm:flex items-center justify-center w-auto px-4 h-10 rounded-full bg-white/5 hover:bg-white/10 border border-white/10 transition text-gray-300">
-                    <span class="text-xs">دری / FR</span>
-                </button>
+            <!-- Trust badges -->
+            <div class="mt-16 pt-8 border-t border-slate-100 flex flex-wrap justify-center gap-8 items-center text-slate-400 text-sm font-semibold uppercase tracking-wider" data-i18n="hero_trust">
+                <span>Artisans</span> • <span>Jardiniers</span> • <span>Coiffeurs</span> • <span>Salons de beauté</span>
             </div>
         </div>
-    </nav>
+    </section>
 
-    <!-- MAIN CONTENT -->
-    <main class="pt-20">
+    <!-- AGITATION (Le Problème) -->
+    <section class="py-20 bg-dark text-white relative">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-red-500/20 text-red-400 mb-6">
+                <i data-lucide="alert-triangle" class="w-8 h-8"></i>
+            </div>
+            <h2 class="text-3xl font-heading font-bold mb-6" data-i18n="problem_h2">Stop aux arnaques des agences traditionnelles.</h2>
+            <p class="text-xl text-slate-300 leading-relaxed" data-i18n="problem_text">
+                Stop aux agences qui facturent 1000€ la création + 300€ de frais annuels cachés. En 2026, la transparence prime. Vos clients s'en fichent des belles animations complexes ; ils veulent trouver votre numéro, vos services et vous contacter rapidement. Vous avez besoin d'une structure qui vend.
+            </p>
+        </div>
+    </section>
 
-        <!-- ================= VUE ACCUEIL ================= -->
-        <div id="view-home" class="view-section animate-fade-in z-10 relative block">
+    <!-- LA SOLUTION KESHRA (Expertise) -->
+    <section id="expertise" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-brand-500 font-bold tracking-wide uppercase text-sm mb-2" data-i18n="solution_surtitle">L'Expertise</h2>
+                <h3 class="text-3xl md:text-4xl font-heading font-bold text-dark mb-6" data-i18n="solution_h2">La Solution Khesraw</h3>
+                <p class="text-lg text-slate-600" data-i18n="solution_text">
+                    Je m'appelle Keshra, expert en code et SEO. Ma passion : propulser les entrepreneurs locaux avec des outils web taillés pour dominer leur secteur.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-10">
+                <!-- Feature 1 -->
+                <div class="bg-slate-50 p-8 rounded-3xl hover:shadow-xl transition-shadow duration-300 border border-slate-100">
+                    <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="code-2" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark mb-3" data-i18n="feat1_title">Programmation Propre</h4>
+                    <p class="text-slate-600" data-i18n="feat1_desc">Code sur-mesure et structure ultra-légère. C'est exactement ce que les robots (crawling) de Google adorent pour vous classer premier.</p>
+                </div>
+                <!-- Feature 2 -->
+                <div class="bg-slate-50 p-8 rounded-3xl hover:shadow-xl transition-shadow duration-300 border border-slate-100">
+                    <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="network" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark mb-3" data-i18n="feat2_title">SEO Inside-of-sight</h4>
+                    <p class="text-slate-600" data-i18n="feat2_desc">Maillage interne intelligent et indexation ultra-rapide. Votre site est conçu à la base pour les moteurs de recherche.</p>
+                </div>
+                <!-- Feature 3 -->
+                <div class="bg-slate-50 p-8 rounded-3xl hover:shadow-xl transition-shadow duration-300 border border-slate-100">
+                    <div class="w-14 h-14 bg-brand-100 text-brand-600 rounded-2xl flex items-center justify-center mb-6">
+                        <i data-lucide="target" class="w-7 h-7"></i>
+                    </div>
+                    <h4 class="text-xl font-bold text-dark mb-3" data-i18n="feat3_title">Conversion Maximisée</h4>
+                    <p class="text-slate-600" data-i18n="feat3_desc">Un design psychologique qui pousse à l'action. Fini le site "carte de visite", place à la machine à générer des appels.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CLIENTS SATISFAITS (TESTIMONIALS) -->
+    <section class="py-20 bg-dark text-white relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4" data-i18n="testi_h2">Ils ont explosé leur carnet de commandes</h2>
+                <p class="text-slate-400 text-lg" data-i18n="testi_sub">Ne nous croyez pas sur parole, écoutez nos clients.</p>
+            </div>
             
-            <!-- Hero Section -->
-            <section class="min-h-[85vh] flex flex-col justify-center items-center text-center px-6 pt-20">
-                <div class="max-w-4xl mx-auto space-y-8 animate-slide-up flex flex-col items-center">
-                    <div class="inline-block border border-[#D4AF37]/30 bg-[#D4AF37]/10 text-[#D4AF37] px-5 py-2 rounded-full text-sm font-medium tracking-widest mb-6 shadow-[0_0_15px_rgba(212,175,55,0.15)]">
-                        آکادمی خسرو (Khesraw.com)
+            <div class="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <!-- Testimonial 1 -->
+                <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 relative">
+                    <i data-lucide="quote" class="absolute top-6 right-6 w-10 h-10 text-slate-700"></i>
+                    <div class="flex items-center gap-1 text-yellow-400 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
                     </div>
-                    <h1 class="text-5xl md:text-7xl font-extrabold text-[#F2F2F2] leading-tight">
-                        تجارت آنلاین <br class="hidden md:block"/>
-                        <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#D4AF37] to-[#FFF0B3] drop-shadow-[0_0_15px_rgba(212,175,55,0.5)]">
-                            سرنوشت ماست
-                        </span>
-                    </h1>
-                    <p class="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto font-light leading-relaxed">
-                        یاد بگیرید چگونه میراث دیجیتال خود را بسازید، حتی زمانی که جهان در خواب است.
-                    </p>
-                    <div class="pt-8">
-                        <button onclick="navigate('formation')" class="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-[#050A18] bg-[#D4AF37] rounded-full overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(212,175,55,0.6)]">
-                            <span class="absolute inset-0 w-full h-full bg-gradient-to-br from-white/20 to-transparent"></span>
-                            <span class="relative flex items-center gap-2">
-                                ورود به واقعیت <i data-lucide="chevron-left" class="w-5 h-5 group-hover:-translate-x-1 transition-transform"></i>
-                            </span>
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Story Section 1 -->
-            <section class="py-24 px-6 bg-gradient-to-b from-transparent to-[#0a1228]/50 relative z-10">
-                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                    <div class="space-y-6">
-                        <h2 class="text-3xl md:text-4xl font-bold text-[#D4AF37]">داستان من و حقیقت پنهان</h2>
-                        <p class="text-lg md:text-xl text-gray-300 leading-relaxed text-justify">
-                            "مثل بسیاری از شما، من هم به اینجا آمدم و فهمیدم که دنیای قدیم تغییر کرده است. دیگر صرفاً با کار فیزیکی نمی‌توان آینده را تضمین کرد. من این پلتفرم را نساختم تا خودم را یک «استاد» معرفی کنم یا کورس‌های گران بفروشم."
-                        </p>
-                        <p class="text-gray-400 text-justify leading-relaxed">
-                            اینجا برای این است که چشمان ما به واقعیت اقتصاد باز شود. گوروهایی که کورس می‌فروشند حقیقت را پنهان می‌کنند. دراپ‌شیپینگ معجزه نیست، بلکه یک علم است. ما هم یاد می‌گیریم و با هم رشد می‌کنیم.
-                        </p>
-                    </div>
-                    <div class="relative flex justify-center">
-                        <div class="w-80 h-80 bg-gradient-to-br from-[#1DA4AC]/20 to-[#D4AF37]/20 relative flex items-center justify-center p-1" style="clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)">
-                            <div class="w-full h-full bg-[#050A18] relative flex items-center justify-center" style="clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)">
-                                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=800" alt="Khesraw Vision" class="w-full h-full object-cover opacity-60 hover:opacity-80 transition-opacity duration-500" />
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#050A18] to-transparent opacity-50"></div>
-                            </div>
-                        </div>
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 bg-[#D4AF37]/10 blur-[60px] rounded-full pointer-events-none -z-10"></div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Story Section 2 -->
-            <section class="py-24 px-6 relative z-10">
-                <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-                    <div class="relative flex justify-center order-2 md:order-1">
-                        <div class="w-80 h-80 relative flex items-center justify-center rounded-3xl overflow-hidden border border-white/10 shadow-[0_0_30px_rgba(29,164,172,0.15)]">
-                            <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800" alt="Digital Economy" class="w-full h-full object-cover opacity-70" />
-                            <div class="absolute inset-0 bg-gradient-to-tr from-[#050A18] to-transparent opacity-80"></div>
-                        </div>
-                    </div>
-                    <div class="space-y-6 order-1 md:order-2">
-                        <h2 class="text-3xl md:text-4xl font-bold text-[#F2F2F2]">چرا تجارت آنلاین سرنوشت ماست؟</h2>
-                        <p class="text-lg md:text-xl text-gray-300 leading-relaxed text-justify">
-                            دنیا در حال تغییر است. اقتصاد فیزیکی جای خود را به اقتصاد دیجیتال داده است. بیش از ۱۲۰ تریلیون دلار در سال‌های آینده به سمت تجارت آنلاین (E-commerce) و هوش مصنوعی (AI) سرازیر می‌شود.
-                        </p>
-                        <p class="text-gray-400 text-justify leading-relaxed">
-                            این بیزنس مختص متخصصان کامپیوتر نیست. این مسیر برای <span class="text-[#D4AF37] font-bold">مادران، دانشجویان و جویندگان استقلال مالی</span> طراحی شده است. کسانی که می‌خواهند پارت‌تایم برای آینده خود کار کنند. سرمایه اولیه کم، عدم نیاز به انبارداری و آزادی مکانی، این تجارت را به بهترین فرصت تبدیل کرده است.
-                        </p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Grid Compétences -->
-            <section class="py-24 px-6 z-10 relative">
-                <div class="max-w-6xl mx-auto text-center mb-16">
-                    <h2 class="text-3xl font-bold text-[#F2F2F2]">ابزارهای موفقیت</h2>
-                </div>
-                <div class="max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6">
-                    <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-center hover:bg-white/[0.08] transition-colors group">
-                        <i data-lucide="shopping-cart" class="w-10 h-10 text-[#D4AF37] mx-auto mb-4 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="font-semibold text-lg text-gray-200">شاپيفای (Shopify)</h3>
-                    </div>
-                    <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-center hover:bg-white/[0.08] transition-colors group">
-                        <i data-lucide="target" class="w-10 h-10 text-[#D4AF37] mx-auto mb-4 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="font-semibold text-lg text-gray-200">تبلیغات فیسبوک</h3>
-                    </div>
-                    <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-center hover:bg-white/[0.08] transition-colors group">
-                        <i data-lucide="search" class="w-10 h-10 text-[#D4AF37] mx-auto mb-4 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="font-semibold text-lg text-gray-200">سئو (SEO)</h3>
-                    </div>
-                    <div class="bg-white/[0.03] border border-white/10 rounded-2xl p-6 text-center hover:bg-white/[0.08] transition-colors group">
-                        <i data-lucide="cpu" class="w-10 h-10 text-[#D4AF37] mx-auto mb-4 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="font-semibold text-lg text-gray-200">هوش مصنوعی (AI)</h3>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Manifeste -->
-            <section class="py-32 px-6 relative z-10 flex justify-center">
-                <div class="max-w-4xl text-center relative p-12">
-                    <div class="absolute top-0 right-0 w-8 h-8 border-t-2 border-e-2 border-[#D4AF37]/50 rounded-tr-lg"></div>
-                    <div class="absolute top-0 left-0 w-8 h-8 border-t-2 border-s-2 border-[#D4AF37]/50 rounded-tl-lg"></div>
-                    <div class="absolute bottom-0 right-0 w-8 h-8 border-b-2 border-e-2 border-[#D4AF37]/50 rounded-br-lg"></div>
-                    <div class="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-s-2 border-[#D4AF37]/50 rounded-bl-lg"></div>
-                    
-                    <h2 class="text-4xl md:text-5xl font-serif italic text-transparent bg-clip-text bg-gradient-to-b from-white to-gray-400 leading-tight">
-                        "یا با تکنولوژی پیشرفت می‌کنیم، <br class="hidden md:block"/> یا در حاشیه تاریخ فراموش می‌شویم."
-                    </h2>
-                </div>
-            </section>
-        </div>
-
-
-        <!-- ================= VUE FORMATIONS (BENTO GRID) ================= -->
-        <div id="view-formation" class="view-section animate-fade-in z-10 relative py-20 px-6 min-h-screen hidden">
-            <div class="max-w-6xl mx-auto">
-                <div class="mb-16">
-                    <h1 class="text-4xl md:text-5xl font-bold text-[#F2F2F2] mb-4">مسیر عملی</h1>
-                    <p class="text-xl text-gray-400">یک ماژول را برای ساختن سرنوشت خود انتخاب کنید.</p>
-                </div>
-
-                <!-- Grille Bento -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    
-                    <!-- Ecommerce -->
-                    <div onclick="navigate('lesson-ecommerce')" class="md:col-span-2 md:row-span-2 group cursor-pointer relative bg-white/[0.03] border border-white/10 backdrop-blur-md rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)] hover:border-[#D4AF37]/30 overflow-hidden flex flex-col">
-                        <div class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/0 to-[#D4AF37]/[0.05] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div class="relative z-10 flex-grow flex flex-col">
-                            <div class="bg-[#050A18] w-14 h-14 rounded-2xl flex items-center justify-center border border-white/10 mb-6 group-hover:border-[#D4AF37]/50 transition-colors shadow-lg">
-                                <i data-lucide="shopping-cart" class="w-7 h-7 text-[#D4AF37]"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-[#F2F2F2] mb-2">تجارت آنلاین و دراپ‌شیپینگ</h3>
-                            <h4 class="text-sm font-semibold tracking-wider text-[#1DA4AC] mb-4">مراحل عملی شاپيفای + کتابچه کامل</h4>
-                            <p class="text-gray-400 mb-6 flex-grow leading-relaxed">واقعیت دنیای تجارت. یاد بگیرید چگونه فروشگاه خود را بسازید، محصولات برنده را پیدا کنید و به استقلال مالی برسید. (شامل متن کامل راهنمای PDF)</p>
-                            <div class="flex items-center text-[#D4AF37] font-semibold text-sm group-hover:-translate-x-2 transition-transform mt-auto">
-                                <i data-lucide="chevron-left" class="w-4 h-4 me-1"></i> ورود به مسترکلاس 
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Facebook Ads -->
-                    <div onclick="navigate('lesson-fb-ads')" class="md:col-span-1 md:row-span-1 group cursor-pointer relative bg-white/[0.03] border border-white/10 backdrop-blur-md rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)] hover:border-[#D4AF37]/30 overflow-hidden flex flex-col">
-                        <div class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/0 to-[#D4AF37]/[0.05] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div class="relative z-10 flex-grow flex flex-col">
-                            <div class="bg-[#050A18] w-14 h-14 rounded-2xl flex items-center justify-center border border-white/10 mb-6 group-hover:border-[#D4AF37]/50 transition-colors shadow-lg">
-                                <i data-lucide="target" class="w-7 h-7 text-[#D4AF37]"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-[#F2F2F2] mb-2">تبلیغات فیسبوک (رایگان)</h3>
-                            <h4 class="text-sm font-semibold tracking-wider text-[#1DA4AC] mb-4">جذب ترافیک</h4>
-                            <p class="text-gray-400 mb-6 flex-grow leading-relaxed">الگوریتم متا را برای هدف‌گیری خریداران واقعی مسلط شوید.</p>
-                            <div class="flex items-center text-[#D4AF37] font-semibold text-sm group-hover:-translate-x-2 transition-transform mt-auto">
-                                <i data-lucide="chevron-left" class="w-4 h-4 me-1"></i> شروع ماژول 
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- IA -->
-                    <div onclick="navigate('lesson-ia')" class="md:col-span-1 md:row-span-1 group cursor-pointer relative bg-white/[0.03] border border-white/10 backdrop-blur-md rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)] hover:border-[#D4AF37]/30 overflow-hidden flex flex-col">
-                        <div class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/0 to-[#D4AF37]/[0.05] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div class="relative z-10 flex-grow flex flex-col">
-                            <div class="bg-[#050A18] w-14 h-14 rounded-2xl flex items-center justify-center border border-white/10 mb-6 group-hover:border-[#D4AF37]/50 transition-colors shadow-lg">
-                                <i data-lucide="cpu" class="w-7 h-7 text-[#D4AF37]"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-[#F2F2F2] mb-2">تسلط بر هوش مصنوعی</h3>
-                            <h4 class="text-sm font-semibold tracking-wider text-[#1DA4AC] mb-4">اتوماسیون (Automation)</h4>
-                            <p class="text-gray-400 mb-6 flex-grow leading-relaxed">از هوش مصنوعی برای نوشتن، طراحی و بهینه‌سازی استفاده کنید.</p>
-                            <div class="flex items-center text-[#D4AF37] font-semibold text-sm group-hover:-translate-x-2 transition-transform mt-auto">
-                                <i data-lucide="chevron-left" class="w-4 h-4 me-1"></i> شروع ماژول 
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- SEO -->
-                    <div onclick="navigate('lesson-seo')" class="md:col-span-3 md:row-span-1 group cursor-pointer relative bg-white/[0.03] border border-white/10 backdrop-blur-md rounded-3xl p-8 hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_8px_30px_rgba(212,175,55,0.15)] hover:border-[#D4AF37]/30 overflow-hidden flex flex-col">
-                        <div class="absolute inset-0 bg-gradient-to-br from-[#D4AF37]/0 to-[#D4AF37]/[0.05] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                        <div class="relative z-10 flex-grow flex flex-col">
-                            <div class="bg-[#050A18] w-14 h-14 rounded-2xl flex items-center justify-center border border-white/10 mb-6 group-hover:border-[#D4AF37]/50 transition-colors shadow-lg">
-                                <i data-lucide="search" class="w-7 h-7 text-[#D4AF37]"></i>
-                            </div>
-                            <h3 class="text-2xl font-bold text-[#F2F2F2] mb-2">استراتژی‌های سئو (SEO)</h3>
-                            <h4 class="text-sm font-semibold tracking-wider text-[#1DA4AC] mb-4">ترافیک ارگانیک</h4>
-                            <p class="text-gray-400 mb-6 flex-grow leading-relaxed">با استفاده از موتورهای جستجو، یک میراث دیجیتال ماندگار بسازید.</p>
-                            <div class="flex items-center text-[#D4AF37] font-semibold text-sm group-hover:-translate-x-2 transition-transform mt-auto">
-                                <i data-lucide="chevron-left" class="w-4 h-4 me-1"></i> شروع ماژول 
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-
-
-        <!-- ================= VUE LECON (DYNAMIQUE) ================= -->
-        <div id="view-lesson" class="view-section animate-fade-in z-10 relative py-20 px-6 min-h-screen hidden">
-            <div class="max-w-5xl mx-auto">
-                <button onclick="navigate('formation')" class="flex items-center text-gray-400 hover:text-[#D4AF37] transition-colors mb-10 font-medium">
-                    <i data-lucide="arrow-right" class="w-5 h-5 ms-2"></i> بازگشت به دیدگاه کلی
-                </button>
-
-                <div class="mb-12 border-b border-white/10 pb-8">
-                    <div class="flex items-center gap-4 mb-6">
-                        <div class="bg-[#D4AF37]/20 p-3 rounded-xl border border-[#D4AF37]/30">
-                            <i id="lesson-icon" data-lucide="book-open" class="w-8 h-8 text-[#D4AF37]"></i>
-                        </div>
+                    <p class="text-slate-300 mb-6 italic" data-i18n="testi_1_text">"Depuis que Khesraw a refait mon site, je reçois 3 fois plus d'appels pour des devis d'aménagement paysager. Un investissement rentabilisé en 2 semaines."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center font-bold text-white text-xl">M</div>
                         <div>
-                            <h1 id="lesson-title" class="text-3xl md:text-5xl font-bold text-[#F2F2F2]">Titre</h1>
-                            <p id="lesson-subtitle" class="text-[#1DA4AC] mt-2 font-medium tracking-wider">Sous-titre</p>
+                            <h4 class="font-bold text-white">Marc D.</h4>
+                            <span class="text-slate-400 text-sm" data-i18n="testi_1_role">Entrepreneur de jardin</span>
                         </div>
                     </div>
-                    
-                    <p class="text-xl text-gray-300 mt-6 max-w-3xl leading-relaxed text-justify">
-                        <span class="text-[#D4AF37] font-bold">چرا این ماژول برای سرنوشت شما حیاتی است:</span> <span id="lesson-desc">Description</span>
-                    </p>
-
-                    <!-- Bouton de téléchargement dynamique Ebook -->
-                    <div id="ebook-container" class="mt-8 hidden">
-                        <a id="ebook-link" href="#" target="_blank" class="inline-flex items-center justify-center px-6 py-3 bg-[#1DA4AC]/10 border border-[#1DA4AC]/30 text-[#1DA4AC] rounded-xl hover:bg-[#1DA4AC] hover:text-[#050A18] transition-all duration-300 font-bold shadow-lg shadow-[#1DA4AC]/10 group">
-                            <i data-lucide="download" class="w-5 h-5 ms-2 group-hover:-translate-y-1 transition-transform"></i>
-                            دانلود نسخه PDF کتاب
-                        </a>
+                </div>
+                <!-- Testimonial 2 -->
+                <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 relative">
+                    <i data-lucide="quote" class="absolute top-6 right-6 w-10 h-10 text-slate-700"></i>
+                    <div class="flex items-center gap-1 text-yellow-400 mb-4">
+                        <i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i><i data-lucide="star" class="w-5 h-5 fill-current"></i>
+                    </div>
+                    <p class="text-slate-300 mb-6 italic" data-i18n="testi_2_text">"Rapide, clair et sans frais cachés. Mon ancien site me coûtait cher pour zéro résultat. Aujourd'hui, je suis 1er sur Google dans ma ville."</p>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-brand-500 rounded-full flex items-center justify-center font-bold text-white text-xl">S</div>
+                        <div>
+                            <h4 class="font-bold text-white">Sophie L.</h4>
+                            <span class="text-slate-400 text-sm" data-i18n="testi_2_role">Gérante Salon de Beauté</span>
+                        </div>
                     </div>
                 </div>
-
-                <!-- Liste des vidéos générée via JavaScript -->
-                <div id="video-list" class="space-y-12">
-                    <!-- Les vidéos apparaitront ici -->
-                </div>
-
-                <!-- Section du Guide PDF integrado -->
-                <div id="guide-list" class="mt-24 space-y-16">
-                    <!-- Le texte du guide apparaitra ici -->
-                </div>
-
             </div>
         </div>
+    </section>
 
-    </main>
+    <!-- TARIFICATION -->
+    <section id="tarifs" class="py-24 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-dark mb-6" data-i18n="pricing_h2">Tarification claire. <br/>Zéro mauvaise surprise.</h2>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Pack Classique -->
+                <div class="bg-white rounded-3xl p-8 shadow-sm border border-slate-200 relative overflow-hidden flex flex-col">
+                    <h3 class="text-2xl font-bold text-dark mb-2" data-i18n="price_pack_title">Pack Classique</h3>
+                    <p class="text-slate-500 mb-6" data-i18n="price_pack_desc">Site moderne & Responsive pour artisans.</p>
+                    <div class="mb-8">
+                        <span class="text-5xl font-black text-dark">500€</span>
+                        <span class="text-slate-500 font-medium">/unique</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center gap-3 text-slate-700"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> Design Haute Conversion</li>
+                        <li class="flex items-center gap-3 text-slate-700"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> Adaptation Mobile/Tablette parfaite</li>
+                        <li class="flex items-center gap-3 text-slate-700"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> Intégration de vos textes & photos</li>
+                    </ul>
+                    <button type="button" onclick="openModal('Pack Classique')" class="w-full block text-center bg-slate-100 hover:bg-slate-200 text-dark font-bold py-3 rounded-xl transition cursor-pointer" data-i18n="price_cta1">Je veux ce site</button>
+                </div>
+
+                <!-- Option SEO Turbo -->
+                <div class="bg-dark rounded-3xl p-8 shadow-2xl border border-dark relative overflow-hidden flex flex-col transform md:-translate-y-4">
+                    <div class="absolute top-0 right-0 bg-brand-500 text-white text-xs font-bold px-4 py-1 rounded-bl-xl uppercase tracking-wider">Recommandé</div>
+                    <h3 class="text-2xl font-bold text-white mb-2" data-i18n="price_seo_title">Option SEO Turbo</h3>
+                    <p class="text-slate-400 mb-6" data-i18n="price_seo_desc">Optimisation sémantique pour dominer votre ville.</p>
+                    <div class="mb-8 text-brand-400">
+                        <span class="text-5xl font-black">+250€</span>
+                    </div>
+                    <ul class="space-y-4 mb-8 flex-1">
+                        <li class="flex items-center gap-3 text-slate-300"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> <span data-i18n="seo_li1">Recherche de mots-clés stratégiques</span></li>
+                        <li class="flex items-center gap-3 text-slate-300"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> <span data-i18n="seo_li2">Optimisation Google My Business</span></li>
+                        <li class="flex items-center gap-3 text-slate-300"><i data-lucide="check-circle-2" class="text-brand-500 w-5 h-5"></i> <span data-i18n="seo_li3">Structure de maillage interne avancée</span></li>
+                    </ul>
+                    <button type="button" onclick="openModal('Option SEO Turbo')" class="w-full block text-center bg-brand-500 hover:bg-brand-600 text-white font-bold py-3 rounded-xl transition shadow-lg shadow-brand-500/30 cursor-pointer" data-i18n="price_cta2">Ajouter le SEO Turbo</button>
+                </div>
+            </div>
+
+            <!-- Maintenance Highlight -->
+            <div class="mt-12 max-w-3xl mx-auto bg-brand-50 border border-brand-200 rounded-2xl p-6 text-center">
+                <i data-lucide="shield-check" class="w-8 h-8 text-brand-500 mx-auto mb-3"></i>
+                <p class="text-lg text-brand-900 font-medium" data-i18n="price_maint_text">
+                    <strong>Frais de maintenance : 30€/an</strong> (Nom de domaine + CMS inclus). <br/>Oui, vous avez bien lu : 30€ par AN, pas par mois.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEO LOCAL CONTEXT SECTION (Technique SEO) -->
+    <section class="py-16 bg-white border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-slate-500">
+            <h2 class="font-bold text-slate-700 mb-4 text-base" data-i18n="seo_footer_h2">Dominez votre marché local</h2>
+            <p class="max-w-4xl mx-auto leading-relaxed" id="seo-context-text">
+                Que vous cherchiez une <strong>création site web pas cher</strong>, un <strong>SEO local artisan</strong> percutant, ou un <strong>site internet rapide pour coiffeur</strong>, l'architecture Keshra est faite pour vous. Nous incluons l'<strong>optimisation Google My Business</strong> pour capter directement les clients de votre ville. Nos sites se chargent instantanément pour ne perdre aucun prospect.
+            </p>
+        </div>
+    </section>
+
+    <!-- BLOG SECTION -->
+    <section class="py-20 bg-slate-50 border-t border-slate-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-end mb-12">
+                <div>
+                    <h2 class="text-brand-500 font-bold tracking-wide uppercase text-sm mb-2" data-i18n="blog_surtitle">Ressources & Conseils</h2>
+                    <h3 class="text-3xl md:text-4xl font-heading font-bold text-dark" data-i18n="blog_h2">Derniers Articles</h3>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Article 1 -->
+                <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition">
+                    <div class="h-48 bg-slate-200 w-full overflow-hidden relative">
+                        <div class="absolute inset-0 bg-brand-900/10 mix-blend-multiply"></div>
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=600&h=400" alt="SEO" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-brand-500 text-xs font-bold uppercase tracking-wider mb-2 block">SEO Local</span>
+                        <h4 class="text-xl font-bold text-dark mb-3 leading-tight" data-i18n="blog_1_title">Comment attirer des clients locaux grâce à Google en 2026 ?</h4>
+                        <p class="text-slate-500 text-sm mb-4" data-i18n="blog_1_desc">Découvrez les 3 stratégies pour dominer les résultats de recherche dans votre ville et doubler vos devis.</p>
+                        <a href="#" class="text-brand-600 font-semibold text-sm flex items-center gap-1 hover:text-brand-800 transition" data-i18n="blog_readmore">Lire l'article <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </article>
+                
+                <!-- Article 2 -->
+                <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition">
+                    <div class="h-48 bg-slate-200 w-full overflow-hidden relative">
+                        <div class="absolute inset-0 bg-brand-900/10 mix-blend-multiply"></div>
+                        <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&q=80&w=600&h=400" alt="Conversion" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-brand-500 text-xs font-bold uppercase tracking-wider mb-2 block">Conversion</span>
+                        <h4 class="text-xl font-bold text-dark mb-3 leading-tight" data-i18n="blog_2_title">Pourquoi votre site vitrine actuel vous fait perdre de l'argent</h4>
+                        <p class="text-slate-500 text-sm mb-4" data-i18n="blog_2_desc">Un beau site ne suffit plus. Il faut une architecture pensée pour transformer un visiteur en client.</p>
+                        <a href="#" class="text-brand-600 font-semibold text-sm flex items-center gap-1 hover:text-brand-800 transition" data-i18n="blog_readmore">Lire l'article <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="bg-white rounded-2xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-lg transition">
+                    <div class="h-48 bg-slate-200 w-full overflow-hidden relative">
+                        <div class="absolute inset-0 bg-brand-900/10 mix-blend-multiply"></div>
+                        <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=600&h=400" alt="Design" class="w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <span class="text-brand-500 text-xs font-bold uppercase tracking-wider mb-2 block">Webdesign</span>
+                        <h4 class="text-xl font-bold text-dark mb-3 leading-tight" data-i18n="blog_3_title">5 éléments indispensables sur la page d'accueil d'un artisan</h4>
+                        <p class="text-slate-500 text-sm mb-4" data-i18n="blog_3_desc">Appliquez ces principes simples pour rassurer vos prospects et faciliter la prise de contact.</p>
+                        <a href="#" class="text-brand-600 font-semibold text-sm flex items-center gap-1 hover:text-brand-800 transition" data-i18n="blog_readmore">Lire l'article <i data-lucide="arrow-right" class="w-4 h-4"></i></a>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
 
     <!-- FOOTER -->
-    <footer class="border-t border-white/5 bg-[#02050D] py-12 px-6 relative z-10">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-3">
-                <div class="w-10 h-10 bg-gradient-to-br from-[#D4AF37] to-[#8C7323] rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.2)]">
-                    <span class="text-[#050A18] font-bold text-xl font-serif mt-1">K</span>
-                </div>
-                <span class="text-[#F2F2F2] font-bold text-xl">Khesraw.com</span>
+    <footer class="bg-dark text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="flex items-center gap-2">
+                <i data-lucide="zap" class="text-brand-500 w-6 h-6"></i>
+                <span class="font-heading text-xl font-black text-white tracking-tight">Khesraw.</span>
             </div>
-            <p class="text-gray-500 text-sm">
-                © 2026 Khesraw.com. میراث خود را بسازید.
-            </p>
-            <div class="flex gap-6 text-sm text-gray-500">
-                <a href="#" class="hover:text-[#D4AF37] transition">قوانین و مقررات</a>
-                <a href="#" class="hover:text-[#D4AF37] transition">تماس با ما</a>
+            
+            <div class="text-center">
+                <p class="text-white font-semibold text-lg mb-1" data-i18n="footer_contact">Contactez Khesraw : +32 465 70 42 15</p>
             </div>
         </div>
     </footer>
 
-    <!-- LOGIQUE JAVASCRIPT -->
+    <!-- LOGIC BILINGUE & MODAL -->
     <script>
-        // Initialiser les icônes Lucide au démarrage
+        // Initialisation des icônes Lucide
         lucide.createIcons();
 
-        // Données des cours (Inclut le texte traduit du PDF de Dropshipping)
-        const coursesData = {
-            'ecommerce': {
-                title: "تجارت آنلاین و دراپ‌شیپینگ",
-                subtitle: "مسترکلاس کامل + راهنمای جامع",
-                icon: "shopping-cart",
-                description: "این ماژول فقط یک آموزش نیست، بلکه یک تغییر دهنده بازی است. از انتخاب محصول تا اتوماسیون کامل فروشگاه، تمام اسرار این تجارت را فرا بگیرید.",
-                ebookUrl: "https://drive.google.com/file/d/1AHa0CfGrcYZ1GJCZQ4K0AhB_HDwALaKK/view",
-                videos: [
-                    { title: "راه‌اندازی فروشگاه حرفه‌ای در Shopify", duration: "14:20" },
-                    { title: "یافتن محصولات برنده با ابزارهای پیشرفته", duration: "22:15" }
-                ],
-                keyPoints: [
-                    "بدون نیاز به انبار و سرمایه کلان.",
-                    "مدیریت فروشگاه از هر کجای دنیا.",
-                    "استفاده از سیستم‌های اتوماسیون برای ارسال محصولات."
-                ],
-                // INTEGRATION DU GUIDE COMPLET AVEC LE NOUVEAU TEXTE
-                guide: [
-                    {
-                        title: "۱. ذهنیت و استراتژی (Mindset)",
-                        image: "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&q=80&w=1200",
-                        content: `
-                            <p>قبل از هر کار تخنیکی، باید بفهمی که این بیزنس چگونه کار می‌کند.</p>
-                            <ul>
-                                <li><strong>مدل دراپ‌شیپینگ چیست؟</strong> در این مدل، تو محصول را در انبار خود نداری. مشتری از سایت تو خرید می‌کند، تو پول را می‌گیری، محصول را از تأمین‌کننده (Supplier) می‌خری و او مستقیم محصول را به خانه مشتری می‌فرستد. سود تو، تفاوت قیمت خرید و فروش است.</li>
-                                <li><strong>انتخاب نیش (Niche):</strong> اشتباه کلانِ اکثر مبتدی‌ها این است که «همه چیز» می‌فروشند. مثل دکان‌های «ارزان‌فروشی» نباش! یک بخش خاص را انتخاب کن. مثلاً: به جای فروش کل لوازم ورزشی، فقط روی «وسایل یوگا در خانه» تمرکز کن.</li>
-                                <li><strong>تحلیل بازار:</strong> از <strong>Google Trends</strong> استفاده کن تا ببینی مردم در حال حاضر به چه چیزی ضرورت دارند. رقبای خود را در فیسبوک و انستاگرام پیدا کن و ببین آن‌ها چه چیزی می‌فروشند.</li>
-                            </ul>
-                        `
-                    },
-                    {
-                        title: "۲. پیدا کردن محصول برنده (Product Research)",
-                        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1200",
-                        content: `
-                            <p>این مهم‌ترین بخش است. اگر محصول بد باشد، بهترین تبلیغات هم نمی‌تواند آن را بفروشد.</p>
-                            <p><strong>معیارهای محصول عالی:</strong></p>
-                            <ul>
-                                <li><strong>اثر "Wow":</strong> وقتی مشتری در تیک‌تاک ویدیو را می‌بیند، بگوید «واو! این چیست؟»</li>
-                                <li><strong>حل یک مشکل:</strong> محصولی که یک درد یا مشکل را از مشتری دوا کند (مثلاً وسیله‌ای برای کمردرد).</li>
-                                <li><strong>کمیاب بودن:</strong> در مغازه‌های عادی سر کوچه پیدا نشود.</li>
-                                <li><strong>جاسوسی رقبا:</strong> از ابزارهایی مثل Minea یا Dropispy استفاده کن. ببین کدام ویدیوها در تیک‌تاک لایک و کامنت زیاد دارند؛ همان‌ها محصولات برنده هستند.</li>
-                                <li><strong>محاسبه قیمت:</strong> قیمت فروش باید حداقل ۳ برابر قیمت خرید باشد.</li>
-                            </ul>
-                            <p><em>مثال:</em> اگر محصول را ۵ دالر می‌خری، باید آن را حدود ۲۰ تا ۲۵ دالر بفروشی تا هزینه‌های تبلیغات و مالیات پوره شود.</p>
-                        `
-                    },
-                    {
-                        title: "۳. تأمین کالا و لوجستیک (Sourcing)",
-                        image: "https://images.unsplash.com/photo-1586528116311-ad8ed7c6631b?auto=format&fit=crop&q=80&w=1200",
-                        content: `
-                            <p>چگونه محصول را به دست مشتری برسانیم؟</p>
-                            <ul>
-                                <li><strong>تأمین‌کنندگان:</strong> در شروع از AliExpress استفاده کن، اما برای حرفه‌ای شدن به سراغ <strong>CJ Dropshipping</strong> یا «ایجنٹ‌های خصوصی» (Private Agents) برو.</li>
-                                <li><strong>سرعت ارسال (Fast Shipping):</strong> در سال ۲۰۲۶، مشتری منتظر ۳۰ روز نمی‌ماند. سعی کن محصولاتی را پیدا کنی که زیر ۱۰ روز به اروپا یا آمریکا برسند.</li>
-                                <li><strong>برندینگ:</strong> وقتی فروشات زیاد شد، از تأمین‌کننده بخواه که لوگوی تو را روی پکیج بزند (White Label). این کار باعث می‌شود مشتری دوباره از تو خرید کند.</li>
-                            </ul>
-                        `
-                    },
-                    {
-                        title: "۴. ساخت فروشگاه (The Store)",
-                        image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?auto=format&fit=crop&q=80&w=1200",
-                        content: `
-                            <p>ویترین دکان تو باید اعتماد ایجاد کند.</p>
-                            <ul>
-                                <li><strong>پلتفرم Shopify:</strong> بهترین و ساده‌ترین راه برای ساخت سایت است.</li>
-                                <li><strong>کاپی‌رایتینگ (Copywriting):</strong> در صفحه محصول، فقط از مشخصات تخنیکی ننویس. بنویس که این محصول «چه فایده‌ای» برای زندگی مشتری دارد. به جای «این چراغ ۵ وات است»، بنویس «شب‌های شما را رویایی و آرام می‌سازد».</li>
-                                <li><strong>اعتمادسازی:</strong> استفاده از عکس‌های باکیفیت، بخش نظرات مشتریان (Reviews) و داشتن صفحه «تماس با ما» بسیار مهم است. سایت باید در موبایل بسیار سریع باز شود.</li>
-                            </ul>
-                        `
-                    },
-                    {
-                        title: "۵. مارکتینگ و جذب مشتری (Traffic)",
-                        image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=1200",
-                        content: `
-                            <p>سایت بدون بازدیدکننده، مثل دکان در وسط صحرا است.</p>
-                            <ul>
-                                <li><strong>TikTok Ads:</strong> فعلاً ارزان‌ترین و بهترین راه برای شروع است. ویدیوهای کوتاه و جذاب بساز.</li>
-                                <li><strong>UGC (محتوای تولید شده توسط کاربر):</strong> ویدیوهایی که شبیه تبلیغ نیستند و انگار یک آدم عادی با موبایل گرفته است، در تیک‌تاک و انستاگرام عالی می‌فروشند.</li>
-                                <li><strong>SEO و ایمیل مارکتینگ:</strong> برای کسانی که از سایت دیدن کرده ولی خرید نکرده‌اند، ایمیل تخفیف بفرست. این «پولِ روی میز» است که نباید از دست بدهی.</li>
-                            </ul>
-                        `
-                    },
-                    {
-                        title: "۶. بخش قانونی و اداری (Safety)",
-                        image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=1200",
-                        content: `
-                            <p>برای اینکه حساب‌های بانکی‌ات مسدود نشود، این نکات را رعایت کن:</p>
-                            <ul>
-                                <li><strong>ثبت شرکت:</strong> اگر در اروپا یا آمریکا هستی، باید شرکت (مثل Micro-entreprise یا LLC) داشته باشی تا بتونی از درگاه‌های پرداخت مثل Stripe یا PayPal استفاده کنی.</li>
-                                <li><strong>مالیات (VAT):</strong> قوانین مالیاتی کشوری که در آن هستی را یاد بگیر تا جریمه نشوی.</li>
-                                <li><strong>خدمات مشتری (Customer Service):</strong> همیشه به ایمیل‌های مشتریان در کمتر از ۲۴ ساعت جواب بده. اگر محصولی خراب بود، بدون جنجال پول‌شان را پس بده تا شکایت نکنند.</li>
-                            </ul>
-                            <div class="mt-8 p-6 bg-[#D4AF37]/10 border-r-4 border-[#D4AF37] rounded-l-xl shadow-inner">
-                                <h4 class="text-[#D4AF37] font-bold text-xl mb-3 flex items-center">
-                                    <span class="ml-2 text-2xl">💡</span> نصحیت دوستانه:
-                                </h4>
-                                <p class="text-gray-200 leading-relaxed font-medium">
-                                    دراپ‌شیپینگ یک راه «یک‌شبه پولدار شدن» نیست. این یک تجارت واقعی است که نیاز به صبر و یادگیری دارد. شکست در اولین محصول کاملاً عادی است؛ مهم این است که ناامید نشوی و ادامه بدهی.
-                                    <br><br>
-                                    <strong class="text-[#1DA4AC] font-bold">دوست داری برای اولین مرحله، با هم بررسی کنیم که چطور یک «نیش» (Niche) یا موضوع خاص برای فروشگاهت انتخاب کنی؟</strong>
-                                </p>
-                            </div>
-                        `
-                    }
-                ]
+        // Dictionnaire de traductions
+        const translations = {
+            fr: {
+                nav_cta: "Demander une offre",
+                hero_h1: "En 2026, un site vitrine ne suffit plus.<br/> <span class='text-brand-500'>Il vous faut une machine à convertir.</span>",
+                hero_sub: "Des sites web ultra-optimisés pour artisans et commerçants. Soyez n°1 sur Google et transformez vos visiteurs en clients fidèles.",
+                hero_cta: "Mon site à 500€ <i data-lucide='arrow-right' class='w-5 h-5 inline'></i>",
+                hero_trust: "<span>Artisans</span> • <span>Jardiniers</span> • <span>Coiffeurs</span> • <span>Salons de beauté</span>",
+                problem_h2: "Stop aux arnaques des agences traditionnelles.",
+                problem_text: "Stop aux agences qui facturent 1000€ la création + 300€ de frais annuels cachés. En 2026, la transparence prime. Vos clients s'en fichent des belles animations complexes ; ils veulent trouver votre numéro, vos services et vous contacter rapidement. Vous avez besoin d'une structure qui vend.",
+                solution_surtitle: "L'Expertise",
+                solution_h2: "La Solution Khesraw",
+                solution_text: "Je m'appelle Khesraw, expert en code et SEO. Ma passion : propulser les entrepreneurs locaux avec des outils web taillés pour dominer leur secteur.",
+                feat1_title: "Programmation Propre",
+                feat1_desc: "Code sur-mesure et structure ultra-légère. C'est exactement ce que les robots (crawling) de Google adorent pour vous classer premier.",
+                feat2_title: "SEO Inside-of-sight",
+                feat2_desc: "Maillage interne intelligent et indexation ultra-rapide. Votre site est conçu à la base pour les moteurs de recherche.",
+                feat3_title: "Conversion Maximisée",
+                feat3_desc: "Un design psychologique qui pousse à l'action. Fini le site \"carte de visite\", place à la machine à générer des appels.",
+                testi_h2: "Ils ont explosé leur carnet de commandes",
+                testi_sub: "Ne nous croyez pas sur parole, écoutez nos clients.",
+                testi_1_text: "\"Depuis que Khesraw a refait mon site, je reçois 3 fois plus d'appels pour des devis d'aménagement paysager. Un investissement rentabilisé en 2 semaines.\"",
+                testi_1_role: "Entrepreneur de jardin",
+                testi_2_text: "\"Rapide, clair et sans frais cachés. Mon ancien site me coûtait cher pour zéro résultat. Aujourd'hui, je suis 1er sur Google dans ma ville.\"",
+                testi_2_role: "Gérante Salon de Beauté",
+                pricing_h2: "Tarification claire. <br/>Zéro mauvaise surprise.",
+                price_pack_title: "Pack Classique",
+                price_pack_desc: "Site moderne & Responsive pour artisans.",
+                price_cta1: "Je veux ce site",
+                price_seo_title: "Option SEO Turbo",
+                price_seo_desc: "Optimisation sémantique pour dominer votre ville.",
+                seo_li1: "Recherche de mots-clés stratégiques",
+                seo_li2: "Optimisation Google My Business",
+                seo_li3: "Structure de maillage interne avancée",
+                price_cta2: "Ajouter le SEO Turbo",
+                price_maint_text: "<strong>Frais de maintenance : 30€/an</strong> (Nom de domaine + CMS inclus). <br/>Oui, vous avez bien lu : 30€ par AN, pas par mois.",
+                seo_footer_h2: "Dominez votre marché local",
+                seo_context_html: "Que vous cherchiez une <strong>création site web pas cher</strong>, un <strong>SEO local artisan</strong> percutant, ou un <strong>site internet rapide pour coiffeur</strong>, l'architecture Khesraw est faite pour vous. Nous incluons l'<strong>optimisation Google My Business</strong> pour capter directement les clients de votre ville. Nos sites se chargent instantanément pour ne perdre aucun prospect.",
+                blog_surtitle: "Ressources & Conseils",
+                blog_h2: "Derniers Articles",
+                blog_1_title: "Comment attirer des clients locaux grâce à Google en 2026 ?",
+                blog_1_desc: "Découvrez les 3 stratégies pour dominer les résultats de recherche dans votre ville et doubler vos devis.",
+                blog_2_title: "Pourquoi votre site vitrine actuel vous fait perdre de l'argent",
+                blog_2_desc: "Un beau site ne suffit plus. Il faut une architecture pensée pour transformer un visiteur en client.",
+                blog_3_title: "5 éléments indispensables sur la page d'accueil d'un artisan",
+                blog_3_desc: "Appliquez ces principes simples pour rassurer vos prospects et faciliter la prise de contact.",
+                blog_readmore: "Lire l'article",
+                footer_contact: "Contactez Khesraw : +32 465 70 42 15",
+                modal_title: "Demander un devis",
+                modal_desc: "Laissez-nous vos coordonnées, nous vous rappelons sous 24h.",
+                modal_name: "Votre nom / entreprise",
+                modal_phone: "Numéro de téléphone",
+                modal_submit: "Envoyer ma demande"
             },
-            'fb-ads': {
-                title: "تبلیغات فیسبوک (رایگان)",
-                subtitle: "جذب ترافیک",
-                icon: "target",
-                description: "الگوریتم متا را برای هدف‌گیری خریداران واقعی مسلط شوید.",
-                videos: [
-                    { title: "آموزش کامل بیزینس منیجر (Business Manager)", duration: "15:00" },
-                    { title: "راه‌اندازی اولین کمپین آزمایشی", duration: "25:30" }
-                ],
-                keyPoints: [
-                    "استراتژی جذب هدفمند.",
-                    "بهینه‌سازی هزینه‌ها (ROAS).",
-                    "روانشناسی خریدار."
-                ]
-            },
-            'ia': {
-                title: "تسلط بر هوش مصنوعی",
-                subtitle: "اتوماسیون (Automation)",
-                icon: "cpu",
-                description: "از هوش مصنوعی برای نوشتن، طراحی و بهینه‌سازی استفاده کنید.",
-                videos: [
-                    { title: "استفاده از ChatGPT برای کپی‌رایتینگ", duration: "12:45" },
-                    { title: "طراحی تصاویر با Midjourney", duration: "19:10" }
-                ],
-                keyPoints: [
-                    "تولید محتوای سریع.",
-                    "طراحی بدون نیاز به گرافیست.",
-                    "اتوماسیون پشتیبانی مشتری."
-                ]
-            },
-            'seo': {
-                title: "استراتژی‌های سئو (SEO)",
-                subtitle: "ترافیک ارگانیک",
-                icon: "search",
-                description: "با استفاده از موتورهای جستجو، یک میراث دیجیتال ماندگار بسازید.",
-                videos: [
-                    { title: "اصول اولیه سئو برای شاپيفای", duration: "20:00" },
-                    { title: "بهینه‌سازی تصاویر (SEO Image Optimizer) و سرعت سایت", duration: "16:20" }
-                ],
-                keyPoints: [
-                    "تحقیق کلمات کلیدی درآمدزا.",
-                    "بهینه‌سازی سرعت سایت.",
-                    "ساخت بک‌لینک‌های قدرتمند."
-                ]
+            nl: {
+                nav_cta: "Offerte aanvragen",
+                hero_h1: "Conversiegericht webdesign<br/> <span class='text-brand-500'>voor vakmannen.</span>",
+                hero_sub: "Krijg <strong>nieuwe klanten via Google</strong>. Wij bouwen een <strong>professionele website voor zelfstandigen</strong> die bezoekers direct omzet in leads.",
+                hero_cta: "Mijn website voor €500 <i data-lucide='arrow-right' class='w-5 h-5 inline'></i>",
+                hero_trust: "<span>Tuinaannemers</span> • <span>Vakmannen</span> • <span>Kappers</span> • <span>Bouwbedrijven</span>",
+                problem_h2: "Geen website nadelen? U loopt dagelijks opdrachten mis.",
+                problem_text: "De nadelen van geen website zijn groot. Uw concurrenten stelen uw klanten omdat u online onzichtbaar bent. Tijd om dat te veranderen. Stop met onnodige kosten. U heeft een snelle site nodig, ontworpen om de <strong>online offerteaanvragen te optimaliseren</strong> en uw bedrijf te laten groeien.",
+                solution_surtitle: "De Expertise",
+                solution_h2: "De Khesraw Aanpak",
+                solution_text: "Mijn doel: <strong>Leadgeneratie voor vakmannen</strong>. Ik bouw tools die niet alleen mooi zijn, maar vooral zorgen dat uw agenda altijd vol zit.",
+                feat1_title: "Website laten maken voor tuinaannemers & bouw",
+                feat1_desc: "Wij ontwerpen uw site met één doel: meer contactaanvragen. Geen nutteloze toeters en bellen, maar pure conversie.",
+                feat2_title: "Google zichtbaarheid verbeteren",
+                feat2_desc: "We zorgen voor de ultieme <strong>lokale SEO voor bedrijven</strong> zodat u lokaal gevonden wordt door mensen die nú uw diensten zoeken.",
+                feat3_title: "Conversiegericht webdesign",
+                feat3_desc: "Elke bezoeker wordt psychologisch begeleid naar het aanvragen van een offerte. Maximale return on investment.",
+                testi_h2: "Zij gingen u succesvol voor",
+                testi_sub: "Luister naar de ervaringen van onze vakmannen.",
+                testi_1_text: "\"Dankzij Khesraw is mijn <strong>Google zichtbaarheid verbeterd</strong>. Mijn agenda zit vol en ik krijg wekelijks nieuwe aanvragen voor tuinaanleg.\"",
+                testi_1_role: "Tuinaannemer",
+                testi_2_text: "\"Eindelijk een eerlijke <strong>website voor kleine ondernemingen prijs</strong>. Geen verborgen kosten, en direct resultaat.\"",
+                testi_2_role: "Zelfstandig Elektricien",
+                pricing_h2: "Website voor kleine ondernemingen prijs.<br/>Transparant en eerlijk.",
+                price_pack_title: "Klassiek Pakket",
+                price_pack_desc: "Professionele website voor zelfstandigen.",
+                price_cta1: "Ik wil deze website",
+                price_seo_title: "SEO Turbo Optie",
+                price_seo_desc: "Voor de vakman die zijn regio wil domineren.",
+                seo_li1: "Strategisch zoekwoordenonderzoek",
+                seo_li2: "Google My Business optimalisatie",
+                seo_li3: "Lokale SEO voor bedrijven versterken",
+                price_cta2: "Voeg SEO Turbo toe",
+                price_maint_text: "<strong>Onderhoudskosten: €30/jaar</strong> (Domeinnaam + CMS inbegrepen). <br/>Geen maandelijkse verrassingen.",
+                seo_footer_h2: "Lokale SEO voor Bedrijven",
+                seo_context_html: "We combineren <strong>conversiegericht webdesign</strong> met krachtige SEO om uw <strong>Google zichtbaarheid te verbeteren</strong>. Perfect wanneer u een <strong>website wilt laten maken voor tuinaannemers</strong> of bouw. Krijg structureel <strong>nieuwe klanten via Google</strong>.",
+                blog_surtitle: "Kennisbank",
+                blog_h2: "Laatste Inzichten",
+                blog_1_title: "Hoe u als vakman nieuwe klanten via Google krijgt",
+                blog_1_desc: "Ontdek de geheimen van online zichtbaarheid in 2026.",
+                blog_2_title: "Geen website nadelen: Wat kost onzichtbaarheid u?",
+                blog_2_desc: "Lees waarom u elke maand duizenden euro's aan omzet misloopt.",
+                blog_3_title: "Online offerteaanvragen optimaliseren: 5 Tips",
+                blog_3_desc: "Simpele aanpassingen die direct zorgen voor meer leads.",
+                blog_readmore: "Lees artikel",
+                footer_contact: "Neem contact op met Khesraw: +32 465 70 42 15",
+                modal_title: "Offerte aanvragen",
+                modal_desc: "Laat uw gegevens achter, wij bellen u binnen 24 uur terug.",
+                modal_name: "Uw naam / bedrijf",
+                modal_phone: "Telefoonnummer",
+                modal_submit: "Aanvraag versturen"
             }
         };
 
-        // Fonction pour changer de page (vue)
-        function navigate(viewName) {
-            // Cacher toutes les sections
-            document.querySelectorAll('.view-section').forEach(el => {
-                el.classList.add('hidden');
-                el.classList.remove('block');
-            });
+        const seoData = {
+            fr: {
+                title: "Khesraw | Création de sites web haute conversion pour artisans",
+                desc: "Khesraw crée des sites web ultra-optimisés et rapides pour les artisans, coiffeurs et commerçants. Devenez n°1 sur Google avec un SEO local puissant."
+            },
+            nl: {
+                title: "Webdesign & Conversie voor Vakmannen in Kortrijk & Zwevegem | Khesraw",
+                desc: "Wilt u meer offerteaanvragen via uw website? Khesraw helpt tuinaannemers en vakmannen in regio Waregem/Kortrijk met websites die echt klanten opleveren. Ontdek onze aanpak."
+            }
+        };
+
+        function changeLang(lang) {
+            // Update boutons styling
+            document.getElementById('btn-fr').className = lang === 'fr' ? 'lang-active uppercase tracking-wide transition' : 'uppercase tracking-wide text-slate-500 hover:text-brand-500 transition';
+            document.getElementById('btn-nl').className = lang === 'nl' ? 'lang-active uppercase tracking-wide transition' : 'uppercase tracking-wide text-slate-500 hover:text-brand-500 transition';
             
-            // Remonter en haut de page
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            document.documentElement.lang = lang;
 
-            // Changer la couleur des liens de navigation
-            document.getElementById('nav-home').className = "text-sm font-medium transition-colors text-gray-400 hover:text-white";
-            document.getElementById('nav-formation').className = "text-sm font-medium transition-colors text-gray-400 hover:text-white";
+            // Traduire le texte classique
+            document.querySelectorAll('[data-i18n]').forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerHTML = translations[lang][key];
+                }
+            });
 
-            if (viewName === 'home') {
-                document.getElementById('view-home').classList.remove('hidden');
-                document.getElementById('nav-home').className = "text-sm font-medium transition-colors text-[#D4AF37]";
-            } 
-            else if (viewName === 'formation') {
-                document.getElementById('view-formation').classList.remove('hidden');
-                document.getElementById('nav-formation').className = "text-sm font-medium transition-colors text-[#D4AF37]";
+            // Gérer les cas spécifiques avec du HTML imbriqué profond (section SEO locale)
+            const seoContext = document.getElementById('seo-context-text');
+            if (seoContext) {
+                seoContext.innerHTML = translations[lang]['seo_context_html'];
             }
-            // Si c'est une leçon spécifique
-            else if (viewName.startsWith('lesson-')) {
-                const courseId = viewName.replace('lesson-', '');
-                loadLesson(courseId);
-                document.getElementById('view-lesson').classList.remove('hidden');
-                document.getElementById('nav-formation').className = "text-sm font-medium transition-colors text-[#D4AF37]";
-            }
+
+            // Met à jour les metas SEO
+            document.getElementById('page-title').innerText = seoData[lang].title;
+            document.getElementById('page-desc').setAttribute('content', seoData[lang].desc);
+
+            // Re-render icons if any were in the translated HTML
+            lucide.createIcons();
         }
 
-        // Fonction pour charger dynamiquement une leçon
-        function loadLesson(courseId) {
-            const course = coursesData[courseId];
-            if (!course) return;
-
-            // Remplir l'en-tête
-            document.getElementById('lesson-title').innerText = course.title;
-            document.getElementById('lesson-subtitle').innerText = course.subtitle;
-            document.getElementById('lesson-desc').innerText = course.description;
+        // --- Logique du Modal de Contact ---
+        function openModal(packageName) {
+            document.getElementById('selectedPackage').value = packageName;
+            const modal = document.getElementById('contactModal');
+            const modalContent = document.getElementById('contactModalContent');
             
-            // Changer l'icône
-            const iconEl = document.getElementById('lesson-icon');
-            iconEl.setAttribute('data-lucide', course.icon);
+            modal.classList.remove('hidden');
+            // Trigger reflow
+            void modal.offsetWidth;
+            
+            modal.classList.remove('opacity-0');
+            modalContent.classList.remove('scale-95');
+        }
 
-            // Gérer le bouton E-Book
-            const ebookContainer = document.getElementById('ebook-container');
-            const ebookLink = document.getElementById('ebook-link');
-            if (course.ebookUrl) {
-                ebookLink.href = course.ebookUrl;
-                ebookContainer.classList.remove('hidden');
-            } else {
-                ebookContainer.classList.add('hidden');
-            }
+        function closeModal() {
+            const modal = document.getElementById('contactModal');
+            const modalContent = document.getElementById('contactModalContent');
+            
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-95');
+            
+            setTimeout(() => {
+                modal.classList.add('hidden');
+            }, 300);
+        }
 
-            // Générer les vidéos et les points clés
-            const videoListEl = document.getElementById('video-list');
-            videoListEl.innerHTML = ''; // Nettoyer l'ancienne liste
-
-            const placeholderImages = [
-                '1460925895917-afdab827c52f',
-                '1551288049-bebda4e38f71',
-                '1504868584819-28eb2065ea0c'
-            ];
-
-            course.videos.forEach((video, idx) => {
-                const imgId = placeholderImages[idx % 3];
-                const pointsHtml = course.keyPoints.map(point => `
-                    <li class="flex items-start text-gray-400 leading-relaxed text-justify">
-                        <span class="text-[#D4AF37] ms-3 mt-1 text-lg">✦</span>
-                        ${point}
-                    </li>
-                `).join('');
-
-                const videoHtml = `
-                    <div class="bg-white/[0.02] border border-white/5 rounded-3xl p-6 md:p-8 backdrop-blur-sm shadow-xl">
-                        <h3 class="text-2xl font-bold text-white mb-6 flex items-center">
-                            <span class="text-[#D4AF37] ms-3 font-serif italic text-3xl">0${idx + 1}.</span> 
-                            ${video.title}
-                        </h3>
-                        
-                        <div class="relative w-full aspect-video bg-[#02050D] rounded-2xl overflow-hidden border border-white/10 group cursor-pointer shadow-[0_0_20px_rgba(0,0,0,0.5)]">
-                            <img src="https://images.unsplash.com/photo-${imgId}?auto=format&fit=crop&q=80&w=1200" alt="Thumbnail" class="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
-                            <div class="absolute inset-0 flex items-center justify-center">
-                                <div class="w-20 h-20 bg-white/10 backdrop-blur-md border border-white/20 rounded-full flex items-center justify-center group-hover:scale-110 group-hover:bg-[#D4AF37]/20 transition-all duration-300">
-                                    <i data-lucide="play" class="w-8 h-8 text-[#D4AF37] ms-1" fill="currentColor"></i>
-                                </div>
-                            </div>
-                            <div class="absolute bottom-4 left-4 bg-black/70 px-3 py-1 rounded text-sm font-medium">
-                                ${video.duration}
-                            </div>
-                        </div>
-
-                        <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-                            <div>
-                                <h4 class="text-[#F2F2F2] font-semibold mb-4 text-lg">نکات کلیدی</h4>
-                                <ul class="space-y-3">
-                                    ${pointsHtml}
-                                </ul>
-                            </div>
-                            <div class="bg-[#050A18] rounded-2xl p-6 border border-white/5">
-                                <h4 class="text-[#F2F2F2] font-semibold mb-4 text-lg">منابع</h4>
-                                <div class="space-y-3">
-                                    <button class="w-full text-start px-4 py-3 bg-white/5 hover:bg-white/10 rounded-xl text-gray-300 transition flex justify-between items-center">
-                                        <span>لینک ارائه (PDF)</span>
-                                        <i data-lucide="book-open" class="w-4 h-4 text-[#1DA4AC]"></i>
-                                    </button>
-                                    <button class="w-full text-start px-4 py-3 bg-white/5 hover:bg-white/10 rounded-xl text-gray-300 transition flex justify-between items-center">
-                                        <span>دسترسی به ابزارهای معرفی شده</span>
-                                        <i data-lucide="globe" class="w-4 h-4 text-[#1DA4AC]"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                `;
-                videoListEl.insertAdjacentHTML('beforeend', videoHtml);
-            });
-
-            // GENERER LE GUIDE PDF INTEGRE (Uniquement s'il existe)
-            const guideListEl = document.getElementById('guide-list');
-            guideListEl.innerHTML = ''; // Nettoyer l'ancien guide
-
-            if (course.guide) {
-                // Ajouter le titre de la section Guide
-                guideListEl.innerHTML = `
-                    <div class="text-center mb-16 pt-12 border-t border-white/10">
-                        <h2 class="text-3xl md:text-4xl font-bold text-[#F2F2F2]">کتابچه آموزشی: گام‌به‌گام تا راه‌اندازی فروشگاه آنلاین</h2>
-                        <div class="w-24 h-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mt-6 rounded-full"></div>
-                    </div>
-                `;
-
-                // Boucler sur chaque chapitre du guide
-                course.guide.forEach((section, index) => {
-                    const guideHtml = `
-                        <div class="bg-[#02050D]/80 border border-white/5 rounded-3xl overflow-hidden shadow-[0_10px_40px_rgba(0,0,0,0.5)] hover:border-[#D4AF37]/30 transition-colors duration-500 group">
-                            <!-- Image Bannière -->
-                            <div class="relative h-64 md:h-80 w-full overflow-hidden">
-                                <img src="${section.image}" alt="${section.title}" class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
-                                <div class="absolute inset-0 bg-gradient-to-t from-[#02050D] via-[#02050D]/50 to-transparent opacity-90"></div>
-                                <div class="absolute bottom-6 start-6 md:start-12 pr-6">
-                                    <span class="text-[#D4AF37] font-serif italic text-6xl md:text-7xl opacity-30 absolute -top-8 md:-top-12 -start-2 md:-start-4 z-0 pointer-events-none">0${index + 1}</span>
-                                    <h3 class="text-2xl md:text-3xl font-bold text-[#F2F2F2] relative z-10">${section.title}</h3>
-                                </div>
-                            </div>
-                            <!-- Contenu Texte -->
-                            <div class="p-6 md:p-12 guide-content">
-                                <div class="text-gray-300 leading-loose text-lg text-justify">
-                                    ${section.content}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    guideListEl.insertAdjacentHTML('beforeend', guideHtml);
-                });
-            }
-
-            // Rafraîchir les icônes ajoutées dynamiquement
-            lucide.createIcons();
+        function submitForm(event) {
+            event.preventDefault();
+            const isNl = document.documentElement.lang === 'nl';
+            alert(isNl ? "Bedankt! We nemen snel contact met u op." : "Merci ! Nous vous recontactons très vite.");
+            closeModal();
+            event.target.reset();
         }
     </script>
 </body>
